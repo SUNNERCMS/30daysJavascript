@@ -360,8 +360,8 @@ funciton remove(event) {
 >官方公众号：全栈部落
 >
 >社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->
->技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
+
+
 
 
 
