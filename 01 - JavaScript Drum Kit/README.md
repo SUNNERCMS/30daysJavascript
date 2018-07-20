@@ -344,9 +344,8 @@ funciton remove(event) {
 }
 ````
 
-## 完整源码
 
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
+
 
 
 
