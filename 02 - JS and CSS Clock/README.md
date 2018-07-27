@@ -294,14 +294,6 @@ setInterval(setDate, 1000);
 >
 >文化：输出是最好的学习方式
 >
->官方公众号：全栈部落
->
->社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->
-
-
-
-
 
 
 
