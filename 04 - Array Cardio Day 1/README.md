@@ -14,9 +14,7 @@
 ```js
 console.table(thing)
 ```
-
 ![console.table()](http://om1c35wrq.bkt.clouddn.com/day4-000.png)
-
 
 ## 原始数据
 
