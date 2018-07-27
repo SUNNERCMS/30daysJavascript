@@ -281,6 +281,5 @@ setInterval(setDate, 1000);
 
 ## 源码下载
 
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
 
 
