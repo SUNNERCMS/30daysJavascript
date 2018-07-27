@@ -298,13 +298,7 @@ setInterval(setDate, 1000);
 >
 >社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
 >
->技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
->
->全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
 
-|关注全栈部落官方公众号，每晚十点接收系列原创技术推送|
-|:---------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo.png)|
 
 
 
