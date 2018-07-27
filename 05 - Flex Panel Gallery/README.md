@@ -1,9 +1,5 @@
 # Day05 - Flex 实现可伸缩的图片墙 中文指南
 
-> 作者：©[liyuechun](https://github.com/liyuechun)  
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。现在你看到的是这系列指南的第 5 篇。完整指南在 [从零到壹全栈部落](http://kongyixueyuan.com/course/4188)。
-
-
 ## 实现效果
 
 点击任意一张图片，图片展开，同时从图片上下两方分别移入文字。点击已经展开的图片后，图片被压缩，同时该图片上下两端的文字被挤走。
@@ -187,30 +183,7 @@ CSS 在这个过程中占了重点，运用 `flex` 可以使各个元素按一�
 3. 为其添加 `transitionend` 事件监听，编写调用的函数（添加/去掉样式，实现文字的飞入/飞出效果）
 
 
-## 源码下载
 
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
-
->社群品牌：[从零到壹全栈部落](http://www.kongyixueyuan.com)
->
->定位：寻找共好，共同学习，持续输出全栈技术社群
->
->业界荣誉：IT界的逻辑思维
->
->文化：输出是最好的学习方式
->
->官方公众号：全栈部落
->
->社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->
->技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
->
->全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
-
-|关注全栈部落官方公众号，每晚十点接收系列原创技术推送|
-|:---------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo.png)|
 
 
 
