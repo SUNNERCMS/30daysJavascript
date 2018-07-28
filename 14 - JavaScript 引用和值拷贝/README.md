@@ -1,8 +1,5 @@
 # Day14 - JavaScript 引用和值拷贝
 
-> 作者：©[黎跃春-追时间的人](http://weibo.com/mobiledevelopment) 
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。现在你看到的是这系列指南的第 14 篇。完整中文版指南及视频教程在 [从零到壹全栈部落](http://kongyixueyuan.com/course/4188)。
-
 ## 项目效果
 
 ![](http://om1c35wrq.bkt.clouddn.com/day14--00.png)
@@ -166,12 +163,4 @@ console.log(`dev3:${dev3}`);
 
 
 首先调用`JSON.stringify()`方法将对象解析为字符串，再调用`JSON.parse()`方法，将字符串解析为对象，这是一个小技巧，在处理对象的复制时很有用。
-
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
-
-|全栈部落|区块链部落|
-|:---------:|:------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo100.jpeg)|![](http://orhm8wuhd.bkt.clouddn.com/qukuailian100.jpg)|
-
 
