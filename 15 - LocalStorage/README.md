@@ -1,10 +1,4 @@
 
-# Day15 - LocalStorage
-
-> 作者：©[黎跃春-追时间的人](http://weibo.com/mobiledevelopment) 
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。现在你看到的是这系列指南的第 14 篇。完整中文版指南及视频教程在 [从零到壹全栈部落](http://kongyixueyuan.com/course/4188)。
-
-
 ## 效果图
 ![](http://om1c35wrq.bkt.clouddn.com/day15-0.gif)****
 
@@ -166,11 +160,5 @@ populateList(items, itemsList);
 * 在页面加载的时候，先获取本地缓存的`items`，若存在就传给变量`items`，若第一次登录或者无`item`，初始化为空数组；
 * 在页面加载的时候先加载页面的所有`todolist`，执行一遍`populateList(items, itemsList);`函数即可。
 
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
-
-|全栈部落|区块链部落|
-|:---------:|:------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo100.jpeg)|![](http://orhm8wuhd.bkt.clouddn.com/qukuailian100.jpg)|
 
 
