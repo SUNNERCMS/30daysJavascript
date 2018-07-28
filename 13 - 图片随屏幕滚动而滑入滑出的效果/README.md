@@ -1,9 +1,5 @@
 # Day13 - 图片随屏幕滚动而滑入滑出的效果
 
-
-> 作者：©[liyuechun](https://github.com/liyuechun)  
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。现在你看到的是这系列指南的第 13 篇。完整中文版指南及视频教程在 [从零到壹全栈部落](http://kongyixueyuan.com/course/4188)。
-
 ## 项目效果
 
 ![](http://om1c35wrq.bkt.clouddn.com/day14-0.gif)
@@ -310,27 +306,7 @@ window.addEventListener('scroll', checkSlide);
 * 设置两个flag，分别表示图片是否显示了一半和图片是否已经被完全滚动出去了，分别为`const isHalfShown = slideAt > sliderimage.offsetTop;`，`const isNotScrolledPast = window.scrollY < imageBottom;`
 * 只有当图片已经显示了一半并且没有被图片没有被滚动出窗口是，图片才会显示出来，此处的动画处理方式如下：默认时将图片向左或向右移动30%，当图片出现在窗口中时，取消该图片的移动，显示在原位置；再加上`transition: all .5s;`，在图片出现的时候，就会显示出约0.5秒的过渡动画。
 
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
 
->社群品牌：[从零到壹全栈部落](http://www.kongyixueyuan.com)
->
->定位：寻找共好，共同学习，持续输出全栈技术社群
->
->业界荣誉：IT界的逻辑思维
->
->文化：输出是最好的学习方式
->
->官方公众号：全栈部落
->
->社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->
->技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
->
->全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
-
-|关注全栈部落官方公众号，每晚十点接收系列原创技术推送|
-|:---------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo.png)|
 
 
 
