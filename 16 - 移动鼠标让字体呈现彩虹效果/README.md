@@ -1,9 +1,5 @@
 # Day16 - 鼠标移动让文字出现🌈效果中文指南
 
-> 作者：©[黎跃春-追时间的人](http://weibo.com/mobiledevelopment)
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。现在你看到的是这系列指南的第 16 篇。完整中文版指南及视频教程在 [从零到壹全栈部落](http://kongyixueyuan.com/course/4188)。
-
-
 ## 效果图
 ![](http://om1c35wrq.bkt.clouddn.com/day16-00.gif)
 
@@ -122,9 +118,3 @@ hero.addEventListener('mousemove',draw);
 * 对元素添加`mousemove`事件。
 
 
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
-
-|全栈部落|区块链部落|
-|:---------:|:------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo100.jpeg)|![](http://orhm8wuhd.bkt.clouddn.com/qukuailian100.jpg)|
