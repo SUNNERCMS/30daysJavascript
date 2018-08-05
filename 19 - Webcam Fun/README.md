@@ -1,8 +1,6 @@
 # Day19 - 摄像、拍照，滤镜中文指南
 
 > 本文出自：[春哥个人博客：http://www.liyuechun.org](http://liyuechun.org)
-> 作者：©[黎跃春-追时间的人](http://weibo.com/mobiledevelopment)
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、
 
 ## 效果图
 
