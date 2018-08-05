@@ -1,6 +1,5 @@
 # Day19 - 摄像、拍照，滤镜中文指南
 
-> 本文出自：[春哥个人博客：http://www.liyuechun.org](http://liyuechun.org)
 
 ## 效果图
 
