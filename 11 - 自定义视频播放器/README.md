@@ -203,8 +203,4 @@ function handlefilled(e){
 >
 >全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
 
-|关注全栈部落官方公众号，每晚十点接收系列原创技术推送|
-|:---------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo.png)|
-
 
