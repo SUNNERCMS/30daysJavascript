@@ -194,13 +194,5 @@ function handlefilled(e){
 >业界荣誉：IT界的逻辑思维
 >
 >文化：输出是最好的学习方式
->
->官方公众号：全栈部落
->
->社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->
->技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
->
->全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
 
 
