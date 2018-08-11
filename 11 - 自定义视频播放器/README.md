@@ -183,13 +183,6 @@ function handlefilled(e){
 我们需要点击进度条时调整播放进度，那么我们改变进度，或者说宽度就需要得到鼠标点击的位置，这可以通过事件对象的 `offsetX` 属性来找到，该属性代表鼠标点击位置相对于该元素的水平偏移。得到偏移之后计算出该位置的百分比，那么也就知道了进度的百分比。
 
 
-## 源码下载
-
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
->社群品牌：[从零到壹全栈部落](http://www.kongyixueyuan.com)
->
->定位：寻找共好，共同学习，持续输出全栈技术社群
 
 
 
