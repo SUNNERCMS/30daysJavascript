@@ -159,7 +159,6 @@ function handleSkip(e){
 
 * 进度条随播放时间而显示的函数
 
-
 ```Javascript
 function filledUpdate(){
     let portion = parseFloat(video.currentTime / video.duration) * 100;
