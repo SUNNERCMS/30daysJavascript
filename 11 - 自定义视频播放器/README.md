@@ -125,7 +125,6 @@ function handleToggle(){
 
 * 音量大小和播放速度控制函数
 
-
 ```Javascript
 function handlePlayerSlider(e){
     video[e.target.name] = e.target.value;
