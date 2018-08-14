@@ -10,7 +10,6 @@
 3. 在`checkSlide()`函数中，实现滚动到每一个图片的一半位置时，图片从两边飞入的动画效果
 
 ## 基础知识
-
 ### 1. float浮动布局
 
 布局中常用的CSS属性是 `float` , `float`可用于实现文字环绕图片，如下：
@@ -23,9 +22,6 @@ img {
 ```
 
 ![](http://om1c35wrq.bkt.clouddn.com/day12-1.png)
-
-
-
 
 ### 2. opacity透明度设置
 
