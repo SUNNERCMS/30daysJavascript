@@ -1,7 +1,6 @@
 # Day13 - 图片随屏幕滚动而滑入滑出的效果
 ## 项目效果
 ![](http://om1c35wrq.bkt.clouddn.com/day14-0.gif)
-
 实现页面内伴随着鼠标滚动，到每个图片时图片出现，并伴随着动画出现。
 ## 实现思路
 1. 首先要先获取需要加载动画的元素
@@ -37,13 +36,11 @@ img {
 
 **opacity:**设置对象的透明度，值在0-1之间。
 ### 3. **transform**位置移动变换
-
 [transform api](http://www.css88.com/book/css/properties/transform/transform.htm)
 
 ![](http://om1c35wrq.bkt.clouddn.com/dat14-1.png)
 
 ## 代码解析
-
 ### 1. HTML代码
 
 ```html
