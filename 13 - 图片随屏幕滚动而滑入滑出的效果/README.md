@@ -40,13 +40,11 @@ img {
 ```
 
 **opacity:**设置对象的透明度，值在0-1之间。
-
 ### 3. **transform**位置移动变换
 
 [transform api](http://www.css88.com/book/css/properties/transform/transform.htm)
 
 ![](http://om1c35wrq.bkt.clouddn.com/dat14-1.png)
-
 
 ## 代码解析
 
