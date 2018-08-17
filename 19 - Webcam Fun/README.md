@@ -199,7 +199,3 @@ function greenScreen(imagedata) {
 }
 ```
 这部分主要定义了三个滤镜，由于我们通过`ctx.getImageData`可以获取到页面颜色的rgba的值，因此我们添加滤镜的原理也是这样，通过循环改变一张图片中的所有rgba的值即可。
-
-
-
-
