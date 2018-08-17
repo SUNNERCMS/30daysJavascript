@@ -1,14 +1,9 @@
 # Day19 - 摄像、拍照，滤镜中文指南
-
 ## 效果图
-
 ![](http://om1c35wrq.bkt.clouddn.com/day19.gif)
 ![](http://om1c35wrq.bkt.clouddn.com/day19-red%E6%95%88%E6%9E%9C%E5%9B%BE.png)
-
 JS30天第19天挑战的是如何调用摄像头录像、播放，如何捕捉视频将其绘制`canvas`，还有拍照，以及滤镜的制作。
-
 ## 运行项目
-
 1. 通过`npm install`安装依赖包
 2. 通过`npm start`启动服务器
 3. 浏览器直接访问`http://localhost:3000`
