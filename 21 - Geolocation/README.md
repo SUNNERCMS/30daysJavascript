@@ -193,8 +193,3 @@ options = {
 
 id = navigator.geolocation.watchPosition(success, error, options);
 ```
-
-
-## 源码下载
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
