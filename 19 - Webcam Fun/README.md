@@ -146,7 +146,6 @@ function takePhoto(){
 - 在没次点击照相的时候，都要求播一遍音效，并且为了模拟现实情况，我们在用户点击时，设置当前的播放时间为0，再播放音效。
 - [canvas.toDataURL('image/jpeg');](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL)方法返回一个包含图片展示的 data URI 。可以使用 type 参数其类型，默认为 PNG 格式。图片的分辨率为96dpi。 
 - 接下来新建一个a元素，设置其href的值为data。在插入在文档中。实现截图成功的效果。
-
 ## 自定义滤镜
 
 ```javascript
