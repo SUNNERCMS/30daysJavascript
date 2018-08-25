@@ -104,16 +104,12 @@ menu.forEach(ele => ele.addEventListener('mouseleave', mouseLeave));
 
 当鼠标移动到某一个选项后，首先使下拉菜单显示，但是在150ms内使其显示出来，这里用了`settimeout(fn,150)`，来延迟添加下拉菜单的`trigger-enter-active`类名，这样就会有一个过渡的效果了。
 
-
 - 鼠标进入时添加类名
-
-
 ```
 this.classList.add('trigger-enter');
 setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
 background.classList.add('open');
 ```
-
 这里有一点需要注意，因为我们设置了150ms延迟之后添加`trigger-enter-active`类，那么有可能会发生这样的情况：当我们以飞快的速度在各个选项之间切换的时候，有可能还没有到150ms鼠标就已经移出了选项了，这时在150ms之后，就会多添加了`trigger-enter-active`类在每一个选项里面，造成意想不到的错误。
 因此我们加了一句判断，150ms后只有当该鼠标还悬停在这个选项之中的时候，我们才添加`trigger-enter-active`类。
 
