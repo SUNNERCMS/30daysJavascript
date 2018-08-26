@@ -223,6 +223,3 @@ function highlightLink() {
 }
 ```
 
-完结！
-
-
