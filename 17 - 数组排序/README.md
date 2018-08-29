@@ -1,6 +1,4 @@
 # Day17 - Sort Without Articles
-
-
 ## 效果图
 
 ![效果图](http://om1c35wrq.bkt.clouddn.com/day17%E6%95%88%E6%9E%9C%E5%9B%BE.png)
