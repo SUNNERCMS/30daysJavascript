@@ -1,8 +1,5 @@
 # Day17 - Sort Without Articles
 
-> 作者：©[黎跃春-追时间的人](http://weibo.com/mobiledevelopment) 
-
-
 
 ## 效果图
 
