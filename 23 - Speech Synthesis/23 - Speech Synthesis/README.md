@@ -1,6 +1,4 @@
 
-
-
 # Day23 - Speech Synthesis
 
 ## 效果图
@@ -352,5 +350,5 @@ input[type="select"] {
 
 
 ## 源码下载
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
+
 
