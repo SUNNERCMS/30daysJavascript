@@ -346,7 +346,6 @@ input[type="select"] {
   stopButton.addEventListener('click', () => toggle(false));
 ```
 
-本节挑战中只要掌握上面的基础知识部分，本案例的挑战就成功。
 
 
 
