@@ -196,11 +196,8 @@ document.customForm.addEventListener('submit', function (e) {
   this.reset();
 });
 ```
-
 **逻辑分析：**
-
 - 当点击button按钮时，调用`startTimer`方法。
-
 ```js
 buttons.forEach(button => button.addEventListener('click', startTimer));
 ```
