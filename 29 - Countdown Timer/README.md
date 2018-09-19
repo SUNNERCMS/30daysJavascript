@@ -289,5 +289,3 @@ function timer(seconds) {
   }, 1000);
 }
 ```
-
-
