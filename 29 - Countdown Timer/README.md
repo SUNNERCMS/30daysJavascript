@@ -1,10 +1,5 @@
 # Day29 - Countdown Timer
 
-> 本文出自：[春哥个人博客：http://www.liyuechun.org](http://liyuechun.org)
-> 作者：©[黎跃春-追时间的人](http://weibo.com/mobiledevelopment)
-> 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。现在你看到的是这系列指南的第 29 篇。完整中文版指南及视频教程在 [从零到壹全栈部落](http://kongyixueyuan.com/course/4188)。
-
-
 ## 效果图
 
 [在线效果](http://30daysofjs.michaeleinsohn.com/countdown-timer/)
@@ -12,7 +7,6 @@
 ![](http://om1c35wrq.bkt.clouddn.com/day29--xiaoguotu.gif)
 
 第20天的挑战是，设置一个倒计时时间，接下来开始倒计时。
-
 
 ## HTML代码
 
