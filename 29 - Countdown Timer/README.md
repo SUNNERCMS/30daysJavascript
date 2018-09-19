@@ -290,7 +290,4 @@ function timer(seconds) {
 }
 ```
 
-## 源码下载
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
 
