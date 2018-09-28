@@ -1,11 +1,7 @@
 # Day24 - Sticky Nav
 ## 效果图
-
 ![](http://om1c35wrq.bkt.clouddn.com/day24-xiaoguotu.gif)
-
-
 ## HTML源码
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
