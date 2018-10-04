@@ -94,4 +94,3 @@ console.log(newstr);
  `Array.prototype.sort()`：对产生的新的乐队名称进行排序，可以自定义一个__排序函数__，规定该排序函数的比较规则。
 [sort() -> 参考文档](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 [Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
