@@ -95,4 +95,3 @@ console.log(newstr);
 [sort() -> 参考文档](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 [Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
 
-
