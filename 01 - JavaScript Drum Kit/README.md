@@ -7,8 +7,6 @@
 
 ![](http://om1c35wrq.bkt.clouddn.com/01%20-%20JavaScript%20Drum%20Kit%202.gif)
 
-
-
 想要实现以上效果，大致思路和解决方案如下：
 
 - 检测到键盘上什么键被按下--监听`keydown`事件
