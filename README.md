@@ -1,3 +1,4 @@
+- [纯CSS/CSS3制作的动画小demo](https://github.com/SUNNERCMS/CSS-CSS3-Animation-effects)
 # JavaScript 30天每日效果图
 
 在Github上看到了[wesbos](https://twitter.com/wesbos)的一个Javascript30天挑战的[repo](https://github.com/wesbos/JavaScript30)，旨在使用纯JS来进行练习，不允许使用任何其他的库和框架，该挑战共30天，我会在这里复现这30天遇到的挑战与问题，将其教程化、视频化分享给大家。
@@ -131,25 +132,12 @@
 
 ## 加入我们，一起挑战吧
 
->社群品牌：[从零到壹全栈部落](http://www.kongyixueyuan.com)
->
->定位：寻找共好，共同学习，持续输出全栈技术社群
->
->业界荣誉：IT界的逻辑思维
->
->文化：输出是最好的学习方式
->
->官方公众号：全栈部落
->
 >社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->
 >技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
 >
 >全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
 
-|关注全栈部落官方公众号，每晚十点接收系列原创技术推送|
-|:---------:|
-|![](http://orhm8wuhd.bkt.clouddn.com/quanzhanbuluo.png)|
+
 
 
 
