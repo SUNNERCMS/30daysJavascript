@@ -137,7 +137,6 @@ nums.forEach(function (v) {
 键入 <kbd>quit</kbd> 来退出程序，或者键入 <kbd>menu</kbd> 来返回主菜单。
 ```
 
-
 - 使用 data-* 属性来嵌入自定义数据
 
 页面里通过data-key将页面展示的内容和audio关联起来。使用方法如下介绍：
@@ -166,6 +165,8 @@ nums.forEach(function (v) {
 |值|描述|
 |:---------:|:---------:|
 |somevalue|规定属性的值（以字符串）。|
+
+- 按键键码对应表https://www.cnblogs.com/yiven/p/7118056.html
 
 ## 主要CSS代码
 
