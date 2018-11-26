@@ -227,6 +227,7 @@ kbd {
 
 
 主要属性有以下几个：
+- `background-size：cover;`属性规定背景图像的尺寸。把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。背景图像的某些部分也许无法显示在背景定位区域中。  
 - `html`中有一个样式为`font-size: 10px;`，在本案例中，`1rem`就是10px，rem是以html中的`font-size`为参照物，`1.2rem`就是`12px`。
 - `transform: scale(1.1);`--该属性在键盘被点击时将该元素缩放至原来的1.1倍。
 - `.key{border: .4rem solid black;} .playing{border-color: #ffc600;}`--这两条属性在按键点击的时候改变边框颜色。
@@ -342,18 +343,3 @@ funciton remove(event) {
   // event.target.classList.remove('playing');
 }
 ````
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
