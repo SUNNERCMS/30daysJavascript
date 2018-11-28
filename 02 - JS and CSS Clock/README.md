@@ -1,6 +1,5 @@
 # Day02 - JavaScript + CSS Clock
 
-
 ## 简介
 
 第二天的练习是用JS+CSS模拟时钟效果。
@@ -251,17 +250,17 @@ setInterval(setDate, 1000);
     let secondDeg = 0;
     let minDeg = 0;
     let hourDeg = 0;
-
+//初始化函数，用来标定当前时间下时分秒的位置，遵循规则：小单位移动角度的效果累加到大单位上。
     function initDate() {
       const date = new Date();
       const second = date.getSeconds();
-      secondDeg = 90 + (second / 60) * 360;
+      secondDeg = 90 + (second / 60) * 360;  //60秒针转一圈，去分360度
       const min = date.getMinutes();
-      minDeg = 90 + (min / 60) * 360 + ((second / 60) / 60) * 360;
+      minDeg = 90 + (min / 60) * 360 + ((second / 60) / 60) * 360; //转过多少秒转换为多少分钟，添加到当前分钟上，然后进行角度计算
       const hour = date.getHours();
-      hourDeg = 90 + (hour / 12) * 360 + ((min / 60) / 12) * 360 + (((second / 60) / 60) / 12) * 360;
+      hourDeg = 90 + (hour / 12) * 360 + ((min / 60) / 12) * 360 + (((second / 60) / 60) / 12) * 360; //将转过的秒数、分钟数转化为小时数，然后按小时进行转过角度的计算。
     }
-
+//跟新函数：每隔一秒计算一次，也即是每次增加1s,(1/60)分钟，(1/3600)小时
     function updateDate() {
       secondDeg += (1 / 60) * 360;
       minDeg += ((1 / 60) / 60) * 360;
@@ -276,10 +275,5 @@ setInterval(setDate, 1000);
     setInterval(updateDate, 1000);
   </script>
 ```
-
 既然引发问题的是角度的大小变化，那就可以对这个值进行处理。此前的代码中，每秒都会重新 new 一个 Date 对象，用来计算角度值，但如果让这个角度值一直保持增长，也就不会出现逆时针回旋的问题了。
-
-
-
-
 
