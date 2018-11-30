@@ -180,7 +180,7 @@ range 类型显示为滑块。
 `<input type="range" name="points" min="1" max="10" />`  
 属性|值|描述  
 -|-|-  
-max|number|规定允许的最大值。
+max|number|规定允许的最大值。  
 实例：
 ## 解决难点
 
