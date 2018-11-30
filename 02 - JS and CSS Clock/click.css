@@ -2,12 +2,14 @@
 * @Author: Administrator
 * @Date:   2018-11-27 20:14:35
 * @Last Modified by:   Administrator
-* @Last Modified time: 2018-11-29 12:41:57
+* @Last Modified time: 2018-11-30 11:41:15
 */
+/*时分秒指针初始化是垂直的，指针移动没有设置过渡效果和过渡时间，
+就是根据角度来定位置*/
 html{
     /*font-size:625%,默认字体大小都是16px,16*62.5=100px,1rem=100px*/
     font-size:625%;
-    background: #018DED url(http://unsplash.it/1500/1000?image=881&blur=50) bottom center ;
+    background: #018DED url(./image/picture4.jpg) bottom center ;
     background-size: cover;
 }
 html,body{
@@ -37,7 +39,6 @@ html,body{
     position:relative;
     width:100%;  /*这里的100%是300px,是clock的宽*/
     height:100%;
-    /*transform: translateY(-30px);*/
 }
 /*时钟表表盘中心圆点*/
 .clock-face::after{
@@ -56,40 +57,36 @@ html,body{
 .hand{
     background: #fff;
     position:absolute;
-    top:50%;
-    right:50%;
-    /*transform:translateY(-50%); 虽说这样可以使指针居中线，但是translate的平移是相对于自身center位置的，那么这样居中处理后，下面的旋转仍旧按的是平移之前的right位置为原点，虽说三个指针通过translateY看似处于一条中线上，实际旋转时仍然是按照各自的right位置进行旋转*/ 
-    /*transform:rotate(90deg);*/
-    transform-origin:100% 50%;
+    bottom:50%;
+    left:50%;
+    /*transform:translateX(-50%); 虽说这样可以使指针居中线，但是translate的平移是相对于自身center位置的，那么这样居中处理后，下面的旋转仍旧按的是平移之前的right位置为原点，虽说三个指针通过translateY看似处于一条中线上，实际旋转时仍然是按照各自的right位置进行旋转*/ 
+    transform:rotate(0deg);
+    transform-origin:50% 100%;
     box-shadow: 
       0 0 0 1px rgba(0, 0, 0, 0.1),
       0 0 8px rgba(0, 0, 0, 0.4),
       2px 5px 1px rgba(0, 0, 0, 0.5);
-    transition-timing-function:linear;
 }
 
 /*时针样式*/
 .hour-hand{
-    width:40%;
-    height:0.1rem;
-    margin-top:-0.05rem;
+    height:40%;
+    width:0.1rem;
+    margin-left:-0.05rem;  /*使时针向左移动自身的一半来居中*/
     border-bottom-left-radius: .05rem;
     border-top-left-radius:.05rem;
-    transition:all 3s;
 }
 .min-hand {
-    width: 45%;
-    height: .05rem;
-    margin-top:-0.025rem;
-    transition: all .1s;
+    height: 45%;
+    width: .05rem;
+    margin-left:-0.025rem;
 }
 .second-hand {
-    width: 50%;
-    height: .02rem;
-    margin-top:-0.01rem;
+    height: 50%;
+    width: .02rem;
+    margin-left:-0.01rem;
     border-bottom-left-radius: .02rem;
     border-top-left-radius: .02rem;
-    transition: all .05s;
     background-color: red;
 }
 /*日期，时间，星期几的样式*/
