@@ -1,16 +1,11 @@
 # Day02 - JavaScript + CSS Clock
 
 ## 简介
-
 第二天的练习是用JS+CSS模拟时钟效果。
 
 效果如下：
-
-![clock]()
-
-
+![clock](https://github.com/SUNNERCMS/30daysJavascript/blob/master/02%20-%20JS%20and%20CSS%20Clock/image/GIF.gif)
 实现以上模拟时钟的效果，大致思路和解决方案如下：
-
 * 分别获取到当前时间的时、分、秒。
 * 通过时分秒对一圈360度，进行映射，确定每一个指针所需旋转的角度。
 * 通过CSS的`transform：rotate(deg)`，来实时的调整指针在键盘中的位置。
@@ -181,99 +176,4 @@ hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 setInterval(setDate, 1000);
 ```
 
-## 延伸思考
-
-此处存在一个小瑕疵，当秒针旋转一圈之后回到初始位置，开始第二圈旋转，角度值的变化时 444° → 90° → 96° .... 这个过程中，指针会先逆时针从 444° 旋转至 90°，再继续我们期望的顺时针旋转，由于秒针变换时间只有 0.05s，所以呈现的效果就是秒针闪了一下，如果想要观察细节，可以将 `.second` 设为 `transition: all 1s`，效果如下所示：
-
-![](http://om1c35wrq.bkt.clouddn.com/day222.gif)
-
-
-要解决这个问题，目前找到了两种解决办法：
-
-
-- 第一种
-
-```js
-  <script>
-    const secHand = document.querySelector('.second-hand');
-    const minHand = document.querySelector('.min-hand');
-    const hourHand = document.querySelector('.hour-hand');
-
-    function setDate() {
-      const date = new Date();
-
-      const second = date.getSeconds();
-      const secondDeg = (90 + (second / 60) * 360);
-
-      const min = date.getMinutes();
-      const minDeg = (90 + (min / 60) * 360);
-
-      const hour = date.getHours();
-      const hourDeg = (90 + (hour / 12) * 360 + (min / 12 / 60) * 360); // 加入分钟所占的时间，使时针可以缓慢地移动
-
-
-      //解决指针跳顿问题【第一种方法】
-      //在发生跳顿的角度值处，将 CSS 的 `transition` 属性去掉
-      if (secondDeg === 90) {
-        secHand.style.transition = 'all 0s';
-      } else {
-        secHand.style.transition = 'all 0.05s';
-      }
-
-      if (minDeg === 90) {
-        minHand.style.transition = 'all 0s';
-      } else {
-        minHand.style.transition = 'all 0.1s';
-      }
-
-
-      secHand.style.transform = `rotate(${ secondDeg }deg)`;
-      minHand.style.transform = `rotate(${ minDeg }deg)`;
-      hourHand.style.transform = `rotate(${ hourDeg }deg)`;
-
-    }
-
-    setInterval(setDate, 1000);
-
-    setDate();
-  </script>
-```
-
-- 第二种
-
-```js
-  <script>
-    const secondHand = document.querySelector('.second-hand');
-    const minsHand = document.querySelector('.min-hand');
-    const hourHand = document.querySelector('.hour-hand');
-
-    let secondDeg = 0;
-    let minDeg = 0;
-    let hourDeg = 0;
-//初始化函数，用来标定当前时间下时分秒的位置，遵循规则：小单位移动角度的效果累加到大单位上。
-    function initDate() {
-      const date = new Date();
-      const second = date.getSeconds();
-      secondDeg = 90 + (second / 60) * 360;  //60秒针转一圈，去分360度
-      const min = date.getMinutes();
-      minDeg = 90 + (min / 60) * 360 + ((second / 60) / 60) * 360; //转过多少秒转换为多少分钟，添加到当前分钟上，然后进行角度计算
-      const hour = date.getHours();
-      hourDeg = 90 + (hour / 12) * 360 + ((min / 60) / 12) * 360 + (((second / 60) / 60) / 12) * 360; //将转过的秒数、分钟数转化为小时数，然后按小时进行转过角度的计算。
-    }
-//跟新函数：每隔一秒计算一次，也即是每次增加1s,(1/60)分钟，(1/3600)小时
-    function updateDate() {
-      secondDeg += (1 / 60) * 360;
-      minDeg += ((1 / 60) / 60) * 360;
-      hourDeg += (((1 / 60) / 60) / 12);
-
-      secondHand.style.transform = `rotate(${ secondDeg }deg)`;
-      minsHand.style.transform = `rotate(${ minDeg }deg)`;
-      hourHand.style.transform = `rotate(${ hourDeg }deg)`;
-    }
-
-    initDate();
-    setInterval(updateDate, 1000);
-  </script>
-```
-既然引发问题的是角度的大小变化，那就可以对这个值进行处理。此前的代码中，每秒都会重新 new 一个 Date 对象，用来计算角度值，但如果让这个角度值一直保持增长，也就不会出现逆时针回旋的问题了。
 
