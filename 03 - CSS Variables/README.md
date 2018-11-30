@@ -177,14 +177,17 @@ range 输入类型用于应该包含指定范围值的输入字段。
 range 类型显示为滑块。  
 您也可以设置可接受数字的限制：  
 `<input type="range" name="points" min="1" max="10" />` 
-
 |属性|值|描述|
 |:---------:|:---------:|:---------:|
 |max|number|规定允许的最大值。| 
-
-|值|描述|
-|:---------:|:---------:|
-|somevalue|规定属性的值（以字符串）。|
+|min|number|规定允许的最小值。| 
+|step|number|规定合法数字间隔（如果 step="3"，则合法数字是 -3,0,3,6，以此类推）。| 
+|value|number|规定默认值。| 
+7.`<input type="color">`HTML5中type属性之color  
+color输入类型用于规定颜色。  
+该输入类型允许您从拾色器中选取颜色。  
+实例：  
+`Color: <input type="color" name="user_color" />`
 ## 解决难点
 
 1. **如何处理参数值（一个有 px 、另一个没有）**
