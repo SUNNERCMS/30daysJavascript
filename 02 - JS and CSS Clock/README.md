@@ -14,13 +14,28 @@
 ## 页面布局
 
 ```html
-  <div class="clock">
-    <div class="clock-face">
-      <div class="hand hour-hand"></div>
-      <div class="hand min-hand"></div>
-      <div class="hand second-hand"></div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RealTimeClock</title>
+    <link rel="stylesheet" href="click.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
     </div>
-  </div>
+    <div class="dateblock">
+      <div class="date"></div>
+      <div class="week"></div>
+      <div class="time"></div>
+    </div>
+    <script src="clock.js"></script>
+</body>
+</html>
 ```
 
 ## CSS样式
