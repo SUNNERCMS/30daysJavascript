@@ -4,7 +4,8 @@
 第二天的练习是用JS+CSS模拟时钟效果。
 
 效果如下：
-![clock](https://github.com/SUNNERCMS/30daysJavascript/blob/master/02%20-%20JS%20and%20CSS%20Clock/image/GIF.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/02%20-%20JS%20and%20CSS%20Clock/image/GIF.gif)  
+
 实现以上模拟时钟的效果，大致思路和解决方案如下：
 * 分别获取到当前时间的时、分、秒。
 * 通过时分秒对一圈360度，进行映射，确定每一个指针所需旋转的角度。
