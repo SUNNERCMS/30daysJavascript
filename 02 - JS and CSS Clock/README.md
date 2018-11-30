@@ -258,5 +258,3 @@ hourHand.style.transform  =  `rotate(${hoursDegrees}deg)`;
 ```js
    setInterval(updata,1000);
 ```
-
-
