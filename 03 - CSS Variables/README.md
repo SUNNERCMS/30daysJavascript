@@ -1,9 +1,5 @@
 # Day03 - CSS 变量
 
-|值|描述|
-|:---------:|:---------:|
-|somevalue|规定属性的值（以字符串）。|
-
 ## 实现效果
 
 ![liyuechun](http://om1c35wrq.bkt.clouddn.com/day3.gif)
@@ -183,8 +179,11 @@ range 类型显示为滑块。
 `<input type="range" name="points" min="1" max="10" />`  
 |属性|值|描述|
 |:-:|:-:|:-:| 
-max|number|规定允许的最大值。  
+|max|number|规定允许的最大值。| 
 实例：
+|值|描述|
+|:---------:|:---------:|
+|somevalue|规定属性的值（以字符串）。|
 ## 解决难点
 
 1. **如何处理参数值（一个有 px 、另一个没有）**
