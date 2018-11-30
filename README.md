@@ -13,7 +13,7 @@
 
 ## Day02 - JS and CSS Clock
 
-![](http://oslwafb71.bkt.clouddn.com/small1.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/02%20-%20JS%20and%20CSS%20Clock/image/GIF.gif)  
 
 
 ## Day03 - CSS Variables
