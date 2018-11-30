@@ -172,7 +172,7 @@
 5. CSS 滤镜 [filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
 
 	CSS 的滤镜提供了一些图形特效，比如高斯模糊、锐化、变色等。它带有一些预设的函数，在使用时加上参数调用这些函数即可。[在 Chrome、Firefox 中都支持。](http://caniuse.com/#search=filter)  
-6.`<input type="range">`HTML5中type属性之range   
+6. `<input type="range">`HTML5中type属性之range   
 range 输入类型用于应该包含指定范围值的输入字段。  
 range 类型显示为滑块。  
 您也可以设置可接受数字的限制：  
@@ -182,7 +182,7 @@ range 类型显示为滑块。
 |max|number|规定允许的最大值。| 
 |min|number|规定允许的最小值。| 
 |step|number|规定合法数字间隔（如果 step="3"，则合法数字是 -3,0,3,6，以此类推）。| 
-|value|number|规定默认值。| 
+|value|number|规定默认值。|   
 7.`<input type="color">`HTML5中type属性之color  
 color输入类型用于规定颜色。  
 该输入类型允许您从拾色器中选取颜色。  
