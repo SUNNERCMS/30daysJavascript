@@ -6,7 +6,7 @@
 
 效果如下：
 
-![clock](http://om1c35wrq.bkt.clouddn.com/day2_clock__.gif)
+![clock]()
 
 
 实现以上模拟时钟的效果，大致思路和解决方案如下：
