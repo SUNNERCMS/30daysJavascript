@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Variables</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Update <span class="h1">CSS</span> Variables with <span class="h1">JS</span></h2>
+    <div class="controls">
+        <div class="wrap">
+            <label for="spacing">Spacing:</label>
+            <input type="range" id="spacing" min="10" max="200" value="10" onchange="spacingchange()">
+        </div>
+        <div class="wrap">
+            <label for="blur">Blur:</label>
+            <input type="range" id="blur" min="0" max="25" value="10" onchange="blurchange()">
+        </div>
+        <div class="wrap">
+            <label for="base">Base Color:</label>
+            <input type="color" id="base" name="base" value="#ffc600" onchange="basechange">
+        </div>
+    </div>
+    <img id="img" src="http://f.hiphotos.baidu.com/lvpics/h=800/sign=b346032cbe389b5027ffed52b534e5f1/960a304e251f95ca545f8b84ce177f3e6709525d.jpg" alt="演示图片">
+    <script src="variables.js"> </script>
+</body>
+</html>

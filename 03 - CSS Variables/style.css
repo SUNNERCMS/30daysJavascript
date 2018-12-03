@@ -1,0 +1,54 @@
+/*
+* @Author: Administrator
+* @Date:   2018-11-30 20:09:15
+* @Last Modified by:   Administrator
+* @Last Modified time: 2018-12-03 21:57:37
+*/
+:root{
+    --spacing:10px;
+    --blur:10px;
+    --base:#ffc600;
+    --fontsize:10px;
+}
+
+html,body{
+    text-align:center;
+    background: #193549;
+    margin:0;
+    padding:0;
+    min-height: 100vh;
+    font-size:calc(3*var(--fontsize));
+    font-family:'helvetica neue', sans-serif; /*Helvetica是一种被广泛使用的的西文字体(铅字体）,用于印刷行业,Helvetica是苹果电脑的默认字体，微软常用的Arial字体也来自于它*/
+    font-weight:900;/*设置字体粗细：100---900,400=normal,700=bolder*/
+    color:white;
+}
+
+.h1{
+    color:var(--base);
+}
+.controls{
+    font-weight:100;
+    margin-bottom:calc(5*var(--fontsize));
+}
+.controls .wrap{
+    display: inline-block;
+    margin:5px auto;
+}
+.controls .wrap label{
+    margin-left:20px;
+}
+.controls .wrap input{
+    position:relative;
+    top:3px;
+    width:calc(10*var(--fontsize));
+}
+.controls .wrap #base{
+    top:-3px;
+}
+img{
+    width:calc(60*var(--fontsize));
+    height:calc(40*var(--fontsize));
+    padding:var(--spacing);
+    filter:blur(var(--blur));
+    background-color:var(--base);/*背景颜色填充内容、内边距、边框，作为打底色*/
+}
