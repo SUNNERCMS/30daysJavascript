@@ -192,12 +192,11 @@ color输入类型用于规定颜色。
 `Color: <input type="color" name="user_color" />`  
 8. font-weight 属性设置文本的粗细。  
 `
-值	描述
-normal	默认值。定义标准的字符。
-bold	定义粗体字符。
-bolder	定义更粗的字符。
-lighter	定义更细的字符。
-100
+normal	默认值。定义标准的字符。  
+bold	定义粗体字符。  
+bolder	定义更粗的字符。  
+lighter	定义更细的字符。  
+100  
 200
 300
 400
