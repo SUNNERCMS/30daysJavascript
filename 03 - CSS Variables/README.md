@@ -5,135 +5,123 @@
 ![liyuechun](http://om1c35wrq.bkt.clouddn.com/day3.gif)
 
 
-用 JavaScript 和 CSS3 实现拖动滑块时，实时调整图片的内边距、模糊度、背景颜色，同时标题中 JS 两字的颜色也随图片背景颜色而变化。
-
-## 涉及特性
-
-- [`:root`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root)
-- `var(--xxx)`：CSS 变量（[CSS Variables](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_variables)）
-- `filter: blur()`
-- 事件 `change`、`mousemove`
-
-
 ## HTML源码
 
 ```html
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
-
-  <div class="controls">
-    <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
-
-    <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
-
-    <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#ffc600">
-  </div>
-
-
-  <div class="result">
-    <div class="showText">{spacing:<label id="label_spacing">#ffc600</label>}</div>
-    <div class="showText">{blur:<label id="label_blur">10px</label>}</div>
-    <div class="showText">{base:<label id="label_base">10px</label>}</div>
-  </div>
-
-
-  <img src="http://f.hiphotos.baidu.com/lvpics/h=800/sign=b346032cbe389b5027ffed52b534e5f1/960a304e251f95ca545f8b84ce177f3e6709525d.jpg">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Variables</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Update <span class="h1">CSS</span> Variables with <span class="h1">JS</span></h2>
+    <div class="controls">
+        <div class="wrap">
+            <label for="spacing">Spacing:</label>
+            <input type="range" id="spacing" min="10" max="200" value="10" onchange="spacingchange()">
+        </div>
+        <div class="wrap">
+            <label for="blur">Blur:</label>
+            <input type="range" id="blur" min="0" max="25" value="10" onchange="blurchange()">
+        </div>
+        <div class="wrap">
+            <label for="base">Base Color:</label>
+            <input type="color" id="base" name="base" value="#ffc600" onchange="basechange">
+        </div>
+    </div>
+    <img id="img" src="http://f.hiphotos.baidu.com/lvpics/h=800/sign=b346032cbe389b5027ffed52b534e5f1/960a304e251f95ca545f8b84ce177f3e6709525d.jpg" alt="演示图片">
+    <script src="variables.js"> </script>
+</body>
+</html>
 ```
 
 ## CSS源码
 
 ```css
-  <style>
-     :root {
-      --base: #ffc600;
-      --spacing: 10px;
-      --blur: 10px;
-    }
+:root{
+    --spacing:10px;
+    --blur:10px;
+    --base:#ffc600;
+    --fontsize:10px;
+}
 
-    img {
+html,body{
+    text-align:center;
+    background: #193549;
+    margin:0;
+    padding:0;
+    min-height: 100vh;
+    font-size:calc(3*var(--fontsize));
+    font-family:'helvetica neue', sans-serif; /*Helvetica是一种被广泛使用的的西文字体(铅字体）,用于印刷行业,Helvetica是苹果电脑的默认字体，微软常用的Arial字体也来自于它*/
+    font-weight:900;/*设置字体粗细：100---900,400=normal,700=bolder*/
+    color:white;
+}
 
-      width: 600px;
-      height: 400px;
-      padding: var(--spacing);
-      background: var(--base);
-      filter: blur(var(--blur));
-    }
-
-    .hl {
-      color: var(--base);
-    }
-    /*
-      misc styles, nothing to do with CSS variables
-    */
-
-    body {
-      text-align: center;
-      background: #193549;
-      color: white;
-      font-family: 'helvetica neue', sans-serif;
-      font-weight: 100;
-      font-size: 30px;
-    }
-
-    .controls {
-      margin-bottom: 50px;
-    }
-
-    input {
-      width: 100px;
-    }
-
-    .result {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      color: var(--base);
-    }
-
-    .showText {
-      margin: 0px 25px 50px 25px;
-    }
-  </style>
+.h1{
+    color:var(--base);
+}
+.controls{
+    font-weight:100;
+    margin-bottom:calc(5*var(--fontsize));
+}
+.controls .wrap{
+    display: inline-block;
+    margin:5px auto;
+}
+.controls .wrap label{
+    margin-left:20px;
+}
+.controls .wrap input{
+    position:relative;
+    top:3px;
+    width:calc(10*var(--fontsize));
+}
+.controls .wrap #base{
+    top:-3px;
+}
+img{
+    width:calc(60*var(--fontsize));
+    height:calc(40*var(--fontsize));
+    padding:var(--spacing);
+    filter:blur(var(--blur));
+    background-color:var(--base);/*背景颜色填充内容、内边距、边框，作为打底色*/
+}
 ```
 
 
 ## JS源码
 
 ```js
-  <script>
-    const inputs = document.querySelectorAll('.controls input');
-
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-      document.getElementById(`label_${this.name}`).innerText = this.value + suffix;
-    }
-
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-  </script>
+function spacingchange(){
+    var spacing=document.querySelector("#spacing");
+    document.body.style.setProperty('--spacing', spacing.value+'px');
+    // var img=document.querySelector("#img");
+    // img.style.padding=spacing.value+'px';一个需要改变的元素可以将其取出，改变它的对应项，但有100个需要改变的元素时，改变根变量值最有效。
+}
+function blurchange(){
+    var blur=document.querySelector("#blur");
+    document.body.style.setProperty("--blur",blur.value+'px');
+}
+function basechange(){
+    var base=document.querySelector("#base");
+    document.body.style.setProperty("--base",base.value);
+}
 ```
-
 
 ## 过程指南
 
 ### CSS 部分准备
 
-1. 声明全局（`:root`）的 CSS 变量
-2. 将变量应用到页面中对应元素 `<img>` 
-3. 处理标题的 CSS 值
+1. 声明全局（`:root`）的 CSS 变量  
+2. 将变量应用到页面中对应元素 `<img>`   
+3. 处理标题的 CSS 值  
 
 ### JS 实时更新 CSS 值
-1. 获取页面中 `input` 元素
-2. 给每个 `input` 添加监听事件，使其在值变动，触发更新操作
-3. 同 2 ，添加鼠标滑过时的事件监听
-4. 编写处理更新操作的方法
-	1.  获取参数值后缀
-	- 获取参数名（blur、spacing、color）
-	- 获取参数值（12px、#efefef）
-	- 赋值给对应的 CSS 变量
+1. 监听input的change改变函数，然后触发各自的事件处理函数    
+2. 每个事件中，先取出该元素，然后设置CSS的原生变量值，进而下面的所有样式中凡是用到这个变量的值都跟着改变。  
+改进：利用字符串模板+遍历添加事件的方法，给每一个input元素添加事件处理函数。  
 
 ## 基础知识
 
@@ -171,7 +159,7 @@
 	
 5. CSS 滤镜 [filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
 
-	CSS 的滤镜提供了一些图形特效，比如高斯模糊、锐化、变色等。它带有一些预设的函数，在使用时加上参数调用这些函数即可。[在 Chrome、Firefox 中都支持。](http://caniuse.com/#search=filter)  
+	CSS 的滤镜提供了一些图形特效，比如高斯模糊（blur）、锐化、变色等。它带有一些预设的函数，在使用时加上参数调用这些函数即可。[在 Chrome、Firefox 中都支持。](http://caniuse.com/#search=filter)  
 6. `<input type="range">`HTML5中type属性之range   
 range 输入类型用于应该包含指定范围值的输入字段。  
 range 类型显示为滑块。  
