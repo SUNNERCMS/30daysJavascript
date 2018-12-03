@@ -189,7 +189,25 @@ range 类型显示为滑块。
 color输入类型用于规定颜色。  
 该输入类型允许您从拾色器中选取颜色。  
 实例：  
-`Color: <input type="color" name="user_color" />`
+`Color: <input type="color" name="user_color" />`  
+8. font-weight 属性设置文本的粗细。  
+`
+值	描述
+normal	默认值。定义标准的字符。
+bold	定义粗体字符。
+bolder	定义更粗的字符。
+lighter	定义更细的字符。
+100
+200
+300
+400
+500
+600
+700
+800
+900  定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。
+inherit	规定应该从父元素继承字体的粗细。
+`
 ## 解决难点
 
 1. **如何处理参数值（一个有 px 、另一个没有）**
