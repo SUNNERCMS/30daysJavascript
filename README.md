@@ -18,7 +18,7 @@
 
 ## Day03 - CSS Variables
 
-![](http://oslwafb71.bkt.clouddn.com/small2.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/03%20-%20CSS%20Variables/GIF.gif)
 
 
 ## Day04 - Array Cardio Day 1
