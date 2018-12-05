@@ -2,7 +2,7 @@
 
 ## 实现效果
 
-![liyuechun](http://om1c35wrq.bkt.clouddn.com/day3.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/03%20-%20CSS%20Variables/GIF.gif)
 
 ## HTML源码
 
