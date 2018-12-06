@@ -294,6 +294,14 @@ const transportation = data.reduce( (obj, item) => {
 
 console.log(transportation);
 ```
+```JS
+    var data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car','truck', 'pogostick'
+    ];
+data.reduce((acc,cur)=>{
+			cur in acc ? acc[cur]++ : acc[cur]=1; 
+			return acc;
+			},{});
+```
 ![](http://om1c35wrq.bkt.clouddn.com/day4-008.png)
 
 
