@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flex Panels 💪</title>
+  <title>Flex Panels</title>
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  ```css
   <style>
     html {
-      box-sizing: border-box;
+      box-sizing: border-box;/*怪异盒模型：width是content+padding+border,实际开发中多采用这种，不用再计算所谓的padding和border来确定整个盒模型大小*/
       background:#ffc600;
       font-family:'helvetica neue';
       font-size: 20px;
@@ -24,7 +25,7 @@
     .panels {
       min-height:100vh;
       overflow: hidden;
-      display: flex;
+      display: flex;/*对该元素下的子元素进行flex弹性布局*/
     }
 
     .panel {
@@ -40,15 +41,14 @@
         flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         background 0.2s;
       font-size: 20px;
-      background-size:cover;
+      background-size:cover; 
       background-position:center;
-      flex: 1;
-      justify-content: center;
-      display: flex;
-      flex-direction: column;
+      flex: 1;      /*同级子元素平均布局*/
+      display: flex; /*对其子元素p, 设置布局方式*/
+      justify-content: center; /*水平居中*/
+      flex-direction: column;  /*成列排列*/
     }
-
-
+    /*设置了5个栅格的背景照片*/
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
     .panel2 { background-image:url(https://source.unsplash.com/1CD3fd8kHnE/1500x1500); }
     .panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
@@ -72,7 +72,7 @@
     .panel.open-active > *:last-child { transform: translateY(0); }
 
     .panel p {
-      text-transform: uppercase;
+      text-transform: uppercase; /*文本转化为大写*/
       font-family: 'Amatic SC', cursive;
       text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
       font-size: 2em;
@@ -91,8 +91,8 @@
     }
 
   </style>
-
-
+```
+```html
   <div class="panels">
     <div class="panel panel1">
       <p>Hey</p>
@@ -120,9 +120,10 @@
       <p>Motion</p>
     </div>
   </div>
-
+```
+```js
   <script>
-    const panels = document.querySelectorAll('.panel');
+    const panels = Array.form(document.querySelectorAll('.panel'));
 
     function toggleOpen() {
       console.log('Hello');
@@ -136,9 +137,9 @@
       }
     }
 
-    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
-    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));  
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive)); //过渡效果完成之后触发的时间toggleActive。
   </script>
-
+```
 </body>
 </html>
