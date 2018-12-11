@@ -257,5 +257,3 @@ function displayMatches() {
 
 - `title.replace(regex, "新字符串");`表示将title字符串中满足 `regex` 规则的字符串替换成`新字符串`。
 
-
-
