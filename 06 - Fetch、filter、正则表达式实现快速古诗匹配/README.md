@@ -183,7 +183,7 @@ fetch(endpoint)
 
 ![](http://om1c35wrq.bkt.clouddn.com/WechatIMG187.jpeg)
 
-``
+
 
 [Fetch详细使用文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 
