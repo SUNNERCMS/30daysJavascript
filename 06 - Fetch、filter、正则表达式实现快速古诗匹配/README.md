@@ -6,7 +6,6 @@
 
 ![](http://om1c35wrq.bkt.clouddn.com/day6.gif)
 
-
 ## 涉及特性
 
 - flex布局
@@ -34,9 +33,7 @@
     - `match()`
     - `replace()`
 	
-	
 ## 实现步骤
-
 - UI布局
 - 通过Fetch下载数据
 - 数据处理并保存
