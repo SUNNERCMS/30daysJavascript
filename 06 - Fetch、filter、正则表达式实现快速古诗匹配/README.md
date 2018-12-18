@@ -34,7 +34,7 @@
     - `replace()`
 - 防抖处理
 - 匹配文本的高亮显示
-- "瓦楞纸效果"的实现：transform:perspective(xxxpx) 
+- "瓦楞纸效果"的实现：transform:perspective(xxxpx) rotateX(xdeg)
 ## 实现步骤
 - UI布局
 - 通过Fetch下载数据
