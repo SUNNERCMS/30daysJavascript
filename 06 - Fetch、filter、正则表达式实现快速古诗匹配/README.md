@@ -34,7 +34,8 @@
     - `replace()`
 - 防抖处理
 - 匹配文本的高亮显示
-- transform:
+- "瓦楞纸效果"  
+transform:
 ## 实现步骤
 - UI布局
 - 通过Fetch下载数据
