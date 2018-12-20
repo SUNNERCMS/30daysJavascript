@@ -12,7 +12,7 @@
 
 - `nth-child`奇偶匹配  
 
-- Fetch获取数据  
+- Fetch获取数据以及异常处理  
 
 - Array
 	- `filter()`  
@@ -23,7 +23,7 @@
     - 字面量语法
     - 创建 RegExp 对象的语法
     - 修饰符`i`、`g`
-    - `match()`
+    - `test()`
     - `replace()`
 - 防抖处理
 - 匹配文本的高亮显示
@@ -41,107 +41,86 @@
 - HTML代码
 
 ```html
-  <form class="search-form">
-    <input type="text" class="search" placeholder="诗人名字，关键字">
-    <ul class="suggestions">
-      <li>输入词句，找一首诗</li>
-      <li>输入词句，找一首诗</li>
-      <li>输入词句，找一首诗</li>
-      <li>输入词句，找一首诗</li>
-      <li>输入词句，找一首诗</li>
-    </ul>
-  </form>
+ <form class="search-form">
+        <input type="text" class="search" placeholder="诗人名字，关键字">
+        <ul class="suggestions">
+            <li>输入诗人名字</li>
+            <li>输入关键字，找一首诗</li>
+        </ul>
+    </form>
 ```
 
 - CSS代码
 
 ```css
-html {
-  box-sizing: border-box;
-  margin: 0px;
-  background-color: rgb(145, 182, 195);
-  font-family: 'Kaiti', 'SimHei', 'Hiragino Sans GB ', 'helvetica neue';
-  font-size: 20px;
-  font-weight: 200;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-}
-
-.search-form {
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-input.search {
-  padding: 20px;
-  font-family: 'Kaiti', 'helvetica neue';
-  margin: 0;
-  border: 10px solid #f7f7f7;
-  font-size: 40px;
-  text-align: center;
-  width: 120%;
-  outline: 0;
-  border-radius: 5px;
-  position: relative;
-  top: 10px;
-  left: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
-}
-
-.suggestions {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  top: 7px;
-  width: 100%;
-}
-
-.suggestions li {
-  background: white;
-  list-style: none;
-  border-bottom: 1px solid #D8D8D8;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
-  margin: 0;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  /*align-items: flex-start;*/
-}
-
-span.title {
-  margin-right: 20px;
-  text-align: right;
-  color: #7c8e94;
-  margin-top: 5px;
-}
-
-span.hl {
-  color: green;
-}
-
-
-
-/*偶数匹配*/
-.suggestions li:nth-child(even) {
-  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-  background: linear-gradient(to bottom, #ffffff 0%, #efefef 100%);
-}
-
-/*奇数匹配*/
-.suggestions li:nth-child(odd) {
-  transform: perspective(100px) rotateX(-3deg) translateY(3px);
-  background: linear-gradient(to top, #ffffff 0%, #efefef 100%);
-}
+    <style>
+        html{
+            box-sizing:border-box;
+            margin:0px;
+            background-color:burlywood;
+            font-family: "Kaiti","SimHei","Hiragino Sans GB","Helvetica neue";
+            font-size:625%;
+            font-weight:200;
+        }
+        *,*:before,*:after{
+            box-sizing:inherit;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            /*text-align:center;*/
+        }
+        .search-form{
+            display: flex;
+            flex-direction:column; /*规定元素项目垂直显示，此时主轴为垂直方向*/
+            align-items: center;  /*在主轴垂直时，设置align-items可以使元素水平居中*/
+        }
+        .search{
+            width:8rem;
+            border:0.1rem solid #f7f7f7;
+            padding:0.2rem;
+            border-radius: 0.05rem;
+            font-size:0.2rem;
+            text-align:center;
+            box-shadow:0 0 5px 0 rgba(0,0,0,0.12),
+                       0 0 3px 0 rgba(0,0,0,.19) inset;
+            margin-top:0.4rem;
+            outline:none;  /*去掉input框的默认样式*/
+        }
+        .suggestions{
+            list-style: none; /*去掉序列修饰符号*/
+            width:6rem;
+            margin:0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size:0.2rem;
+        }
+        .suggestions li{
+            text-align: center;
+            width:100%;
+            background: white;
+            border-bottom: 0.01rem solid #D8D8D8;
+            padding:0.15rem;
+            box-shadow:0 0 10px rgba(0,0,0,0.14);
+            /*transition:transform 0.5s ease;*/
+        }
+        .suggestions li:hover{
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+        }
+        .suggestions p{
+            text-align:right;
+            margin:0;
+        }
+        /*实现奇偶栏的折叠效果*/
+        .suggestions li:nth-child(odd){
+            transform: perspective(1rem) rotateX(-3deg) ;
+        }
+        .suggestions li:nth-child(even){
+            transform: perspective(1rem) rotateX(3deg) translateY(-2px) ;
+        }
+    </style>
 ```
 
 - CSS布局相关参考文档
@@ -159,42 +138,40 @@ span.hl {
 ## 通过Fetch下载数据解析并且保存
 
 ```js
-const endpoint = 'https://gist.githubusercontent.com/liyuechun/f00bb31fb8f46ee0a283a4d182f691b4/raw/3ea4b427917048cdc596b38b67b5ed664605b76d/TangPoetry.json';
+ //通过fetch来获取后台数据，并进行json化以及请求异常处理。
+        fetch(url)
+            .then(response=>{
+                if(response.ok){   
+                    return response.json();  
+                }else{
+                    return Promise.reject({
+                        status:response.status,
+                        statusText:response.statusText
+                    });
+                }
+                
+            })
+            .then(data => { poetrys.push(...data);  //concat会创建一个新数组，push会修改原来的数组，所以可以直接拿过来用。
+                            // console.log(poetrys);
+                })
+            .catch(e=>{console.log("status:",e.status);
+                       console.log("statusText:",e.statusText);
+                });
 
-const poetrys = [];
-fetch(endpoint)
- .then(blob => {
-   return blob.json();
- })
- .then(data => {
-   poetrys.push(...data);
- });
 ```
 
-具体数据请求过程见下图：
-
-![](http://om1c35wrq.bkt.clouddn.com/WechatIMG187.jpeg)
-
-
-
-[Fetch详细使用文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
-
-`blob.json()`是将数据转换为json数据，data为`then`函数中转换完的数据，在这个案例中，data是一个数组。
-
-`poetrys.push(...data)`这句代码中的`push`是往数组里面新增对象，而`...data`代表的是将这个data数组中的数据一一的存储到`poetrys`数组中。
-
+[Fetch详细使用文档，详见本人博客](https://blog.csdn.net/qq_39207948/article/details/85050687)  
 
 ## 事件监听
 
 ```js
-const search = document.querySelector('.search');
-const suggestions = document.querySelector('.suggestions');
-
-search.addEventListener('change', displayMatches);
-search.addEventListener('keyup', displayMatches);
+ 	const search = document.querySelector(".search");
+        const suggestions = document.querySelector(".suggestions");
+        search.addEventListener("change",debounce(findMatches,500)); //当输入框中文本改变时会触发事件处理函数
+        search.addEventListener("keyup",debounce(findMatches,500));  //当按键up时会触发事件，最好有防抖操作。
 ```
 
-获取`search`和`suggestions'`节点分别对`change`、`keyup`事件进行监听，当输入框中的内容发生变化或者键盘弹起时触发`displayMatches`函数更新数据。
+获取`search`和`suggestions'`节点分别对`change`、`keyup`事件进行监听，当输入框中的内容发生变化或者键盘弹起时触发`debounce`函数进行防抖处理。
 
 ## 数据匹配操作
 
@@ -205,46 +182,43 @@ search.addEventListener('keyup', displayMatches);
 - 项目源码分析
 
 ```js
-function findMatches(wordToMatch, poetrys) {
- return poetrys.filter(poet => {
-   // 正则找出匹配的诗句
-   const regex = new RegExp(wordToMatch, 'gi');
-   const author = poet.detail_author.join('');
-   //			console.log(author);
-   return poet.detail_text.match(regex) || poet.title.match(regex) || author.match(regex);
- });
-}
-
-function displayMatches() {
- const matches = findMatches(this.value, poetrys);
- const regex = new RegExp(this.value, 'gi');
- const html = matches.map(poet => {
-   // 替换高亮的标签
-   const text = poet.detail_text.replace(regex, `<span class="hl">${ this.value }</span>`);
-   const title = poet.title.replace(regex, `<span class="hl">${ this.value }</span>`);
-   const detail_author = poet.detail_author[0].replace(regex, `<span class="hl">${ this.value }</span>`);
-   // 构造 HTML 值
-   return `
- <li>
-   <span class="poet">${ text }</span>
-   <span class="title">${ title } - ${ detail_author }</span>
- </li>
-`;
- }).join('');
- //		console.log(html);
- suggestions.innerHTML = html;
-}
+        //关键字匹配函数，在里面又调用了内容加载函数
+        function findMatches(){
+            //有搜索内容时，进行关键字匹配，没有的话显示两行提示
+            if(this.value){
+                let regexp = new RegExp(this.value,"gi");
+                let matched= poetrys.filter(item=>{   //根据标题、作者名、文本中的是否有关键字，将该数组项取出
+                    return regexp.test(item.title)||regexp.test(item.detail_author)||regexp.test(item.detail_text);
+                    });
+                if(matched.length > 0){    //如果匹配到数组项，将匹配到的内容加载出来
+                    createDom(matched);
+                }else{                     //如果没有匹配项，那么显示提示信息。
+                    suggestions.innerHTML='';
+                    suggestions.innerHTML=`<li>抱歉，没有查找到匹配项！</li>`
+                }
+            }else{
+                suggestions.innerHTML=`<li>输入诗人名字</li>
+                                        <li>输入关键字，找一首诗</li>`;
+            }
+        }
+        //将匹配到的内容加载出来
+        function createDom(matched){
+            let frag = document.createDocumentFragment();  //用文本片段的形式进行一次性添加，减少回流重绘。
+            matched.forEach(item=>{
+                    let li = document.createElement("li");
+                    let p= document.createElement("p");
+                    let regexp = new RegExp(search.value,"gi");
+                    //将匹配到的关键词用带样式的形式进行替换。
+                    let detailText   = item.detail_text.replace(regexp,`<span style="color:green">${search.value}</span>`);
+                    let title        = item.title.replace(regexp,`<span style="color:green">${search.value}</span>`);
+                    let detailAuthor = item.detail_author[0].replace(regexp,`<span style="color:green">${search.value}</span>`);
+                    li.innerHTML = detailText;
+                    p.innerHTML = title + "-" +detailAuthor;
+                    // p.setAttribute("style","text-align:right;margin:0px");
+                    li.appendChild(p);
+                    frag.appendChild(li);
+                });
+            suggestions.innerHTML='';
+            suggestions.appendChild(frag);
+         }
 ```
-
-- `poetrys.filter`会返回带搜索关键字的新数组。
-
-- `const regex = new RegExp(this.value, 'gi');` 代表匹配规则。
-
-- `g`：执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
-- `i`：执行对大小写不敏感的匹配。
-
-- 上面的这种写法等价于："/this.value/gi"。
-
-- `matches.map`会返回一个按照新的规则处理完以后的新的数组。
-
-- `title.replace(regex, "新字符串");`表示将title字符串中满足 `regex` 规则的字符串替换成`新字符串`。
