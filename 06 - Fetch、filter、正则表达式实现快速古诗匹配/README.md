@@ -8,23 +8,16 @@
 
 ## 涉及特性
 
-- flex布局
+- flex布局  
 
-- `nth-child`奇偶匹配
+- `nth-child`奇偶匹配  
 
-- `linear-gradient`颜色渐变
-
-- transform
-
-- Fetch
+- Fetch获取数据  
 
 - Array
-	- `filter()`
-	- `map()`
-	- `push()`
-	- `join()`
-	- `...`
-	
+	- `filter()`  
+	- `push()`  
+	- `...`  
 - JavaScript RegExp 对象
 
     - 字面量语法
