@@ -29,7 +29,7 @@
 ![](http://oslwafb71.bkt.clouddn.com/small4.jpg)
 
 
-## Day06 - Type Ahead
+## Day06 - Quick match
 
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/06%20-%20Fetch%E3%80%81filter%E3%80%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E5%8F%A4%E8%AF%97%E5%8C%B9%E9%85%8D/DemoGIF.gif)
 
