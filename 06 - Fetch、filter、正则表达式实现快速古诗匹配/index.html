@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch,filter,Regexp实现快速古诗匹配</title>
+    <style>
+        html{
+            box-sizing:border-box;
+            margin:0px;
+            background-color:burlywood;
+            font-family: "Kaiti","SimHei","Hiragino Sans GB","Helvetica neue";
+            font-size:625%;
+            font-weight:200;
+        }
+        *,*:before,*:after{
+            box-sizing:inherit;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            /*text-align:center;*/
+        }
+        .search-form{
+            display: flex;
+            flex-direction:column; /*规定元素项目垂直显示，此时主轴为垂直方向*/
+            align-items: center;  /*在主轴垂直时，设置align-items可以使元素水平居中*/
+        }
+        .search{
+            width:8rem;
+            border:0.1rem solid #f7f7f7;
+            padding:0.2rem;
+            border-radius: 0.05rem;
+            font-size:0.2rem;
+            text-align:center;
+            box-shadow:0 0 5px 0 rgba(0,0,0,0.12),
+                       0 0 3px 0 rgba(0,0,0,.19) inset;
+            margin-top:0.4rem;
+            outline:none;  /*去掉input框的默认样式*/
+        }
+        .suggestions{
+            list-style: none; /*去掉序列修饰符号*/
+            width:6rem;
+            margin:0px;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size:0.2rem;
+        }
+        .suggestions li{
+            text-align: center;
+            width:100%;
+            background: white;
+            border-bottom: 0.01rem solid #D8D8D8;
+            padding:0.15rem;
+            box-shadow:0 0 10px rgba(0,0,0,0.14);
+            /*transition:transform 0.5s ease;*/
+        }
+        .suggestions li:hover{
+            box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+        }
+        .suggestions p{
+            text-align:right;
+            margin:0;
+        }
+        /*实现奇偶栏的折叠效果*/
+        .suggestions li:nth-child(odd){
+            transform: perspective(1rem) rotateX(-3deg) ;
+        }
+        .suggestions li:nth-child(even){
+            transform: perspective(1rem) rotateX(3deg) translateY(-2px) ;
+        }
+    </style>
+</head>
+<body>
+    <form class="search-form">
+        <input type="text" class="search" placeholder="诗人名字，关键字">
+        <ul class="suggestions">
+            <li>输入诗人名字</li>
+            <li>输入关键字，找一首诗</li>
+        </ul>
+    </form>
+    <script>
+        const url =  'https://gist.githubusercontent.com/liyuechun/f00bb31fb8f46ee0a283a4d182f691b4/raw/3ea4b427917048cdc596b38b67b5ed664605b76d/TangPoetry.json';
+        const poetrys=[];
+        //通过fetch来获取后台数据，并进行json化以及请求异常处理。
+        fetch(url)
+            .then(response=>{
+                if(response.ok){
+                    return response.json();  
+                }else{
+                    return Promise.reject({
+                        status:response.status,
+                        statusText:response.statusText
+                    });
+                }
+                
+            })
+            .then(data => { poetrys.push(...data);  //concat会创建一个新数组，push会修改原来的数组，所以可以直接拿过来用。
+                            // console.log(poetrys);
+                })
+            .catch(e=>{console.log("status:",e.status);
+                       console.log("statusText:",e.statusText);
+                });
+
+        const search = document.querySelector(".search");
+        const suggestions = document.querySelector(".suggestions");
+        search.addEventListener("change",debounce(findMatches,500)); //当输入框中文本改变时会触发事件处理函数
+        search.addEventListener("keyup",debounce(findMatches,500));  //当按键up时会触发事件，最好有防抖操作。
+
+        //防抖函数:避免搜索内容更改过快
+        function debounce(func,wait){
+            let timeout;
+            return function(){
+                let _this=this;
+                let args=arguments;
+                clearTimeout(timeout);
+                timeout=setTimeout(func.bind(_this,args),wait);
+            }
+        }
+        //关键字匹配函数，在里面又调用了内容加载函数
+        function findMatches(){
+            //有搜索内容时，进行关键字匹配，没有的话显示两行提示
+            if(this.value){
+                let regexp = new RegExp(this.value,"gi");
+                let matched= poetrys.filter(item=>{   //根据标题、作者名、文本中的是否有关键字，将该数组项取出
+                    return regexp.test(item.title)||regexp.test(item.detail_author)||regexp.test(item.detail_text);
+                    });
+                if(matched.length > 0){    //如果匹配到数组项，将匹配到的内容加载出来
+                    createDom(matched);
+                }else{                     //如果没有匹配项，那么显示提示信息。
+                    suggestions.innerHTML='';
+                    suggestions.innerHTML=`<li>抱歉，没有查找到匹配项！</li>`
+                }
+            }else{
+                suggestions.innerHTML=`<li>输入诗人名字</li>
+                                        <li>输入关键字，找一首诗</li>`;
+            }
+        }
+        //将匹配到的内容加载出来
+        function createDom(matched){
+            let frag = document.createDocumentFragment();  //用文本片段的形式进行一次性添加，减少回流重绘。
+            matched.forEach(item=>{
+                    let li = document.createElement("li");
+                    let p= document.createElement("p");
+                    let regexp = new RegExp(search.value,"gi");
+                    //将匹配到的关键词用带样式的形式进行替换。
+                    let detailText   = item.detail_text.replace(regexp,`<span style="color:green">${search.value}</span>`);
+                    let title        = item.title.replace(regexp,`<span style="color:green">${search.value}</span>`);
+                    let detailAuthor = item.detail_author[0].replace(regexp,`<span style="color:green">${search.value}</span>`);
+                    li.innerHTML = detailText;
+                    p.innerHTML = title + "-" +detailAuthor;
+                    // p.setAttribute("style","text-align:right;margin:0px");
+                    li.appendChild(p);
+                    frag.appendChild(li);
+                });
+            suggestions.innerHTML='';
+            suggestions.appendChild(frag);
+         }
+    </script>
+</body>
+</html>
