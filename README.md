@@ -20,7 +20,6 @@
 
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/03%20-%20CSS%20Variables/GIF.gif)
 
-
 ## Day04 - Array Cardio Day 1
 
 ![](http://oslwafb71.bkt.clouddn.com/small3.jpg)
@@ -134,13 +133,4 @@
 
 >社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
 >技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
->
->全栈部落完整系列教程：[全栈部落完整电子书学习笔记](http://fullstack.kongyixueyuan.com)
-
-
-
-
-
-
-
 
