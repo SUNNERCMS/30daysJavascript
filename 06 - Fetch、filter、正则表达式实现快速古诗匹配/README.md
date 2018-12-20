@@ -4,7 +4,7 @@
 
 在输入框中搜索`字或者某个词`快速匹配含有这个字或者是词的诗句。
 
-![](http://om1c35wrq.bkt.clouddn.com/day6.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/06%20-%20Fetch%E3%80%81filter%E3%80%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E5%8F%A4%E8%AF%97%E5%8C%B9%E9%85%8D/DemoGIF.gif)
 
 ## 涉及特性
 
