@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flexbox gallery</title>
+    <style>
+        :root{
+            --distance:-400px;
+        }
+        html,body{
+            margin:0px;
+            padding:0px;
+        }
+        .show{
+            width:100%;
+            display: flex;
+            /*设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。*/
+        }
+        .show .wrap{
+            flex:1;   /*flex-grow:1在这里便没有效果*/
+            min-height: 100vh;
+            padding:10px;
+            text-align: center;
+            font-size: 80px;
+            font-family: sans-serif;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+            /*overflow: hidden;*/
+            word-break: break-all;/*单词换行，可以任意断开换行*/
+            /*animation:extend 2s ease forwords:处于动画结束处;*/
+            background-size:cover;
+            background-repeat: no-repeat;
+
+        }
+        .show .wrap:hover{
+            box-shadow: 0 0 10px 5px rgba(0,0,0,0.4);
+            color:orangered;
+        }
+        .show .wrap p{
+            transition:transform 0.5s ease;
+        }
+        .wrap p:nth-child(1){
+            transform: translateY(-500px);
+        }
+        .wrap.open-active p:nth-child(1){
+            transform: translateY(0);
+        }
+        .wrap p:nth-child(3){
+            transform: translateY(500px);
+        }
+        .wrap.open-active p:nth-child(3){
+            transform:translate(0);
+        }
+        @keyframes extend{
+            40%{
+                flex-grow:0.8;
+            }
+            100%{
+                flex-grow:3;
+            }
+        }
+        @keyframes shink{
+            0%{
+                flex-grow:3;
+            }
+            40%{
+                flex-grow:3.2;
+            }
+            100%{
+                flex-grow:1;
+            }
+        }
+        .first  {background: url(./image/1.jpg);}
+        .second {background: url(./image/2.jpg);}
+        .third  {background: url(./image/3.jpg);}
+        .forth  {background: url(./image/4.jpg);}
+        .fifth  {background: url(./image/5.jpg);}
+
+        /*媒体查询and后面无空格不生效*/
+        /*800《=屏幕尺寸《=1250*/
+        @media screen and (min-width: 800px) and (max-width: 1250px){
+            .show .wrap{
+                font-size: 60px;
+            }
+            .wrap p:nth-child(2n+1){
+                font-family: serif;
+                font-size:50px;
+            }
+        }
+        /*屏幕尺寸《=800px*/
+        @media screen and (max-width: 800px){
+            .show .wrap{
+                font-size:30px;
+            }
+            .wrap p:nth-child(2n+1){
+                font-family: serif;
+                font-size:20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="show">
+        <div class="first wrap">
+            <p>HEY</p>
+            <p>LET'S</p>
+            <p>DANCE</p>
+        </div>
+        <div class="second wrap">
+            <p>GIVE</p>
+            <p>TAKE</p>
+            <p>RECEIVE</p>
+
+        </div>
+        <div class="third wrap">
+            <p>WXPERE</p>
+            <p>IT</p>
+            <p>TODAY</p>
+        </div>        
+        <div class="forth wrap">
+            <p>GIVE</p>
+            <p>ALL</p>
+            <p>YOUCAN</p>
+        </div>
+        <div class="fifth wrap">
+            <p>UP</p>
+            <p>IN</p>
+            <p>FIGHT</p>
+        </div>
+    </div>
+    <script>
+        //取出所有的wrap元素，返回的是伪数组，转化为真数组后进行遍历给每个元素添加点击监听事件。
+        const Wrap = Array.from(document.querySelectorAll(".wrap"));
+        Wrap.forEach(item=>item.addEventListener("click",handwith,true));
+        Wrap.forEach(item=>item.addEventListener("animationend",openActive,true));
+        // 动画效果结束触发事件处理函数
+        function openActive(e){
+            console.log("fff");
+            this.classList.toggle("open-active");
+        }
+        function handwith(e){
+            // var _this=e.target;
+            if(this.classList.contains("scale")){
+                this.classList.remove("scale");
+                this.style.animation="shink 1s ease forwards";
+            }else{
+                 this.classList.add("scale");
+                 this.style.animation="extend 1s ease forwards";
+                 // document.body.style.setProperty("--distance","-50px");
+            }
+
+        }
+    </script>
+</body>
+</html>
+
