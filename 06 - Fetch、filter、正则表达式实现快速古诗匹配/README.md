@@ -255,4 +255,3 @@ function displayMatches() {
 - `matches.map`会返回一个按照新的规则处理完以后的新的数组。
 
 - `title.replace(regex, "新字符串");`表示将title字符串中满足 `regex` 规则的字符串替换成`新字符串`。
-
