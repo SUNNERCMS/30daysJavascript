@@ -74,6 +74,8 @@
 ## Day16 - Mouse Move Shadow
 ![](http://oslwafb71.bkt.clouddn.com/small15.jpg)
 
+## Day31 - Canvas CountdownClock  
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/31%20-%20Canvas%20CountClock/image/GIF.gif)
 ## Day17 - Sort Without Articles
 ![](http://oslwafb71.bkt.clouddn.com/small16.jpg)
 
