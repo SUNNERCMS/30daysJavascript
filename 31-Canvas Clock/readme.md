@@ -1,5 +1,5 @@
 ### 效果展示
-
+### 代码部分
 ```javascript
             //将上下文环境进行渲染
             function render(cxt){
