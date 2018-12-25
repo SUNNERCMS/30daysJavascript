@@ -6,7 +6,6 @@
 
 用 HTML5 中的 Canvas 的路径绘制实现一个绘画板，可供鼠标画画，颜色呈彩虹色渐变，画笔大小同样呈渐变效果。这部分不涉及 CSS 内容，全部由 JS 来实现。
 
-
 ## 涉及特性
 
 Canvas：
@@ -15,8 +14,6 @@ Canvas：
 - 基本属性
 	- `getContext()`
 	- `strokeStyle`
-	- `fillStyle`
-	- `fillRect`
 	- `lineCap`
 	- `lineJoin`
 - 路径绘制
@@ -25,7 +22,6 @@ Canvas：
 	- `moveTo()`
 	
 鼠标事件处理：
-
 - `mousemove`
 - `mousedown`
 - `mouseup`
@@ -36,59 +32,99 @@ Canvas：
 1. 获取 HTML 中的 `<canvas>` 元素，并设定宽度和高度
 2. `.getContext('2d')` 获取上下文，下面以 ctx 表示
 3. 设定 ctx 基本属性
-	- 描边和线条颜色
-	- 线条宽度
-	- 线条末端形状
+	- 描边和线条颜色  
+	- 线条宽度  
+	- 线条末端形状  
 4. 绘画效果
-	1. 设定一个用于标记绘画状态的变量
-	2. 鼠标事件监听，不同类型的事件将标记变量设为不同值
-	3. 编写发生绘制时触发的函数，设定绘制路径起点、终点
-5. 线条彩虹渐变效果（运用 hsl 的 `h` 值的变化，累加）
-6. 线条粗细渐变效果（设定一个范围，当超出这个范围时，线条粗细进行逆向改变
-
-
+	1. 设定一个用于标记绘画状态的变量  
+	2. 鼠标事件监听，不同类型的事件将标记变量设为不同值  
+	3. 编写发生绘制时触发的函数，设定绘制路径起点、终点  
+5. 线条彩虹渐变效果（运用 hsl 的 `h` 值的变化，累加）  
+6. 线条粗细渐变效果（设定一个范围，当超出这个范围时，线条粗细进行逆向改变，利用[撞墙反弹程序](https://blog.csdn.net/qq_39207948/article/details/85252068)  
 
 ## Canvas相关知识
 
 [Canvas_API](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API)
 
-### HelloWorld简单介绍
+### 代码部分
+```JS
+        //全局变量和初始值设置部分
+        let drawflag=false; //用于区分鼠标点击事件和鼠标移动事件。
+        let beginX=0;   //设置为全局变量，初始点要传到移动处理事件中。
+        let beginY=0;
+        let hue=0;      //hsl的色调初始值
+        let context='';
+        let lineWidth=60;
+        let direction=true; //定义变量增加方向
+	
+        // 页面加载函数，在DOM结构解析完成后运行
+        window.onload=function(){
 
-#### 一、 模板骨架
+            let canvas = document.querySelector("#tutorial");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            context=canvas.getContext("2d");
 
-```js
-<!DOCTYPE html>
-<html lang="en">
+            canvas.addEventListener("mousedown",beginlocation);
+            canvas.addEventListener("mousemove",drawing);
+            canvas.addEventListener("mouseup",()=>drawflag=false);
+            canvas.addEventListener("mouseout",()=>drawflag=false);            
+        }
 
-<head>
-  <meta charset="UTF-8">
-  <title>HTML5 Canvas 实现彩虹画笔绘画板</title>
-  <script type="text/javascript">
-    function draw() {
-      var canvas = document.getElementById('tutorial');
-      if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-      }
-    }
-  </script>
-  <style type="text/css">
-    canvas {
-      border: 1px solid black;
-    }
-  </style>
-</head>
+```
+- 页面加载函数中用的两个事件处理函数
+```JS
+ //设定初始点坐标，并开启绘图flag
+        function beginlocation(e){
+            beginX=e.offsetX;
+            beginY=e.offsetY;
+            drawflag=true;
+        }
+        //绘图函数：实际上一段一段的直线连接而成，鼠标每移动一点就将该时刻的坐标转换成下一次的起始坐标，而鼠标移动后的位置作为该段直线结束的坐标。
+        function drawing(e){
+            if(drawflag){
+                let moveX=e.offsetX;
+                let moveY=e.offsetY;
 
-<body>
-  <canvas id="tutorial" width="150" height="150"></canvas>
-</body>
+                //色相值改变
+                if(hue<=360){  //hue要设置初始值
+                    hue++;
+                }else{
+                    hue=0;
+                }
+                context.strokeStyle=`hsl(${hue},100%,50%)`;
 
-</html>
+                //“撞墙反弹程序”
+                if(lineWidth>100||lineWidth<10){
+                    direction = !direction;
+                }
+                if(direction){
+                    lineWidth++;
+                }else{
+                    lineWidth--;
+                }
+                context.lineWidth=lineWidth;
+
+                context.lineCap="round";
+                context.lineJoin="round";
+
+                context.beginPath();
+                context.moveTo(beginX,beginY);
+                context.lineTo(moveX,moveY);
+                context.closePath();
+                [beginX,beginY]=[moveX,moveY]; //es6解构赋值
+
+                context.stroke();
+            }else{
+                return;
+            }
+        }
 ```
 
-- canvas> 元素
+- canvas 元素
 
 ```js
-<canvas id="tutorial" width="150" height="150"></canvas>
+<canvas id="tutorial"></canvas>
 ```
 
 `canvas` 看起来和 `img` 元素很相像，唯一的不同就是它并没有 `src` 和`alt` 属性。实际上，`canvas` 标签只有两个属性——`width`和`height`。这些都是可选的，并且同样利用 `DOM properties` 来设置。当没有设置宽度和高度的时候，`canvas`会初始化宽度为`300`像素和高度为`150`像素。该元素可以使用CSS来定义大小，但在绘制时图像会伸缩以适应它的框架尺寸：如果CSS的尺寸与初始画布的比例不一致，它会出现扭曲。
@@ -122,181 +158,26 @@ if (canvas.getContext){
 }
 ```
 
-#### 二、一个简单例子
+### Canvas的简单实例
+- [canvas 倒计时特效](https://blog.csdn.net/qq_39207948/article/details/85252925)
+- [canvas 躁动的小球](https://blog.csdn.net/qq_39207948/article/details/85252947)
+- [canvas 单个小球运动实验](https://blog.csdn.net/qq_39207948/article/details/85252849)
 
-一开始，让我们来看个简单的例子，我们绘制了两个有趣的长方形，其中的一个有着alpha透明度。我们将在接下来的例子里深入探索一下这是如何工作的。
-
-```js
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>HTML5 Canvas 实现彩虹画笔绘画板</title>
-  <script type="text/javascript">
-    function draw() {
-      var canvas = document.getElementById('tutorial');
-      if (canvas.getContext) {
-        var ctx = canvas.getContext('2d');
-        ctx.fillStyle = "rgb(200,0,0)";
-        ctx.fillRect (10, 10, 55, 50);
-
-        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-        ctx.fillRect (30, 30, 55, 50);
-      }
-    }
-  </script>
-  <style type="text/css">
-    canvas {
-      border: 1px solid black;
-    }
-  </style>
-</head>
-
-<body onload="draw();">
-  <canvas id="tutorial" width="300" height="300"></canvas>
-</body>
-
-</html>
-```
-
-效果图：
-
-![](http://om1c35wrq.bkt.clouddn.com/day8-2.png)
-
-
-## 项目源码分析
-
-### 源码
-
-```js
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>HTML5 Canvas</title>
-  <style>
-    html,
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    canvas {
-      overflow: hidden;
-    }
-  </style>
-</head>
-
-<body>
-  <canvas id="draw" width="800" height="800" style="overflow:auto;"></canvas>
-  <script>
-
-    // 1.获取canvas节点
-    const canvas = document.querySelector('#draw');
-
-    if (canvas.getContext) {
-      //支持
-      var ctx = canvas.getContext('2d');
-      // drawing code here
-    } else {
-      //不支持
-      // canvas-unsupported code here
-      console.log("canvas-unsupported code here");
-    }
-
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let isDrawing = false;
-    let lastX = 0;
-    let lastY = 0;
-
-    ctx.lineWidth = 90;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.strokeStyle = "#f00";
-    ctx.fillStyle = "#f00";
-
-    let hue = 0;
-    let direction = true;
-    let x = 0;
-    let y = 0;
-
-    function draw(e) {
-      if (!isDrawing) return;
-
-
-      x = e.offsetX;
-      y = e.offsetY;
-
-
-      //		彩虹效
-      ctx.strokeStyle = `hsl(${ hue }, 90%, 50%)`;
-      if (hue >= 360) hue = 0;
-      hue++;
-
-
-      //		控制笔触大小
-      if (ctx.lineWidth > 120 || ctx.lineWidth < 10) {
-        direction = !direction;
-      }
-      if (direction) {
-        ctx.lineWidth++;
-      } else {
-        ctx.lineWidth--;
-      }
-
-      //		控制绘制路径
-      ctx.beginPath();
-
-      ctx.moveTo(lastX, lastY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-
-      [lastX, lastY] = [x, y];
-
-    }
-    canvas.addEventListener('mousedown', (e) => {
-      isDrawing = true;
-      [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
-
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
-  </script>
-
-</body>
-
-</html>
-```
-
-### 源码分析
+### 涉及知识点
 
 [Canvas](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API)
 
 #### canvas宽高设置
-
 ```js
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 ```
-
-
-
 #### 属性
-
 - `lineCap`：笔触的形状，有 round | butt | square 圆、平、方三种。
 - `lineJoin`：线条相交的样式，有 round | bevel | miter 圆交、斜交、斜接三种。
 - `lineWidth`：线条的宽度
 - `strokeStyle`：线条描边的颜色
-- `fillStyle`：填充的颜色
-
 #### 方法
-
 - `beginPath()`：新建一条路径
 - `stroke()`：绘制轮廓
 - `moveTo()`：（此次）绘制操作的起点
@@ -312,29 +193,30 @@ canvas.height = window.innerHeight;
 这之中 H 值从 0 到 360 的变化代表了色相的角度的值域变化，利用这一点就可以实现绘制时线条颜色的渐变了，只需要在它的值超过 360 时恢复到 0 重新累加即可。
 
 ```js
-let hue = 0;
-
-ctx.strokeStyle = `hsl(${ hue }, 100%, 50%)`;	
-if(hue >= 360) hue = 0;
-hue++;
+//色相值改变
+if(hue<=360){  //hue要设置初始值
+    hue++;
+}else{
+    hue=0;
+}
+context.strokeStyle=`hsl(${hue},100%,50%)`;
 ```
 
 除此之外，如果想实现黑白水墨的颜色，可以将颜色设置为黑色，通过透明度的改变来实现深浅不一的颜色。
 
-
-
 ### 控制笔触大小
 
 ```js
- //		控制笔触大小
- if (ctx.lineWidth > 120 || ctx.lineWidth < 10) {
-   direction = !direction;
- }
- if (direction) {
-   ctx.lineWidth++;
- } else {
-   ctx.lineWidth--;
- }
+	//“撞墙反弹程序”
+	if(lineWidth>100||lineWidth<10){
+	    direction = !direction;
+	}
+	if(direction){
+	    lineWidth++;
+	}else{
+	    lineWidth--;
+	}
+	context.lineWidth=lineWidth;
 ```
 
 上面的代码中，根据线条的宽度的变化来控制`direction`的值，根据`direction`的值来控制线宽是增加还是减少。
@@ -343,34 +225,39 @@ hue++;
 ### 控制线条路径
 
 ```js
- //		控制绘制路径
- ctx.beginPath();
-
- ctx.moveTo(lastX, lastY);
- ctx.lineTo(x, y);
- ctx.stroke();
-
-// 坐标重置
- [lastX, lastY] = [x, y];
+	context.beginPath();
+	context.moveTo(beginX,beginY);
+	context.lineTo(moveX,moveY);
+	context.closePath();
+	[beginX,beginY]=[moveX,moveY]; //es6解构赋值
 ```
 
 ### 事件监听代码逻辑分析
 
 ```js
-canvas.addEventListener('mousedown', (e) => {
-<!--开始绘图-->
- isDrawing = true;
- <!--绘图起始坐标初始化-->
- [lastX, lastY] = [e.offsetX, e.offsetY];
-});
-
-<!--鼠标移动时，调用draw方法-->
-canvas.addEventListener('mousemove', draw);
-<!--鼠标抬起时，将isDrawing置为false-->
-canvas.addEventListener('mouseup', () => isDrawing = false);
-<!--当鼠标不在可绘图区域范围内时，将isDrawing置为fals-->
-canvas.addEventListener('mouseout', () => isDrawing = false);
+    canvas.addEventListener("mousedown",beginlocation);
+    canvas.addEventListener("mousemove",drawing);
+    canvas.addEventListener("mouseup",()=>drawflag=false);
+    canvas.addEventListener("mouseout",()=>drawflag=false);      
 ```
 
+#### 需要整理知识点
+- 1、鼠标事件有哪些，具体使用方法。  
+- 2、获取窗口的高度与宽度(不包含工具条与滚动条):  
+    var w=window.innerWidth;  
+    var h=window.innerHeight;浏览器中地址导航栏下面中的部分  
+    和clientWidth以及clientHeight的区别。  
+    clientX和offsetX的区别  
+      clientX检索与窗口客户区域有关的鼠标光标的X坐标，  
+      offsetX 检索与触发事件的对象相关的鼠标位置的水平坐标   
+    因为canvas的宽高均设置为了window.innerHtml和window.innerWidth,那么当点击鼠标时，实际上得到的是相对于canvas元素的位置，也即是e.offsetX/Y，这里offset中的set是小写。  
 
+- 3、lineCap 属性设置或返回线条末端线帽的样式。  
+    butt  默认。向线条的每个末端添加平直的边缘。  
+    round   向线条的每个末端添加圆形线帽。  
+    square  向线条的每个末端添加正方形线帽。  
+- 4、lineJoin 属性设置或返回所创建边角的类型，当两条线交汇时。  
+    bevel   创建斜角。  
+    round   创建圆角。  
+    miter   默认。创建尖角。  
 
