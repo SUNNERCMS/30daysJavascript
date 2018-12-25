@@ -1,10 +1,9 @@
 # Day08 - HTML5 Canvas 实现彩虹画笔绘画板指南
 
 ## 项目效果
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/08%20-%20HTML5%20Canvas%20%E5%AE%9E%E7%8E%B0%E5%BD%A9%E8%99%B9%E7%94%BB%E7%AC%94%E7%BB%98%E7%94%BB%E6%9D%BF/GIF.gif)
 
-![](http://om1c35wrq.bkt.clouddn.com/day8-1.gif)
-
-用 HTML5 中的 Canvas 的路径绘制实现一个绘画板，可供鼠标画画，颜色呈彩虹色渐变，画笔大小同样呈渐变效果。这部分不涉及 CSS 内容，全部由 JS 来实现。
+> 用 HTML5 中的 Canvas 的路径绘制实现一个绘画板，可供鼠标画画，颜色呈彩虹色渐变，画笔大小同样呈渐变效果。这部分不涉及 CSS 内容，全部由 JS 来实现。
 
 ## 涉及特性
 
