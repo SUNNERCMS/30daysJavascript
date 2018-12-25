@@ -54,14 +54,21 @@
     let direction = true;
     let x = 0;
     let y = 0;
-
+// 鼠标移动触发的函数
     function draw(e) {
+      canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY]; //将鼠标点击时的坐标赋值给lastX,lastY作为context.moveTo()的起始点坐标。
+      });
+
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', () => isDrawing = false);
+      canvas.addEventListener('mouseout', () => isDrawing = false);
+      
       if (!isDrawing) return;
 
-
-      x = e.offsetX;
-      y = e.offsetY;
-
+      x = e.offsetX; //鼠标移动的X坐标
+      y = e.offsetY; //鼠标移动的Y坐标
 
       //		彩虹效
       ctx.strokeStyle = `hsl(${ hue }, 90%, 50%)`;
@@ -89,14 +96,7 @@
       [lastX, lastY] = [x, y];
 
     }
-    canvas.addEventListener('mousedown', (e) => {
-      isDrawing = true;
-      [lastX, lastY] = [e.offsetX, e.offsetY];
-    });
 
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
   </script>
 
 </body>
