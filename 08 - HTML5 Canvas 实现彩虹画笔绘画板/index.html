@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Rainbowbrush</title>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+            overflow:hidden;
+        }
+        #tutorial{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial">
+        <p>抱歉！您的浏览器暂不支持Canvas标签属性!</p>
+    </canvas>
+    <script>
+        //全局变量和初始值设置部分
+        let drawflag=false; //用于区分鼠标点击事件和鼠标移动事件。
+        let beginX=0;   //设置为全局变量，初始点要传到移动处理事件中。
+        let beginY=0;
+        let hue=0;      //hsl的色调初始值
+        let context='';
+        let lineWidth=60;
+        let direction=true; //定义变量增加方向
+        
+        // 页面加载函数，在DOM结构解析完成后运行
+        window.onload=function(){
+
+            let canvas = document.querySelector("#tutorial");
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            context=canvas.getContext("2d");
+
+            canvas.addEventListener("mousedown",beginlocation);
+            canvas.addEventListener("mousemove",drawing);
+            canvas.addEventListener("mouseup",()=>drawflag=false);
+            canvas.addEventListener("mouseout",()=>drawflag=false);            
+        }
+
+        //设定初始点坐标，并开启绘图flag
+        function beginlocation(e){
+            beginX=e.offsetX;
+            beginY=e.offsetY;
+            drawflag=true;
+        }
+        //绘图函数：实际上一段一段的直线连接而成，鼠标每移动一点就将该时刻的坐标转换成下一次的起始坐标，而鼠标移动后的位置作为该段直线结束的坐标。
+        function drawing(e){
+            if(drawflag){
+                let moveX=e.offsetX;
+                let moveY=e.offsetY;
+
+                //色相值改变
+                if(hue<=360){  //hue要设置初始值
+                    hue++;
+                }else{
+                    hue=0;
+                }
+                context.strokeStyle=`hsl(${hue},100%,50%)`;
+
+                //“撞墙反弹程序”
+                if(lineWidth>100||lineWidth<10){
+                    direction = !direction;
+                }
+                if(direction){
+                    lineWidth++;
+                }else{
+                    lineWidth--;
+                }
+                context.lineWidth=lineWidth;
+
+                context.lineCap="round";
+                context.lineJoin="round";
+
+                context.beginPath();
+                context.moveTo(beginX,beginY);
+                context.lineTo(moveX,moveY);
+                context.closePath();
+                [beginX,beginY]=[moveX,moveY]; //es6解构赋值
+
+                context.stroke();
+            }else{
+                return;
+            }
+        }
+    </script>
+</body>
+</html>
+<!--
+ 用canvas实现彩虹画笔的思路
+1、判断鼠标按下和抬起的状态
+2、鼠标按下时开始绘制，鼠标移动时需要得到鼠标的位置信息，根据位置信息添加新的绘图路径，进行render,抬起鼠标绘图结束。
+3、点击之后开始绘图，需要一个开关的flag，只有flag打开时才能在鼠标移动时绘图。
+4、可以结合input的color的拾色器来改变线条颜色。
+ -->
+
+ <!-- 需要整理知识点
+1、鼠标事件有哪些，具体使用方法。
+2、获取窗口的高度与宽度(不包含工具条与滚动条):
+    var w=window.innerWidth;
+    var h=window.innerHeight;浏览器中地址导航栏下面中的部分
+    和clientWidth以及clientHeight的区别。
+    clientX和offsetX的区别
+      clientX检索与窗口客户区域有关的鼠标光标的X坐标，
+      offsetX 检索与触发事件的对象相关的鼠标位置的水平坐标 
+    因为canvas的宽高均设置为了window.innerHtml和window.innerWidth,那么当点击鼠标时，实际上得到的是相对于canvas元素的位置，也即是e.offsetX/Y，这里offset中的set是小写。
+
+3、lineCap 属性设置或返回线条末端线帽的样式。
+    butt  默认。向线条的每个末端添加平直的边缘。
+    round   向线条的每个末端添加圆形线帽。
+    square  向线条的每个末端添加正方形线帽。
+4、lineJoin 属性设置或返回所创建边角的类型，当两条线交汇时。
+    bevel   创建斜角。
+    round   创建圆角。
+    miter   默认。创建尖角。
+-->
+
