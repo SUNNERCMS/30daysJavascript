@@ -39,7 +39,7 @@
 
 ## Day08 - Fun with HTML5 Canvas
 
-![](http://oslwafb71.bkt.clouddn.com/small7.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/08%20-%20HTML5%20Canvas%20%E5%AE%9E%E7%8E%B0%E5%BD%A9%E8%99%B9%E7%94%BB%E7%AC%94%E7%BB%98%E7%94%BB%E6%9D%BF/GIF.gif)
 
 
 ## Day09 - Dev Tools Domination
