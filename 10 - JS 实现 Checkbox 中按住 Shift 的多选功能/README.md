@@ -136,7 +136,3 @@ function handleCheck1(e) {
 	/* ... */
 	startChecked = this;
 	```
-	
-
-
-
