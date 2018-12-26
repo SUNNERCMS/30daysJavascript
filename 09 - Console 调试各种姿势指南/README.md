@@ -1,9 +1,7 @@
 # Day09 - Console 调试各种姿势指南
 
 ## 项目效果
-
-![](http://om1c35wrq.bkt.clouddn.com/day9-1.gif)
-![](http://om1c35wrq.bkt.clouddn.com/day9-1.png)
+[控制台打印结果，请猛戳我！！！](https://blog.csdn.net/qq_39207948/article/details/85261675)
     
 ## 各种调试正确姿势
 
