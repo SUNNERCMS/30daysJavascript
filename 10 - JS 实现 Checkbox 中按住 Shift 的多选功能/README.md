@@ -137,13 +137,6 @@ function handleCheck1(e) {
 	startChecked = this;
 	```
 	
-## 源码下载
-
-[Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
-
-
-
-
 
 
 
