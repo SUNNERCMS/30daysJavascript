@@ -141,12 +141,6 @@ function handleCheck1(e) {
 
 [Github Source Code](https://github.com/liyuechun/JavaScript30-liyuechun)
 
->社群品牌：[从零到壹全栈部落](http://www.kongyixueyuan.com)
->
->定位：寻找共好，共同学习，持续输出全栈技术社群
->
->业界荣誉：IT界的逻辑思维
->
 
 
 
