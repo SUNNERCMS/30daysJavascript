@@ -2,7 +2,8 @@
 
 ## 项目效果
 
-![](http://om1c35wrq.bkt.clouddn.com/day10-1.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/10%20-%20JS%20%E5%AE%9E%E7%8E%B0%20Checkbox%20%E4%B8%AD%E6%8C%89%E4%BD%8F%20Shift%20%E7%9A%84%E5%A4%9A%E9%80%89%E5%8A%9F%E8%83%BD/GIF.gif)
+
 初始文档中提供了一组 checkbox 类型的 input 元素，选中某个复选框时，其 <p> 标签中的文字会显示删除线。最终效果是，提供按下 Shift 键后进行多选操作的功能。
 ## 操作方法
 
