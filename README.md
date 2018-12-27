@@ -48,7 +48,7 @@
 
 ## Day10 - Hold Shift and Check Checkboxes
 
-![](http://oslwafb71.bkt.clouddn.com/small9.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/10%20-%20JS%20%E5%AE%9E%E7%8E%B0%20Checkbox%20%E4%B8%AD%E6%8C%89%E4%BD%8F%20Shift%20%E7%9A%84%E5%A4%9A%E9%80%89%E5%8A%9F%E8%83%BD/GIF.gif)
 
 ## Day11 - Custom Video Player
 
