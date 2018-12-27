@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checkbox的shift多选功能</title>
+    <style>
+
+    </style>
+</head>
+<body>
+  <style>
+    html {
+      font-family: sans-serif;
+      background: #123456;
+    }
+
+    .inbox {
+      max-width: 400px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #F1F1F1;
+    }
+
+    .item:last-child {
+      border-bottom: 0;
+    }
+
+
+    input:checked+p {
+      background: #F9F9F9;
+      text-decoration: line-through;
+    }
+
+    input[type="checkbox"] {
+      margin: 20px;
+    }
+
+    p {
+      margin: 0;
+      padding: 20px;
+      transition: background 0.2s;
+      flex: 1;
+      font-family: 'Microsoft Yahei', 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+      border-left: 1px solid #D1E2FF;
+    }
+
+    .details {
+      text-align: center;
+      font-size: 15px;
+    }
+  </style>
+  <!--
+   The following is a common layout you would see in an email client.
+
+   When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
+
+  -->
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox" class="N0">
+      <p>无双看过吗？</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N1">
+      <p>从零到壹全栈部落</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N2">
+      <p>输出是最好的学习方式</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N3">
+      <p>赠人玫瑰，手留余香</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N4">
+      <p>祥哥的说，CSDN博客 </p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N5">
+      <p>全栈部落</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N6">
+      <p>你会玩魔方吗？</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N7">
+      <p>你会留下联系方式吗？</p>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="N8">
+      <p>你会选择下载吗？</p>
+    </div>
+  </div>
+<script>
+    const boxs = document.querySelectorAll('.inbox input[type="checkbox"]');
+    const boxArr = Array.from(boxs);
+    boxArr.forEach(box => box.addEventListener('click', handleCheck1));
+    
+    
+//  处理方法一：用变量 inBetween 对需要选中的元素进行标记
+    function handleCheck0(e) {
+        let inBetween = false;
+        if(e.shiftKey && this.checked){
+            boxs.forEach(input => {
+                console.log("input的值是:",input);
+                console.log("this值是:",this);
+                if(input === lastChecked || input ===this) {
+                    inBetween = !inBetween;
+                }
+                if(inBetween) {
+                    console.log("on");
+                    input.checked = true;
+                }
+        });
+        }
+        lastChecked = this;
+    }
+
+//  处理方法二：利用数组索引获取需要选中的范围
+
+    let lastinput;//用来保存上一次的点击元素
+    let onoff; //用来保存上一次的点击状态，已提供给截取范围内CheckBox的状态
+
+    function handleCheck1(e){
+        if(e.shiftKey){                   //若果按下shift按键再点击时进入该程序，主要用来处理索引值
+            let cur=boxArr.indexOf(this);    //用来获取当前点击元素是第几个input
+            let last=boxArr.indexOf(lastinput);  //用来获取上一次点击元素是第几个input
+            boxArr.slice(Math.min(cur,last),Math.max(cur,last)+1) //slice返回一个子数组
+                .forEach(item=>item.checked = onoff); //将截取出来的各项状态设置的和上下点击元素的状态一致
+        }
+
+        lastinput = this;  //用来存放第一次或者上一次的点击元素（将当前点击元素作为上次元素，然后在有点击时和下次又组成一个范围）
+        onoff = lastinput.checked ? true : false;  //识别第一次或者上一次点击元素的状态值
+    }
+// 学习用全局变量来存放（由当前状态，转换而成的）上次状态。
+// 设置两个变量(全局变量)来分别保存上一次的点击元素和其状态，接下里选中范围的元素状态以此为依据。
+// 在shift被按下时，需要得到上次点击元素的索引，和当前点击元素（this）的索引，
+// 然后将该段内input元素的状态全部统一于上次点击后的状态。
+// 然后将当前点击元素作为上次元素，进行一个接龙。
+
+</script>
+</body>
+</html>
+<!-- 
+1.shiftKey：检测 SHIFT 键是否被按住。
+事件属性可返回一个布尔值，指示当事件发生时，“SHIFT”键是否被按下并保持住。
+语法：event.shiftKey=true|false|1|0，这里的event用this无效，用e.target无效。
+2.document.querySelectorAll('.inbox input[type="checkbox"]')
+通过[]和属性名称来选取指定元素
+ -->
