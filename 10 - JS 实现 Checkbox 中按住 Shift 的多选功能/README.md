@@ -3,14 +3,13 @@
 ## 项目效果
 
 ![](http://om1c35wrq.bkt.clouddn.com/day10-1.gif)
-
+初始文档中提供了一组 checkbox 类型的 input 元素，选中某个复选框时，其 <p> 标签中的文字会显示删除线。最终效果是，提供按下 Shift 键后进行多选操作的功能。
 ## 操作方法
 
 1. 选中 A 项
 2. 按下 Shift
 3. 再选中 B 项
 4. A-B 之间的所有项都被选中或者取消
-
 
 ## 实现方法
 
@@ -41,98 +40,43 @@ function handleCheck0(e) {
 	startChecked = this;
 }
 ```
- 
+> 上面会出现一个问题，初次加载页面时，按住 Shift 再点击某一项，此项之后的元素都会被选中。此外，对于取消选中，无法批量操作。所以我参照了 Stack Overflow 的一个答案： How can I shift-select multiple checkboxes like GMail? 改进得到第二种解决方案。
 
 ### 方法二
+方法一中的 inBetween 仅仅表示此项是否在被选中的范围中，此处会赋给它更多的意义，用它来表示此项是选中还是未选中，而范围划定则由数组来解决。  
 
-上面会出现一个问题，初次加载页面时，按住 Shift 再点击某一项，此项之后的元素都会被选中。此外，对于取消选中，无法批量操作。下面方法三是[缉熙Soyaine](https://github.com/soyaine) 的操作逻辑。方法二是我对`Wes Bos`实现方法逻辑的改进，方法二和方法三取消和选中均可批量操作。
-
+首先将获取到的 `<input>` 组转化为数组，针对每次操作，获取 A 和 B，利用 `indexOf()` 来获得 A 和 B 在数组中的索引值，由此即可确定范围，并能通过 `slice()` 来直接截取 A-B 的所有 DOM 元素，并进行状态改变的操作，而变量 onOff 表示 A-B 范围内的状态，true 表示选中，false 表示取消选中。
 ```js
+    const boxs = document.querySelectorAll('.inbox input[type="checkbox"]');
+    const boxArr = Array.from(boxs);
+    boxArr.forEach(box => box.addEventListener('click', handleCheck1));
 
-let startChecked;
-let onOff = false;
-//	处理方法二：新增onOff变量存储复选框将要改变的状态
-function handleCheck2(e) {
- let inBetween = false;
- if (e.shiftKey) {
-   onOff = startChecked.checked ? true : false;
-   boxs.forEach(input => {
-     console.log(input);
-     if (input === startChecked || input === this) {
-       inBetween = !inBetween;
-     }
-     if (inBetween && input !== startChecked || input === this) {
-       input.checked = onOff;
-     }
-   });
-   startChecked = this;
- }
- startChecked = this;
+//  处理方法二：利用数组索引获取需要选中的范围
+
+    let lastinput;//用来保存上一次的点击元素
+    let onoff; //用来保存上一次的点击状态，已提供给截取范围内CheckBox的状态
+
+    function handleCheck1(e){
+        if(e.shiftKey){                   //若果按下shift按键再点击时进入该程序，主要用来处理索引值
+            let cur=boxArr.indexOf(this);    //用来获取当前点击元素是第几个input
+            let last=boxArr.indexOf(lastinput);  //用来获取上一次点击元素是第几个input
+            boxArr.slice(Math.min(cur,last),Math.max(cur,last)+1) //slice返回一个子数组
+                .forEach(item=>item.checked = onoff); //将截取出来的各项状态设置的和上下点击元素的状态一致
+        }
+
+        lastinput = this;  //用来存放第一次或者上一次的点击元素（将当前点击元素作为上次元素，然后在有点击时和下次又组成一个范围）
+        onoff = lastinput.checked ? true : false;  //识别第一次或者上一次点击元素的状态值
+    }
 }
 ```
-
-**onOff = startChecked.checked ? true : false;** 根据`startChecked`设置要改变的状态。同时在`if (inBetween && input !== startChecked || input === this)`代码里面做了修改，新增了`|| input === this`，否则会出现最后一个的状态和其他复选框状态不一致的bug。
-
-
-### 方法三
-
-方法一中的 `inBetween` 仅仅表示此项是否在被选中的范围中，此处会赋给它更多的意义，用它来表示此项是选中还是未选中，而范围划定则由数组来解决。
-
-首先将获取到的 `<input>` 组转化为数组，针对每次操作，获取 A 和 B，利用 `indexOf()` 来获得 A 和 B 在数组中的索引值，由此即可确定范围，并能通过 `slice()` 来直接截取 A-B 的所有 DOM 元素，并进行状态改变的操作，而变量 `onOff` 表示 A-B 范围内的状态，`true` 表示选中，`false` 表示取消选中。
-
-
-```js
-const boxArr = Array.from(boxs);
-let startChecked;
-let onOff = false;
-
-// 处理方法二：利用数组索引获取需要选中的范围
-function handleCheck1(e) {
-	if(!startChecked) startChecked = this;
-	onOff = startChecked.checked ? true : false;
-	if(e.shiftKey) {
-		let start = boxArr.indexOf(this);
-		let end = boxArr.indexOf(startChecked);
-		boxArr.slice(Math.min(start, end), Math.max(start, end) + 1)
-		           .forEach(input => input.checked = onOff);
-		console.log(start + "+" + end);
-	}
-	startChecked = this;
-}
-```
-
-
-1. 转换 Nodelist 为数组  
-
-	```js
-	const boxs = document.querySelectorAll('.inbox input[type="checkbox"]');
-	const boxArr = Array.from(boxs);
-	````
-	
-2. 针对按下了 Shift 键的情况，获取 A-B 范围  
-
-	```js
-	let start = boxArr.indexOf(this);
-	let end = boxArr.indexOf(startChecked);
-	```
-	
-3. 截取该范围内的数组元素，并改变选中状态  
-
-	```js
-	boxArr.slice(Math.min(start, end), Math.max(start, end) + 1)
-					   .forEach(input => input.checked = onOff);
-	```
-	
-4. 确定选中 or 取消选中    
-
-	```js
-	onOff = startChecked.checked ? true : false;
-	```
-	
-5. 标记 A 值    
- 
-	```js
-	if(!startChecked) startChecked = this;
-	/* ... */
-	startChecked = this;
-	```
+> 学习用全局变量来存放（由当前状态，转换而成的）上次状态。  
+设置两个变量(全局变量)来分别保存上一次的点击元素和其状态，接下里选中范围的元素状态以此为依据。  
+在shift被按下时，需要得到上次点击元素的索引，和当前点击元素（this）的索引，  
+然后将该段内input元素的状态全部统一于上次点击后的状态。  
+然后将当前点击元素作为上次元素，进行一个接龙。  
+### 涉及知识点
+- 1.shiftKey：检测 SHIFT 键是否被按住。  
+事件属性可返回一个布尔值，指示当事件发生时，“SHIFT”键是否被按下并保持住。  
+语法：event.shiftKey=true|false|1|0，这里的event用this无效，用e.target无效。  
+- 2.document.querySelectorAll('.inbox input[type="checkbox"]')  
+通过[]和属性名称来选取指定元素  
