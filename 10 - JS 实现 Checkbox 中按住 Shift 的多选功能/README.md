@@ -81,3 +81,4 @@ function handleCheck0(e) {
 语法：event.shiftKey=true|false|1|0，这里的event用this无效，用e.target无效。  
 - 2.document.querySelectorAll('.inbox input[type="checkbox"]')  
 通过[]和属性名称来选取指定元素  
+
