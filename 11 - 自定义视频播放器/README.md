@@ -190,6 +190,15 @@ function handlefilled(e){
 5.flex-basis属性用于设置或检索弹性盒伸缩基准值  
 6.flex的总结  
 7.video 对象有一个叫 paused 的属性来判断视频是否在播放  
-.play() 方法可以播放视频，.pause() 方法暂停播放
+.play() 方法可以播放视频，.pause() 方法暂停播放  
 8.textContent 属性设置或返回指定节点的文本内容，以及它的所有后代。  
-如果您设置了 textContent 属性，会删除所有子节点，并被替换为包含指定字符串的一个单独的文本节点。
+如果您设置了 textContent 属性，会删除所有子节点，并被替换为包含指定字符串的一个单独的文本节点。  
+9.playbackRate 属性设置或返回音频/视频的当前播放速度。  
+只有 Google Chrome 和 Safari 支持 playbackRate 属性。  
+1.0 正常速度  
+0.5 半速（更慢）  
+2.0 倍速（更快）  
+-1.0 向后，正常速度  
+-0.5 向后，半速  
+10.video.playbackRate：设置或返回音频/视频播放的速度   
+video.volume：设置或返回音频/视频的音量
