@@ -85,7 +85,6 @@ progressBar.addEventListener('mouseup',() => filledflag = false);
 1. 有实现进度条的点击拖拽，不能仅绑定`mousemove`事件，因为这样鼠标在上面滑过就会出发事件，还需判断鼠标是否点下，此处可设立一个布尔类型的`flag`标志鼠标是否按下，并分别绑定`mouseup`事件和`mousedown`事件，设置此`flag`的值，这样在`mousemove`事件的回调函数中先判断此`flag`的值，若为真是才继续触发事件。
 2. `mousemove`的回调函数本应如下:
 
-
 ```javascript
 {
     if(filledflag){
