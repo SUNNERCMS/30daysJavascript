@@ -44,7 +44,7 @@ HTML 元素中，`video` 标签是我们的视频，而下面的 `player__contro
         const skipButtons = Array.from(player.querySelectorAll('[data-skip]'));     //快进快退按钮
 ```
 ### 源代码功能函数的实现：
-- 点击视频播放器或者暂停/播放按钮控制视频的停-播，并且暂停/播放按钮图标随着改变
+#### N0.1 点击视频播放器或者暂停/播放按钮控制视频的停-播，并且暂停/播放按钮图标随着改变
 ```HTML
         video.addEventListener("click",togglePlay);  //视频播放器监听点击事件，控制停-播
         toggle.addEventListener("click",togglePlay); //toggle按钮监听点击事件，控制停-播
@@ -66,6 +66,45 @@ HTML 元素中，`video` 标签是我们的视频，而下面的 `player__contro
             toggle.textContent = video.paused ? "►":"II" ;
         } 
 ```
+#### NO.2 音量和播放速度滑动条功能的实现
+```HTML
+<input type="range" name="volume" class="player__slider" min=0 max="1" step="0.05" value="1" title="音量">
+<input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1" title="播放速度">
+```JS
+const ranges  = Array.from(player.querySelectorAll('.player__slider'));
+
+ranges[0].addEventListener("change",handle1);
+ranges[1].addEventListener("change",handle2);
+        // 音量改变函数
+        function handle1(){
+            console.log("yinliang:",this.value);
+            video.volume=this.value;
+        }
+        //播放速度改变函数
+        function handle2(){
+            console.log("shudu:",this.value);
+
+            video.playbackRate=this.value;
+        }
+```
+> 该视频播放器有两个滑动条，前者控制音量的大小，后者控制播放速度，由于input类型相同，但是绑定的事件处理函数又不相同，可以利用name值做到一个函数来处理不同的回调函数功能（设定name值和对象的属性值一致），具体代码如下：
+```JS
+ranges.forEach(item=>item.addEventListener('change',rangeHandle));
+// 音量和播放速度控制函数
+function rangeHandle(){
+    video[this.name]=this.value;  //这里动态的进行了对象的属性值设置
+}
+> 其中需要注意的是，他们分别有一个 volume 和 playbackRate 的 name 属性，我们起这两个名字是因为他们是 video 对象里对应音量和播放速度的两个属性名。这样起名并不是必须的，但可以让我们后面 js 的操作更精简。
+因为我们上面说过，input 的 name 值和 video 对象中的属性名是一样的，可以看到在 handleRangeUpdate 函数中我们利用了 this.name 的写法来代表属性，，这里的 this 一样是 addEventListener 的调用者，即 range。
+```
+```
+```
+```
+```
+```
+```
+```
+
 ### 涉及知识点
 1.title 属性规定关于元素的额外信息。  
 这些信息通常会在鼠标移到元素上时显示一段工具提示文本（tooltip text）。  
