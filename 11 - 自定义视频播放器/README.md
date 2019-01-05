@@ -37,7 +37,7 @@
 transform: translateY(100%) translateY(-5px);  
 这里的控制台有一定的高度，translateY(100%)，是为了将控制台通过位移结合overflow：hidden进行完全隐藏， 然后translateY（-5px）,是为了将控制台顶部高度为5px的控制条，向上移动然后将其显示出来。  
 
-- input的range类型：滑动条的自定义样式设置
+- input的range类型：[滑动条的自定义样式设置](https://blog.csdn.net/qq_39207948/article/details/85880391)
 
 ## 变量绑定
 HTML 元素中，`video` 标签是我们的视频，而下面的 `player__controls` 就是我们自己的控制面板
