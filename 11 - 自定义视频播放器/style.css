@@ -1,3 +1,9 @@
+
+* @Author: Administrator
+* @Date:   2018-12-29 15:53:10
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-01-05 19:52:35
+*/
 html {
   box-sizing: border-box;
 }
@@ -16,31 +22,20 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+/*整个视频播放器的样式设置*/
 .player {
   max-width:750px;
-  border:5px solid rgba(255,0,0,0.2);
+  border:5px solid rgba(0,0,0,0.2);
   box-shadow:0 0 20px rgba(0,0,0,0.2);
   position: relative;
   font-size: 0;
   overflow: hidden;
 }
 
-/* This css is only applied when fullscreen is active. */
-.player:fullscreen {
-  max-width: none;
-  width: 100%;
-}
-
-.player:-webkit-full-screen {
-  max-width: none;
-  width: 100%;
-}
-
 .player__video {
   width: 100%;
 }
-
+/*按钮选项的通用配置，去除浏览器默认配置*/
 .player__button {
   background:none;
   border:0;
@@ -56,27 +51,28 @@ body {
 .player__button:focus {
   border-color: #ffc600;
 }
-
+/*滑动条的设置*/
 .player__slider {
   width:10px;
   height:30px;
 }
 
+/*控制台的样式设置*/
 .player__controls {
-  display:flex;
+  display:flex;   /*弹性布局，子元素生效*/
   position: absolute;
   bottom:0;
   width: 100%;
   transform: translateY(100%) translateY(-5px);
   transition:all .3s;
-  flex-wrap:wrap;
+  flex-wrap:wrap;   /*运行flex的子元素进行灵活的换行布局*/
   background:rgba(0,0,0,0.1);
 }
-
+/*设置控制台鼠标悬停的效果*/
 .player:hover .player__controls {
   transform: translateY(0);
 }
-
+/*当有鼠标悬停视频播放器时，控制台弹出，此时设置进度条高度为15px*/
 .player:hover .progress {
   height:15px;
 }
@@ -84,66 +80,78 @@ body {
 .player__controls > * {
   flex:1;
 }
-
+/*进度条样式设置*/
 .progress {
   flex:10;
   position: relative;
   display:flex;
-  flex-basis:100%;
+  flex-basis:100%; /*初始长度占据100%*/
   height:5px;
-  transition:height 0.3s;
+  transition:height 0.3s;  /*当鼠标位于视频播放器，进度条由5px变成15PX*/
   background:rgba(0,0,0,0.5);
-  cursor:ew-resize;
+  cursor:e-resize;  /*定义鼠标的样式是左右箭头滑动样式*/
 }
-
+/*进度条填充部分*/
 .progress__filled {
   width:50%;
-  background:#ffc600;
+  background:#ffc600; /*橘黄色的进度条填充部分*/
   flex:0;
-  flex-basis:50%;
+  flex-basis:0%;
+  /*transition: flex-basis 0.22s linear;*/
 }
 
 /* unholy css to style input type="range" */
+/*主要是滑动条的自定义样式设置*/
 
+/*去除系统默认的滑动条样式，主要针对基于webkit的浏览器*/
 input[type=range] {
   -webkit-appearance: none;
   background:transparent;
   width: 100%;
   margin: 0 5px;
 }
+/*原始的控件获取到焦点时，会显示包裹整个控件的边框，所以还需要把边框取消。*/
 input[type=range]:focus {
   outline: none;
 }
+
+/*开始自定义滑动条控件的样式*/
+
+/*自定义滑动控件的轨道*/
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-  background: rgba(255,255,255,0.8);
-  border-radius: 1.3px;
+  background: rgba(255,255,255,0.8);  /*滑动条轨道背景颜色*/
+  border-radius: 3.3px;
   border: 0.2px solid rgba(1, 1, 1, 0);
 }
+/*自定义滑动控件的滑块*/
 input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+  -webkit-appearance: none;
   height: 15px;
   width: 15px;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
   border-radius: 50px;
-  background: #ffc600;
+  background: #ffc600; /*和进度条的填充部分一个颜色*/
   cursor: pointer;
-  -webkit-appearance: none;
   margin-top: -3.5px;
   box-shadow:0 0 2px rgba(0,0,0,0.2);
 }
-input[type=range]:focus::-wefbkit-slider-runnable-track {
+/*自定义滑动条获得焦点时的背景颜色*/
+input[type=range]:focus::-webkit-slider-runnable-track {
   background: #bada55;
 }
+
+/*兼容Firefox浏览器*/
 input[type=range]::-moz-range-track {
   width: 100%;
   height: 8.4px;
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
   background: #ffffff;
-  border-radius: 1.3px;
+  border-radius: 3.3px;
   border: 0.2px solid rgba(1, 1, 1, 0);
 }
 input[type=range]::-moz-range-thumb {
@@ -154,3 +162,6 @@ input[type=range]::-moz-range-thumb {
   background: #ffc600;
   cursor: pointer;
 }
+/*flex-basis 属性用于设置或检索弹性盒伸缩基准值
+    一个长度单位或者一个百分比，规定灵活项目的初始长度。
+auto    默认值。长度等于灵活项目的长度。如果该项目未指定长度，则长度将根据内容决定。

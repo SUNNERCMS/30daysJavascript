@@ -1,30 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>HTML Video Player</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>自定义视频播放器</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="player">
 
-  <div class="player">
-    <video class="player__video viewer" src="Shape of You.mp4"></video>
+        <video class="player__video viewer" src="./mp4/demo.mp4" loop>您的浏览器不支持播放该视频！</video>
 
-    <div class="player__controls">
-      <div class="progress">
-        <div class="progress__filled"></div>
-      </div>
-      <button class="player__button toggle" title="toggle Play">►</button>
-      <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
-      <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1">
-      <button data-skip="-10" class="player__button">« 10s</button>
-      <button data-skip="25" class="player__button">25s »</button>
+        <div class="player__controls">
+            <div class="progress">
+                <div class="progress__filled"></div>
+            </div>
+            <button class="player__button toggle" title="Toggle Play">►</button>
+            <input type="range" name="volume" class="player__slider" min=0 max="1" step="0.05" value="1" title="音量">
+            <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1" title="播放速度">
+            <button data-skip="-5" class="player__button">« 5s</button>
+            <button data-skip="5"  class="player__button">5s »</button>
+        </div>
     </div>
-  </div>
+    <script>
+        // 获取视频播放器中的各个元素
+        const player      = document.querySelector('.player');
+        const video       = player.querySelector('.viewer');
+        const progress    = player.querySelector('.progress');
+        const progressBar = player.querySelector('.progress__filled');
+        const toggle      = player.querySelector('.toggle');                        //播放/停止图标按钮
+        const ranges      = Array.from(player.querySelectorAll('.player__slider')); //音量和播放速度按钮
+        const skipButtons = Array.from(player.querySelectorAll('[data-skip]'));                  //快进快退按钮
 
-  <script src="scripts.js"></script>
+        video.addEventListener("click",togglePlay);  //监听点击事件，然后调用play方法或者pause方法
+        toggle.addEventListener("click",togglePlay);
+        video.addEventListener("play",updateButton); //根据监听video执行暂停和播放的方法来改变按钮标志
+        video.addEventListener("pause",updateButton); //根据监听video执行暂停和播放的方法来改变按钮标志
+
+        ranges.forEach(item=>item.addEventListener('change',rangeHandle));   //只有change事件只有在blur失焦时才触发。
+        ranges.forEach(range => range.addEventListener('mousemove', rangeHandle));  //鼠标移动时触发事件。
+
+        skipButtons.forEach(item=>item.addEventListener("click",skip));
+
+        video.addEventListener("timeupdate",progressFilled);
+
+        progress.addEventListener("click",progressClickHandle);  //点击改变进度条位置来跟新视频播放进度
+        // 拖动事件拆分为：mousedown,mousemove,mouseup
+        progress.addEventListener("mousedown",()=>mousedownFlag=true);  //鼠标在进度条上按下不放将标志位置为true，然后拖动即触发mousemove事件
+        progress.addEventListener("mousemove",progressMoveHandle);  //拖动改变进度条位置来跟新视频播放进度
+        progress.addEventListener("mouseup",()=>mousedownFlag=false); //鼠标抬起后，标志位为false，即便触发mousemove，也不会更新视频进度
+
+
+        // 使用video的两个方法使得动画暂停和运行，而判断的依据就是video.paused属性。
+        function togglePlay(){
+            video.paused ? video.play() : video.pause();
+        }
+        //改变toggle的图标
+        function updateButton(){
+            toggle.textContent = video.paused ? "►":"II" ;
+        } 
+        // 音量和播放速度控制函数
+        function rangeHandle(){
+            video[this.name]=this.value;  //这里动态的进行了对象的属性值设置
+        }
+        // 视频快退和快进，这里我演示视频长度仅仅为21秒
+        function skip(){
+            video.currentTime+=(+this.dataset.skip);
+        }
+        //进度条跟随视频播放改变,那么需要实时自动来执行这个函数。
+        function progressFilled(){
+            progressBar.style.flexBasis=((video.currentTime/video.duration)*100).toFixed(2)+"%";
+
+        }
+        //点击进度条来改变视频播放（手动更新视频播放进度的函数，点击和拖动都要使用这个函数）
+        function progressClickHandle(e){
+            video.currentTime = (e.offsetX/progress.offsetWidth)*video.duration;
+        }
+        // 鼠标按下拖动进度条时，更新视频播放进度，从而触发timeupdate事件来校正进度条长度。
+        let mousedownFlag = false;
+        function progressMoveHandle(e){
+            if(mousedownFlag){
+                progressClickHandle(e);
+            }
+
+        }
+
+
+    </script>
 </body>
-
 </html>
+<!-- 
+background-size属性
+video 对象有一个叫 paused 的属性来判断视频是否在播放,播放返回true，暂停返回false
+.play() 方法可以播放视频，.pause() 方法暂停播放
+playbackRate 属性设置或返回音频/视频的当前播放速度。
+只有 Google Chrome 和 Safari 支持 playbackRate 属性。
+ -->
