@@ -10,6 +10,37 @@
 2. 分别实现播放，暂停，声音加减，播放速度加减，拖拽快进，点击快进等函数
 3. 事件绑定，将页面元素绑定相应触发事件
 
+## CSS部分解读
+- 视频播放器控制台隐藏弹出的设置  
+```CSS
+/*控制台的样式设置*/
+.player__controls {
+  display:flex;   /*弹性布局，子元素生效*/
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  transform: translateY(100%) translateY(-5px);
+  transition:all .3s;
+  flex-wrap:wrap;   /*运行flex的子元素进行灵活的换行布局*/
+  background:rgba(0,0,0,0.1);
+}
+
+.player:hover .player__controls {
+  transform: translateY(0);  /*这里将控制台显示出来*/
+}
+/*当有鼠标悬停视频播放器时，控制台弹出，此时设置进度条高度为15px*/
+.player:hover .progress {
+  height:15px;
+}
+```
+> 隐藏露头功能（天猫界面趴着那只猫，只露了个眼睛，悬停会跳出来，就可以据此来模拟实现）  
+
+transform: translateY(100%) translateY(-5px);  
+
+这里的控制台有一定的高度，translateY(100%)，是为了将控制台通过位移结合overflow：hidden进行完全隐藏， 然后translateY（-5px）,是为了将控制台顶部高度为5px的控制条，向上移动然后将其显示出来。  
+
+- input的range类型：滑动条的自定义样式设置
+
 ## 变量绑定
 HTML 元素中，`video` 标签是我们的视频，而下面的 `player__controls` 就是我们自己的控制面板
 
