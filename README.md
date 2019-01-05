@@ -52,7 +52,7 @@
 
 ## Day11 - Custom Video Player
 
-![](http://oslwafb71.bkt.clouddn.com/small10.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/11%20-%20%E8%87%AA%E5%AE%9A%E4%B9%89%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/GIF.gif)
 
 ## Day12 - Key Sequence Detection
 
