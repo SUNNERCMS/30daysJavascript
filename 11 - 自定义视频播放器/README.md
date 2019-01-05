@@ -94,17 +94,50 @@ ranges.forEach(item=>item.addEventListener('change',rangeHandle));
 function rangeHandle(){
     video[this.name]=this.value;  //这里动态的进行了对象的属性值设置
 }
+```
 > 其中需要注意的是，他们分别有一个 volume 和 playbackRate 的 name 属性，我们起这两个名字是因为他们是 video 对象里对应音量和播放速度的两个属性名。这样起名并不是必须的，但可以让我们后面 js 的操作更精简。
 因为我们上面说过，input 的 name 值和 video 对象中的属性名是一样的，可以看到在 handleRangeUpdate 函数中我们利用了 this.name 的写法来代表属性，，这里的 this 一样是 addEventListener 的调用者，即 range。
+#### NO.3 视频快退和快进
+```HTML
+            <button data-skip="-5" class="player__button">« 5s</button>
+            <button data-skip="5"  class="player__button">5s »</button>
 ```
+```JS
+        const skipButtons = Array.from(player.querySelectorAll('[data-skip]'));     //快进快退按钮，将伪数组转换为真正的数组
+        
+        skipButtons.forEach(item=>item.addEventListener("click",skip));//给快进快退按钮添加点击事件监听函数
+        
+        // 视频快退和快进控制函数
+        function skip(){
+            video.currentTime+=(+this.dataset.skip);
+        }
 ```
-```
-```
-```
-```
-```
-```
+> video 有一个属性叫 currentTime，可以用来设置视频当前的时间。我们只要修改这个属性就可以了  
+要注意的是，这里就不能用 this 来访问 video 对象了，因为在这里面，this 指向的是遍历得到的每一个 button，而我们是要修改 video 的 currentTime 属性。 
+data-** 这样的属性以前提到过了，在 JavaScript 中需要通过 .dataset.** 来访问。因为我们获取到的是字符串，所以要通过"+"来转换成数值。
 
+#### NO.4 进度条随着视频播放而改变，进度条控制视频播放功能的实现，
+我们的进度条需要能在鼠标点击和拖动的时候改变视频播放的进度。我们先实现进度条随着视频播放更新进度的功能。
+
+进度条显示进度的原理很简单，progress__filled 这个元素是一个 flex 定位的元素，我们改变其 flex-basis 的百分比值就可以调节它所占父元素的宽度。flex-basis 值代表 flex 元素在主轴方向上的初始尺寸。progressBar.style.flexBasis对其进行设值便可以动态改变进度条的填充长度。
+```html
+            <div class="progress">
+                <div class="progress__filled"></div>
+            </div>
+```
+```js
+        const progress    = player.querySelector('.progress');
+        const progressBar = player.querySelector('.progress__filled'); 
+        
+        video.addEventListener("timeupdate",progressFilled); 
+        
+        //进度条跟随视频播放改变,那么需要实时自动来执行这个函数。
+        function progressFilled(){
+            progressBar.style.flexBasis=((video.currentTime/video.duration)*100).toFixed(2)+"%";
+
+        }
+```
+> 现在只要运行 progressFilled 这个函数就能够更新对应的进度条，但我们需要的是自动执行这个操作。也许你会想到利用 setInterval 设置一个定时器，其实 video 元素给我们提供了更好的方法—— timeupdate 事件。这个事件会在媒体文件的 currentTime 属性改变的时触发.
 ### 涉及知识点
 1.title 属性规定关于元素的额外信息。  
 这些信息通常会在鼠标移到元素上时显示一段工具提示文本（tooltip text）。  
