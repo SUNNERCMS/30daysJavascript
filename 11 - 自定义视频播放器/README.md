@@ -34,9 +34,7 @@
 }
 ```
 > 隐藏露头功能（天猫界面趴着那只猫，只露了个眼睛，悬停会跳出来，就可以据此来模拟实现）  
-
 transform: translateY(100%) translateY(-5px);  
-
 这里的控制台有一定的高度，translateY(100%)，是为了将控制台通过位移结合overflow：hidden进行完全隐藏， 然后translateY（-5px）,是为了将控制台顶部高度为5px的控制条，向上移动然后将其显示出来。  
 
 - input的range类型：滑动条的自定义样式设置
