@@ -206,7 +206,7 @@ data-** 这样的属性以前提到过了，在 JavaScript 中需要通过 .data
 如果您设置了 textContent 属性，会删除所有子节点，并被替换为包含指定字符串的一个单独的文本节点。  
 9.playbackRate 属性设置或返回音频/视频的当前播放速度。  
 只有 Google Chrome 和 Safari 支持 playbackRate 属性。  
-1.0 正常速度  
+&nbsp 1.0 正常速度  
 0.5 半速（更慢）  
 2.0 倍速（更快）  
 -1.0 向后，正常速度  
