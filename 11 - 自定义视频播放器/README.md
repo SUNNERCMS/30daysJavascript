@@ -207,10 +207,10 @@ data-** 这样的属性以前提到过了，在 JavaScript 中需要通过 .data
 9.playbackRate 属性设置或返回音频/视频的当前播放速度。  
 只有 Google Chrome 和 Safari 支持 playbackRate 属性。  
 &emsp; 1.0 正常速度  
-0.5 半速（更慢）  
-2.0 倍速（更快）  
--1.0 向后，正常速度  
--0.5 向后，半速  
+&emsp; 0.5 半速（更慢）  
+&emsp; 2.0 倍速（更快）  
+&emsp; -1.0 向后，正常速度  
+&emsp; -0.5 向后，半速  
 10.video.playbackRate：设置或返回音频/视频播放的速度   
 video.volume：设置或返回音频/视频的音量  
 11. 鼠标事件进行整理，具体都有哪些方法和属性。  
