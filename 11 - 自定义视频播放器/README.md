@@ -193,17 +193,17 @@ data-** 这样的属性以前提到过了，在 JavaScript 中需要通过 .data
 ```
 ### 涉及知识点
 1.title 属性规定关于元素的额外信息。  
-这些信息通常会在鼠标移到元素上时显示一段工具提示文本（tooltip text）。  
+&emsp; 这些信息通常会在鼠标移到元素上时显示一段工具提示文本（tooltip text）。  
 2.:focus 伪类在元素获得焦点时向元素添加特殊的样式。  
 3.flex-wrap 属性规定flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。  
-注释：IE 浏览器不支持此属性。    
+&emsp; 注释：IE 浏览器不支持此属性。    
 4.光标cursor的常见样式pointer|e-resize   
 5.flex-basis属性用于设置或检索弹性盒伸缩基准值  
 6.[flex属性的全面总结](https://blog.csdn.net/qq_39207948/article/details/85956861)    
 7.video 对象有一个叫 paused 的属性来判断视频是否在播放  
-.play() 方法可以播放视频，.pause() 方法暂停播放  
+&emsp; .play() 方法可以播放视频，.pause() 方法暂停播放  
 8.textContent 属性设置或返回指定节点的文本内容，以及它的所有后代。  
-如果您设置了 textContent 属性，会删除所有子节点，并被替换为包含指定字符串的一个单独的文本节点。  
+&emsp; 如果您设置了 textContent 属性，会删除所有子节点，并被替换为包含指定字符串的一个单独的文本节点。  
 9.playbackRate 属性设置或返回音频/视频的当前播放速度。  
 只有 Google Chrome 和 Safari 支持 playbackRate 属性。  
 &emsp; 1.0 正常速度  
@@ -212,9 +212,9 @@ data-** 这样的属性以前提到过了，在 JavaScript 中需要通过 .data
 &emsp; -1.0 向后，正常速度  
 &emsp; -0.5 向后，半速  
 10.video.playbackRate：设置或返回音频/视频播放的速度   
-video.volume：设置或返回音频/视频的音量  
+&nbsp; video.volume：设置或返回音频/视频的音量  
 11. 鼠标事件进行整理，具体都有哪些方法和属性。  
 12. currentTime 属性设置或返回音频/视频播放的当前位置（以秒计）。  
-当设置该属性时，播放会跳跃到指定的位置。   
+&emsp; 当设置该属性时，播放会跳跃到指定的位置。   
 13.duration	返回当前音频/视频的长度（以秒计）  
 14. timeupdate事件，当目前的播放位置已更改时触发。可用来实时更新进度条部分。
