@@ -202,7 +202,7 @@ data-** 这样的属性以前提到过了，在 JavaScript 中需要通过 .data
 6.[flex属性的全面总结](https://blog.csdn.net/qq_39207948/article/details/85956861)    
 7.video 对象有一个叫 paused 的属性来判断视频是否在播放  
 &emsp; .play() 方法可以播放视频，.pause() 方法暂停播放  
-8.textContent 属性设置或返回指定节点的文本内容，以及它的所有后代。  
+8.textContent 属性设置或返回指定节点的文本内容，以及它的所有后代。[结合demo理解记忆](https://blog.csdn.net/qq_39207948/article/details/86099905)    
 &emsp; 如果您设置了 textContent 属性，会删除所有子节点，并被替换为包含指定字符串的一个单独的文本节点。  
 9.playbackRate 属性设置或返回音频/视频的当前播放速度。  
 只有 Google Chrome 和 Safari 支持 playbackRate 属性。  
