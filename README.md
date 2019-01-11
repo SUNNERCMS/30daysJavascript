@@ -56,7 +56,7 @@
 
 ## Day12 - Key Sequence Detection
 
-![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/12%20-%20%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%BA%8F%E5%88%97%E7%9A%84%E9%AA%8C%E8%AF%81%E6%8C%87%E5%8D%97/GIF.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/12%20-%20%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%BA%8F%E5%88%97%E7%9A%84%E9%AA%8C%E8%AF%81%E6%8C%87%E5%8D%97/GIF.gif)  
 
 ## Day13 - Slide in on Scroll
 
