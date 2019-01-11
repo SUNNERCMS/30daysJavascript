@@ -131,8 +131,7 @@
 ## Day31 - Canvas CountdownClock  
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/31%20-%20Canvas%20CountClock/image/GIF.gif)
 
-## 加入我们，一起挑战吧
 
->社群发起人：[春哥(从零到壹创始人，交流微信：liyc1215)](http://weibo.com/mobiledevelopment)
->技术交流社区：[全栈部落BBS](http://bbs.kongyixueyuan.com)
+
+
 
