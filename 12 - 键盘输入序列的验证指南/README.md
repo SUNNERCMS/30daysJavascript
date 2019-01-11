@@ -4,7 +4,9 @@
 
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/12%20-%20%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%BA%8F%E5%88%97%E7%9A%84%E9%AA%8C%E8%AF%81%E6%8C%87%E5%8D%97/GIF.gif)
 
-文档里提供了一个 `script` 标签，供我们从 [Cornify.com](https://www.cornify.com/) 加载一个 JS 文件，调用其中的 `cornify_add()` 方法时，会在页面中追加 `p` 标签，并在 DOM 中插入一个图标。Cornify 的具体效果如上所示。
+文档里提供了一个 `script` 标签，供我们从 [Cornify.com](https://www.cornify.com/) 加载一个 JS 文件，调用其中的 `cornify_add()` 方法时，会在页面中追加 `p` 标签，并在 DOM 中插入一个图标。Cornify 的具体效果如上所示。  
+#### 实现功能：  
+- 1、可以在输入区输入内容，且内容长度为5，在匹配区中显示输入内容，长度为
 
 ## 解决思路
 
