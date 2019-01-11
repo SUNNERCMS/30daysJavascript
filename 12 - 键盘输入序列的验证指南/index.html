@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>key sequence detection</title>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+        }
+        .contain{
+            width:200px;
+            height: 200px;
+            font-size:25px;
+            text-align: center;
+            position: absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            z-index:30;
+        }
+        .alertInfo,.resultInfo{
+            color:green;
+            font-weight: bold;
+        }
+        .text{
+            width:100px;
+            outline:none;
+            text-align: center;
+            font-size:25px;
+            color:blue;
+            /*border:none;*/
+        }
+        .show{
+            font-size:25px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <p class="alertInfo">暗码:love</p>
+        <input type="text" class="text" placeholder="输入区">
+        <p class="resultInfo">匹配显示区:</p>
+        <p class="show"></p>
+    </div>
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+
+    <script>
+        let input=document.querySelector(".text");
+        let show= document.querySelector(".show");
+        input.addEventListener('keyup',debounce(handle,300));
+
+        // 防抖处理
+        function debounce(func,wait){
+            let timeflag;
+            return function(){
+                clearTimeout(timeflag); //清除300ms之内之前触发的定时器。
+                let arg=arguments;
+                let _this = this;
+                timeflag = setTimeout(func.bind(_this,arg),wait);
+            }
+        }
+        //回调函数
+        function handle(){
+            input.value=input.value.slice(-5);
+            show.textContent=input.value.slice(-4);
+            let regexp = /love/gi;
+            if(regexp.test(show.textContent)){
+                cornify_add();//这个方法是由通过script引入的cornify.com中的cornify.js提供的。
+            }
+        }
+    </script>
+</body>
+</html>
