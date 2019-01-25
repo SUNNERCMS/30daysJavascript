@@ -6,6 +6,8 @@
 
 [在线查看JS30所有项目效果图](http://30daysofjs.michaeleinsohn.com/)
 
+结合自己的实际情况学习效果更好。。。
+
 
 ## Day01 - JavaScript Drum Kit
 
