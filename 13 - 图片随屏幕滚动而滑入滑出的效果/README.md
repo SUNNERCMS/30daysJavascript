@@ -18,7 +18,6 @@ img {
 ![](http://om1c35wrq.bkt.clouddn.com/day12-1.png)
 
 ### 2. opacity透明度设置
-
 ```css
 .slide-in {
   opacity: 0; 
@@ -32,7 +31,6 @@ img {
   transform: translateX(0%) scale(1); 
 }
 ```
-
 **opacity:**设置对象的透明度，值在0-1之间。
 ### 3. **transform**位置移动变换
 [transform api](http://www.css88.com/book/css/properties/transform/transform.htm)
