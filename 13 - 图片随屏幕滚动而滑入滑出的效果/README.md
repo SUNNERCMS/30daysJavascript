@@ -178,11 +178,7 @@ img {
 </body>
 </html>
 ```
-
-
 ### 2. CSS代码
-
-
 ```css
   <style>
     html {
