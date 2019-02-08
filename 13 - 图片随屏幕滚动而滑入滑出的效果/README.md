@@ -272,7 +272,6 @@ function checkSlide(e) {
 window.addEventListener('scroll', checkSlide);
 </script>
 ```
-
 ![](http://om1c35wrq.bkt.clouddn.com/day13-%E8%AF%B4%E6%98%8E.png)
 
 * 首先获取触发动画的位置，在滚动到图片一半的位置时触发。
