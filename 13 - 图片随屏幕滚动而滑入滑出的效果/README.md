@@ -279,4 +279,5 @@ window.addEventListener('scroll', checkSlide);
 * 再获取图片底部到页面文档顶端的距离，采用`const imageBottom = sliderimage.offsetTop + sliderimage.height;`
 	* `sliderimage.offsetTop`表示该图片最上面的值，到页面文档顶端的距离，再加上该图片的高度，就是图片底部到页面文档顶端的距离
 * 设置两个flag，分别表示图片是否显示了一半和图片是否已经被完全滚动出去了，分别为`const isHalfShown = slideAt > sliderimage.offsetTop;`，`const isNotScrolledPast = window.scrollY < imageBottom;`
-* 只有当图片已经显示了一半并且没有被图片没有被滚动出窗口是，图片才会显示出来，此处的动画处理方式如下：默认时将图片向左或向右移动30%，当图片出现在窗口中时，取消该图片的移动，显示在原位置；再加上`transition: all .5s;`，在图片出现的时候，就会显示出约0.5秒的过渡动画。
+* 只有当图片已经显示了一半并且没有被图片没有被滚动出窗口是，图片才会显示出来，此处的动画处理方式如下：  
+默认时将图片向左或向右移动30%，当图片出现在窗口中时，取消该图片的移动，显示在原位置；再加上`transition: all .5s;`，在图片出现的时候，就会显示出约0.5秒的过渡动画。
