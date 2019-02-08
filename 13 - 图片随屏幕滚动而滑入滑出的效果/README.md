@@ -15,7 +15,6 @@ img {
   margin: 0 0 1em 1em;
 }
 ```
-
 ![](http://om1c35wrq.bkt.clouddn.com/day12-1.png)
 
 ### 2. opacity透明度设置
