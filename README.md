@@ -90,7 +90,6 @@
 ## Day21 - Geolocation
 ![](http://oslwafb71.bkt.clouddn.com/small20.jpg)
 
-
 ## Day22 - Follow Along Link Highlighter
 
 ![](http://oslwafb71.bkt.clouddn.com/small21.jpg)
@@ -125,7 +124,6 @@
 ## Day30 - Whack A Mole
 
 ![](http://oslwafb71.bkt.clouddn.com/small29.jpg)
-
 
 ## Day31 - Canvas CountdownClock  
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/31%20-%20Canvas%20CountClock/image/GIF.gif)
