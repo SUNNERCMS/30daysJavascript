@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>图片随屏幕滚动而滑入滑出的效果</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
+    
   <div class="site-wrap">
 
-    <h1>Slide in on Scroll</h1>
+    <h1>Slide In On Scroll</h1>
 
     <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem
       dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora
@@ -39,7 +38,7 @@
       sed ratione. Culpa, dolorum reprehenderit harum ab voluptas fuga, nisi eligendi natus maiores illum quas quos et aperiam
       aut doloremque optio maxime fugiat doloribus. Eum dolorum expedita quam, nesciunt</p>
 
-    <!-- <img src="http://unsplash.it/400/401" class="align-right slide-in"> -->
+    <img src="http://unsplash.it/400/401" class="align-right slide-in">
 
     <p> at provident praesentium atque quas rerum optio dignissimos repudiandae ullam illum quibusdam. Vel ad error quibusdam,
       illo ex totam placeat. Quos excepturi fuga, molestiae ea quisquam minus, ratione dicta consectetur officia omnis, doloribus
@@ -61,21 +60,18 @@
       velit iusto alias vitae explicabo nemo neque odio reprehenderit soluta sint eaque. Aperiam, qui ut tenetur, voluptate
       doloremque officiis dicta quaerat voluptatem rerum natus magni. Eum amet autem dolor ullam.</p>
 
-    <!-- <img src="http://unsplash.it/200/500" class="align-left slide-in"> -->
+    <img src="http://unsplash.it/200/500" class="align-left slide-in">
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero
       placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero
-      perferendis, deserunt et incidunt eveniet  temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt
+      perferendis, deserunt et incidunt eveniet <img src="http://unsplash.it/200/200" class="align-right slide-in"> temporibus
+      doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt
       laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos
       distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus
       atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus
       aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam
       est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui
       rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis</p>
-
-      <!-- <img src="http://unsplash.it/200/200" class="align-right slide-in"> -->
-
-
     <p>laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit
       ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic
       quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa
@@ -88,7 +84,7 @@
       saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere
       ducimus accusantium eos veritatis neque.</p>
 
-    <!-- <img src="http://unsplash.it/400/400" class="align-right slide-in"> -->
+    <img src="http://unsplash.it/400/400" class="align-right slide-in">
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero
       placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero
@@ -111,111 +107,6 @@
       odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore
       non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
 
-  </div>
-
-  <script>
-
-    const sliderImages = document.querySelectorAll('.slide-in');
-
-    function checkSlide(e) {
-      sliderImages.forEach(sliderimage => {
-        // 滑动到图片显示的一半
-        const slideAt = window.innerHeight + window.scrollY - sliderimage.height / 2;
-        console.log(`window.innerHeight = ${window.innerHeight} `);
-        console.log(`window.scrollY = ${window.scrollY}`);
-        console.log(`slideAt = ${slideAt}`);
-
-        // 图片底部距文档顶部的距离
-        const imageBottom = sliderimage.offsetTop + sliderimage.height;
-
-        console.log(`sliderimage.offsetTop = ${sliderimage.offsetTop}`);
-        console.log(`sliderimage.height = ${sliderimage.height}`);
-        console.log(`imageBottom = ${imageBottom}`);
-
-        // 图片是否已经显示了一半
-        const isHalfShown = slideAt >= sliderimage.offsetTop;
-
-        console.log(`isHalfShown = ${isHalfShown}`);
-
-        // 图片是否已经被完全滚动出去
-        const isNotScrolledPast = window.scrollY < imageBottom;
-        console.log(`isNotScrolledPast = ${isNotScrolledPast}`);
-        // if(isHalfShown && isNotScrolledPast) {
-        //     console.log(`window.scrollY = ${window.scrollY}`);
-        //     console.log(`imageBottom = ${imageBottom}`);
-        // }
-
-
-        if (isHalfShown && isNotScrolledPast) {
-          sliderimage.classList.add('active');
-        } else {
-          sliderimage.classList.remove('active');
-        }
-      });
-    }
-    window.addEventListener('scroll', checkSlide);
-  </script>
-
-  <style>
-    html {
-      box-sizing: border-box;
-      background: #ffc600;
-      font-family: 'helvetica neue';
-      font-size: 20px;
-      font-weight: 200;
-    }
-
-    body {
-      margin: 0;
-    }
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    .site-wrap {
-      max-width: 700px;
-      margin: 100px auto;
-      background: white;
-      padding: 40px;
-      text-align: justify;
-    }
-
-    .align-left {
-      float: left;
-      margin-right: 20px;
-    }
-
-    .align-right {
-      float: right;
-      margin-left: 20px;
-    }
-
-    .slide-in {
-       /*opacity: 0;*/
-       transition: all .5s;
-    }
-
-    .align-left.slide-in {
-        transform: translateX(-30%) scale(0.95);
-    }
-
-    .align-right.slide-in {
-        transform: translateX(30%) scale(0.95);
-    }
-
-    .slide-in.active {
-       opacity: 1;
-       transform: translateX(0%) scale(1);
-    }
-  </style>
-
+      <script src="index.js"></script>
 </body>
-
 </html>

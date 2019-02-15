@@ -1,0 +1,54 @@
+html{
+    box-sizing:border-box;
+    background: linear-gradient(silver,#ffc600);
+    font-family: 'helvetica neue';
+    font-size:20px;
+    font-weight: 200;
+}
+body{
+    padding:0;
+    margin:0;
+}
+*,*:before,*:after{
+    box-sizing:inherit;
+}
+h1{
+    margin-top:0;
+}
+.site-wrap{
+    max-width:700px;
+    margin:100px auto;
+    background: whitesmoke;
+    padding:40px;
+    /*text-align:justify;text-align 属性规定元素中的文本的水平对齐方式。*/
+}
+p{
+    text-indent:2em; /*text-indent 属性规定文本块中首行文本的缩进。*/
+    word-break:break-all;
+}
+/* 图片的位置设置 */
+.align-left{
+    float:left;
+    margin-right:30px;
+}
+.align-right{
+    float:right;
+    margin-left:30px;
+}
+/* 所有的图片处于隐藏状态，并将所有的属性改变设置为0.5s的过渡效果 */
+.slide-in {
+  opacity:0;
+  transition:all .1s;
+}
+/* 位于左侧和右侧图片的额初始位置和大小状态 */
+.align-left.slide-in{
+  transform:translateX(-30%) scale(0.9);
+}
+.align-right.slide-in{
+  transform: translate(30%) scale(0.9);
+}
+/* 具有active类的图片效果 */
+.slide-in.active{
+  opacity: 1;
+  transform: translate(0%) scale(1);
+}
