@@ -6,7 +6,7 @@
 - 1、判断图片的滑出和滑入的位置（JS实现）  
 - 2、根据位置来决定图片的过渡效果（CSS实现）
 ### 代码解析
-####JS部分
+#### JS部分
 ```JS
 	let imgs=Array.from(document.querySelectorAll("img"));//转换为真正的数组
         window.addEventListener("scroll",throttle(handle,100));
@@ -40,6 +40,16 @@
           })
         }
 ```
+- 代码知识点分析  
+1、节流处理： 此外由于每次滚动都触发监听事件，会降低 JavaScript 运行性能，所以用 throttle 函数来降低触发的次数。  
+2、图片位置的确定：主要通过四个距离值  
+(1)window.scrollY:页面滚动过的距离。  
+(2)window.innerHeight:浏览器的视距，不包括上下工具栏。   
+(3)img.offsetTop:图片相对于父元素的距离。  
+(4)img.height:图片自身的高度值。  
+详细的解释如下图：
+![]()
+#### CSS部分
 ```CSS
 html{
     box-sizing:border-box;
