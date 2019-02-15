@@ -1,13 +1,12 @@
-# Day13 - 图片随屏幕滚动而滑入滑出的效果
-## 项目效果
-![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/13%20-%20%E5%9B%BE%E7%89%87%E9%9A%8F%E5%B1%8F%E5%B9%95%E6%BB%9A%E5%8A%A8%E8%80%8C%E6%BB%91%E5%85%A5%E6%BB%91%E5%87%BA%E7%9A%84%E6%95%88%E6%9E%9C/demoshow/GIF.gif)
+### Day13 - 图片随屏幕滚动而滑入滑出的效果
+#### 项目效果
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/13%20-%20%E5%9B%BE%E7%89%87%E9%9A%8F%E5%B1%8F%E5%B9%95%E6%BB%9A%E5%8A%A8%E8%80%8C%E6%BB%91%E5%85%A5%E6%BB%91%E5%87%BA%E7%9A%84%E6%95%88%E6%9E%9C/demoshow/GIF.gif)  
 实现页面内伴随着鼠标滚动，到每个图片时图片出现，并伴随着动画出现。
-## 实现思路
-1. 首先要先获取需要加载动画的元素
-2. 监听window的滚动事件`scroll`，绑定图片动画的函数
-3. 在`checkSlide()`函数中，实现滚动到每一个图片的一半位置时，图片从两边飞入的动画效果
-## 基础知识
-### 1. float浮动布局
+#### 实现思路
+- 1、判断图片的滑出和滑入的位置（JS实现）  
+- 2、根据位置来决定图片的过渡效果（CSS实现）
+### 基础知识
+#### 1. float浮动布局
 布局中常用的CSS属性是 `float` , `float`可用于实现文字环绕图片，如下：
 ```css
 img {
