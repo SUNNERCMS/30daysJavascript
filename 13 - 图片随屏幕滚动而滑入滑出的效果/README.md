@@ -40,15 +40,15 @@
           })
         }
 ```
-- 代码知识点分析  
-1、节流处理： 此外由于每次滚动都触发监听事件，会降低 JavaScript 运行性能，所以用 throttle 函数来降低触发的次数。  
-2、图片位置的确定：主要通过四个距离值  
+##### 代码知识点分析  
+-1、节流处理： 此外由于每次滚动都触发监听事件，会降低 JavaScript 运行性能，所以用 throttle 函数来降低触发的次数。  
+-2、图片位置的确定：主要通过四个距离值  
 (1)window.scrollY:页面滚动过的距离。  
 (2)window.innerHeight:浏览器的视距，不包括上下工具栏。   
 (3)img.offsetTop:图片相对于父元素的距离。  
 (4)img.height:图片自身的高度值。  
-详细的解释如下图：
-![]()
+详细的解释如下图：  
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/13%20-%20%E5%9B%BE%E7%89%87%E9%9A%8F%E5%B1%8F%E5%B9%95%E6%BB%9A%E5%8A%A8%E8%80%8C%E6%BB%91%E5%85%A5%E6%BB%91%E5%87%BA%E7%9A%84%E6%95%88%E6%9E%9C/demoshow/demo.PNG)
 #### CSS部分
 ```CSS
 html{
