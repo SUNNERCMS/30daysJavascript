@@ -53,6 +53,7 @@
 	let imgHalfBoolean=(window.scrollY+window.innerHeight)>img.offsetTop+img.height/2;//图片划过一半的判断条件
         let imgFullBoolean=window.scrollY<img.offsetTop+img.height;//图片没有完全滑入顶部的判断条件
 ```
+其中橙色半透明部分指可滚动页面整体，橙色标注部分是指会随着页面滚动而变化的尺寸，黑色标注的尺寸是固定不变的。 页面的滑动过程经过了两个临界点，一个是下滑到图片的一半处，另一个是完全滑过图片使图片已不再视窗之内，分别决定了图片的显示和隐藏。
 #### CSS部分
 ```CSS
 html{
