@@ -59,7 +59,7 @@
 
 ## Day13 - Slide in on Scroll
 
-![](http://oslwafb71.bkt.clouddn.com/small12.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/13%20-%20%E5%9B%BE%E7%89%87%E9%9A%8F%E5%B1%8F%E5%B9%95%E6%BB%9A%E5%8A%A8%E8%80%8C%E6%BB%91%E5%85%A5%E6%BB%91%E5%87%BA%E7%9A%84%E6%95%88%E6%9E%9C/demoshow/GIF.gif)
 
 ## Day14 - JavaScript References VS Copying
 
