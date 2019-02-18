@@ -3,7 +3,7 @@
 #### 项目效果
 效果展示如下面的图片，另外也可以自行在浏览器的控制台中打印显示进行理解。
 
-#### 按值操作
+#### 按值操作（深拷贝）
 
 基本类型由值操作。以下类型在JavaScript中被视为基本类型：
 
@@ -31,7 +31,7 @@ console.log(age1, age2);  //200 100
 > 值的复制：是给另外一个变量创建了一个存储空间，二者彼此独立，修改数据互不影响。  
 由此可见，基本类型，按值操作，新建的变量会将值复制给新的变量，各自的改变不会互相影响。
 
-#### 通过引用操作
+#### 通过引用操作 （浅拷贝）
 
 对象`Object`类型是按引用操作的，如果它不是基本类型中的一个，那么它就是对象，这里如果我们细究的话，JavaScript中每一个东西都可以当做对象，甚至是基本的类型（不包括`null`和`undefined`），但我们尽量不要钻这个牛角尖。
 
@@ -55,32 +55,38 @@ console.log(players, team); // ["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah"
 team[3] = 'Lux';
 console.log(players, team); // ["Wes", "Sarah", "Ryan", "Lux"] ["Wes", "Sarah", "Ryan", "Lux"]
 ```
-> 结果显示原数组 plaryers 也被修改了。为什么会这样？因为 team 只是这个数组的引用，并不是它的复制。team 和 players 这两个变量指向的是同一个数组，也即是仅仅浅拷贝了指针，这个变量存储的指向原来数组存储空间的方向，两个变量指向的内容是一样的，这样修改其中一个另一个也会跟着改变。 
+> 结果显示原数组 plaryers 也被修改了。为什么会这样？因为 team 只是这个数组的引用，并不是它的复制。team 和 players 这两个变量指向的是同一个数组，也即是仅仅浅拷贝了指针，这个变量存储的指向原来数组存储空间的方向，两个变量指向的内容是一样的，这样修改其中一个另一个也会跟着改变。   
 
-所以如何解决这个问题？接下来我们开始真正的复制吧！
 
-方法一 Array.prototype.slice()
+##### 数组的复制解决方法：
+- 方法一 Array.prototype.slice()  
 
 由于运行 slice 得到的结果是一个对原数组的浅拷贝，原数组不会被修改。所以如果修改这两个数组中任意 一个，另一个都不会受到影响。
-
+```JS
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 const team2 = players.slice();
 team2[3] = 'Lux2';
-console.log(players, team2); 
-方法二 Array.prototype.concat()
+console.log(players, team2);  // ["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah", "Ryan", "Lux2"]
+```
+- 方法二 Array.prototype.concat()
 
 concat() 方法是用来合并数组的，它也不会更改原有的数组，而是返回一个新数组，所以可以将 players 数组与一个空数组合并，得到的结果就符合预期了。
-
-const team3 = [].concat(players);
+```JS
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+const team3 = [].concat(players); //或者写成 team3 = players.concat();
 team3[3] = 'Lux3';
-console.log(players, team3); 
-方法三 ES6 扩展语法
+console.log(players, team3);  // ["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah", "Ryan", "Lux3"]
+```
+- 方法三 ES6 扩展运算符
 
 扩展语法可以像扩展参数列表一样来扩展数组，效果与上述方法类似，但比较简洁。
-
-const team4 = [...players];
+```JS
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+const team4 = [...players]; //扩展运算符这里实际上是“打散操作”
 team4[3] = 'Lux4';
-console.log(players, team4);
-方法四 Array.from()
+console.log(players, team4);  //["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah", "Ryan", "Lux4"]
+```
+- 方法四 Array.from()
 
 此外使用 Array 创建新的数组实例的方法也是可行的。
 
