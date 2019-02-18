@@ -47,42 +47,46 @@ console.log(age1, age2);  //200 100
 
 `Map`
 
-那对于数组来说，情况是否一样呢？下面我们来看看数组。
-
+那对于数组来说，情况是否一样呢？延续上面的思路,下面我们来看看数组。  
+```JS
 const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 const team = players;
-console.log(players, team);
-延续上面的思路，先声明一个数组 players，并将其赋值给 team。试想一下，如果需要修改 team 中的值，我们可以如何操作？或许可以这样？
-
+console.log(players, team); // ["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah", "Ryan", "Poppy"]
 team[3] = 'Lux';
-来看看发生了什么。
+console.log(players, team); // ["Wes", "Sarah", "Ryan", "Lux"] ["Wes", "Sarah", "Ryan", "Lux"]
+```
+> 结果显示原数组 plaryers 也被修改了。为什么会这样？因为 team 只是这个数组的引用，并不是它的复制。team 和 players 这两个变量指向的是同一个数组，也即是仅仅浅拷贝了指针，这个变量存储的指向原来数组存储空间的方向，两个变量指向的内容是一样的，这样修改其中一个另一个也会跟着改变。 
 
-console.log(players, team); 
-// ["Wes", "Sarah", "Ryan", "Lux"] ["Wes", "Sarah", "Ryan", "Lux"]
-WOW 原数组 plaryers 也被修改了。为什么会这样？因为 team 只是这个数组的引用，并不是它的复制。team 和 players 这两个变量指向的是同一个数组。
-```js
-const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+所以如何解决这个问题？接下来我们开始真正的复制吧！
 
-// 引用拷贝
-const team = players;
+方法一 Array.prototype.slice()
 
-console.log(`players: ${players}`, `team:${team}`);
-
-// 我们做如下操作：
-team[3] = 'Lux';
-
-console.log(`players: ${players}`, `team:${team}`);
+由于运行 slice 得到的结果是一个对原数组的浅拷贝，原数组不会被修改。所以如果修改这两个数组中任意 一个，另一个都不会受到影响。
 
 const team2 = players.slice();
+team2[3] = 'Lux2';
+console.log(players, team2); 
+方法二 Array.prototype.concat()
 
-console.log(`players: ${players}`, `team:${team}`, `team2:${team2}`);
-```
+concat() 方法是用来合并数组的，它也不会更改原有的数组，而是返回一个新数组，所以可以将 players 数组与一个空数组合并，得到的结果就符合预期了。
 
-![](http://om1c35wrq.bkt.clouddn.com/day14--02.png)
+const team3 = [].concat(players);
+team3[3] = 'Lux3';
+console.log(players, team3); 
+方法三 ES6 扩展语法
 
-由上效果显示，浅拷贝拷贝的是指针，当你去操作一个指针时，其实所有指针指向的同一个对象的值都会发生变化。
+扩展语法可以像扩展参数列表一样来扩展数组，效果与上述方法类似，但比较简洁。
 
+const team4 = [...players];
+team4[3] = 'Lux4';
+console.log(players, team4);
+方法四 Array.from()
 
+此外使用 Array 创建新的数组实例的方法也是可行的。
+
+const team5 = Array.from(players);
+team5[3] = 'Lux5';
+console.log(players, team5);
 ### 深拷贝
 
 ```js
