@@ -1,10 +1,7 @@
-# Day14 - JavaScript 引用和值拷贝
+### Day14 - JavaScript 引用和值拷贝
 
-## 项目效果
-
-![](http://om1c35wrq.bkt.clouddn.com/day14--00.png)
-
-
+#### 项目效果
+效果展示如下面的图片，另外也可以自行在浏览器的控制台中打印显示进行理解。
 
 ## 按值操作
 
