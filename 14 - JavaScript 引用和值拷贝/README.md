@@ -19,26 +19,19 @@
 
 基本数据类型赋值你可以理解成值拷贝，从深拷贝和浅拷贝的角度去思考的话，你可以理解成`深拷贝`，当你修改一个变量的值时，不会影响其他变量的值。
 
-### 实例
+##### 实例
 
 ```Javascript
-let age = 100;
-let age2 = age;
-console.log(age, age2);
-age = 200;
-console.log(age, age2);
-
-let name = 'liyuechun';
-let name2 = name;
-console.log(name, name2);
-name = 'liyc';
-console.log(name, name2);
+let age1 = 100; //number类型
+let age2 = age1; //值的赋值属于深拷贝
+console.log(age1, age2);  //100 100
+age1 = 200;
+console.log(age1, age2);  //200 100 
 ```
-![](http://om1c35wrq.bkt.clouddn.com/day14--01.png)
+> 值的复制：是给另外一个变量创建了一个存储空间，二者彼此独立，修改数据互不影响。  
 由此可见，基本类型，按值操作，新建的变量会将值复制给新的变量，各自的改变不会互相影响。
 
-
-## 通过引用操作
+#### 通过引用操作
 
 对象`Object`类型是按引用操作的，如果它不是基本类型中的一个，那么它就是对象，这里如果我们细究的话，JavaScript中每一个东西都可以当做对象，甚至是基本的类型（不包括`null`和`undefined`），但我们尽量不要钻这个牛角尖。
 
@@ -54,8 +47,19 @@ console.log(name, name2);
 
 `Map`
 
-### 浅拷贝
+那对于数组来说，情况是否一样呢？下面我们来看看数组。
 
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+const team = players;
+console.log(players, team);
+延续上面的思路，先声明一个数组 players，并将其赋值给 team。试想一下，如果需要修改 team 中的值，我们可以如何操作？或许可以这样？
+
+team[3] = 'Lux';
+来看看发生了什么。
+
+console.log(players, team); 
+// ["Wes", "Sarah", "Ryan", "Lux"] ["Wes", "Sarah", "Ryan", "Lux"]
+WOW 原数组 plaryers 也被修改了。为什么会这样？因为 team 只是这个数组的引用，并不是它的复制。team 和 players 这两个变量指向的是同一个数组。
 ```js
 const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
