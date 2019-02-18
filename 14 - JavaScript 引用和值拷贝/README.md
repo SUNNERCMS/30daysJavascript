@@ -58,10 +58,10 @@ console.log(players, team); // ["Wes", "Sarah", "Ryan", "Lux"] ["Wes", "Sarah", 
 > 结果显示原数组 plaryers 也被修改了。为什么会这样？因为 team 只是这个数组的引用，并不是它的复制。team 和 players 这两个变量指向的是同一个数组，也即是仅仅浅拷贝了指针，这个变量存储的指向原来数组存储空间的方向，两个变量指向的内容是一样的，这样修改其中一个另一个也会跟着改变。   
 
 
-##### 数组的复制解决方法：
+#### 数组复制的解决方法 （数组深拷贝）：
 - 方法一 Array.prototype.slice()  
 
-由于运行 slice 得到的结果是一个对原数组的浅拷贝，原数组不会被修改。所以如果修改这两个数组中任意 一个，另一个都不会受到影响。
+由于运行 slice ，原数组不会被修改。所以如果修改这两个数组中任意 一个，另一个都不会受到影响。
 ```JS
 const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 const team2 = players.slice();
@@ -87,34 +87,60 @@ team4[3] = 'Lux4';
 console.log(players, team4);  //["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah", "Ryan", "Lux4"]
 ```
 - 方法四 Array.from()
-
-此外使用 Array 创建新的数组实例的方法也是可行的。
-
-const team5 = Array.from(players);
-team5[3] = 'Lux5';
-console.log(players, team5);
-### 深拷贝
-
-```js
+Array.from() 方法从一个类似数组或可迭代对象中创建一个新的数组实例。  
+```JS
 const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
-
-// 创建新数组并且将原来的数组拼接到新数组中
-const team3 = [].concat(players);
-
-// ES6 Spread语法
-const team4 = [...players];
-team4[3] = 'heeee hawww';
-console.log(`team4:${team4}`);
-
 const team5 = Array.from(players);
-console.log(`team5:${team5}`);
+team4[3] = 'Lux5';
+console.log(players, team4);  //["Wes", "Sarah", "Ryan", "Poppy"] ["Wes", "Sarah", "Ryan", "Lux5"]
 ```
+#### object对象的复制方法（对象深拷贝）
 
-![](http://om1c35wrq.bkt.clouddn.com/day14--03.png)
+对于 Object 数据，我们用一个 person 对象来试试。
 
-由上面的效果显示，但我们修改team4时，players并没有发生任何变化，上面的`contact`,`...`,`Array.from`都属于深拷贝，会将原来的内容重新拷贝一份，所以当你操作一个指针时不会影响原对象。
+先声明对象：
+```JS
+const person = {
+   name: 'Web sun',
+   age: 25
+ };
+ ```
+然后思考一下如何可以取得它的复制，试试想当然的做法：
+```JS
+const captain = person;
+captain.number = 99;
+console.log(person, captain);
+// Object {name: "Web sun", age: 25, number: 99} 
+// Object {name: "Web sun", age: 25, number: 99}
+```
+这样好像行不通，person 的值也被更改了，那该如何才能真正复制呢,来达到两个变量之间互不影响？
 
+- 方法一 Object.assign()
 
+使用 Object.assign(target, ...sources) 时，后来的源对象的属性值，将会覆盖它之前的对象的属性。所以可以先复制 person 之后，再赋给属性新的值。
+
+需要注意的是：这个例子里面，我们用的数组和对象都只是一层嵌套，Lodash 有一个深度复制的方法，但使用之前需要多考虑一下。
+
+const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+console.log(cap2); // Object {name: "Wes Bos", age: 12, number: 99}
+方法二 JSON 转换
+
+利用 JSON 可以先将对象转成字符串的格式，然后再把它转成 JSON，从而实现复制。
+
+const wes = {
+  name: 'Wes',
+  age: 100,
+  social: {
+    twitter: '@wesbos',
+    facebook: 'wesbos.developer'
+  }
+};
+
+const dev = Object.assign({}, wes);
+const dev2 = JSON.parse(JSON.stringify(wes));
+console.log(wes);
+console.log(dev);
+console.log(dev2);
 ### 深拷贝 与 浅拷贝对比
 
 ```js
