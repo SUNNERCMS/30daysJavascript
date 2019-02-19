@@ -115,32 +115,20 @@ console.log(person, captain);
 ```
 这样好像行不通，person 的值也被更改了，那该如何才能真正复制呢,来达到两个变量之间互不影响？
 
-- 方法一 Object.assign()
-
-使用 Object.assign(target, ...sources) 时，后来的源对象的属性值，将会覆盖它之前的对象的属性。所以可以先复制 person 之后，再赋给属性新的值。
-
-需要注意的是：这个例子里面，我们用的数组和对象都只是一层嵌套，Lodash 有一个深度复制的方法，但使用之前需要多考虑一下。
-
-const cap2 = Object.assign({}, person, { number: 99, age: 12 });
-console.log(cap2); // Object {name: "Wes Bos", age: 12, number: 99}
-方法二 JSON 转换
-
-利用 JSON 可以先将对象转成字符串的格式，然后再把它转成 JSON，从而实现复制。
-
-const wes = {
-  name: 'Wes',
-  age: 100,
-  social: {
-    twitter: '@wesbos',
-    facebook: 'wesbos.developer'
-  }
-};
-
-const dev = Object.assign({}, wes);
-const dev2 = JSON.parse(JSON.stringify(wes));
-console.log(wes);
-console.log(dev);
-console.log(dev2);
+- 方法一 ES6的Object.assign()
+`Object.assign(target, ...sources)`用于对象的合并，将源对象中的所有可枚举属性，复制到目标对象中，并返回合并后的目标对象。后来的源对象的属性值，将会覆盖它之前的对象的属性。    
+```JS
+var obj={
+   name:'sun',
+   height:180cm
+ }
+ var copyobj=Object.assign({},obj);
+ copyobj.name='zhao';
+ console.log(obj); //{name: "sun", height: "180cm"}
+ console.log(copyobj); //{name: "zhao", height: "180cm"}
+```
+- 方法二 ES6的扩展运算符
+用于取出参数对象的所有可遍历属性，拷贝到当前属性中。  
 ### 深拷贝 与 浅拷贝对比
 
 ```js
