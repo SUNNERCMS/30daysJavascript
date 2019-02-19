@@ -153,3 +153,17 @@ console.log(copyArray); //[{number:100},{number:2},{number:3}];
 ```
 > 序列化：将一个JavaScript值（数组或对象）转换为一个JSON字符串；JSON.stringify()   
 反序列化：将一个JSON字符串转换为对象；JSON.parse()
+- 方法二 深拷贝递归函数
+```JS
+function deepcopy(obj){
+   if(typeof obj == 'object') { //说明参数是一个对象类型，但是数组也是对象，需要具体判断是不是数组类型。
+      var result = obj.constructor==Array ? [] : {};
+      for(let i in obj){ //遍历obj的每一项
+          result[i]=typeof obj[i]=="object" ? deepcopy(obj[i]) : obj[i];
+      }
+   }else{
+      var result = obj;
+   }
+   return result;
+}
+```
