@@ -120,7 +120,7 @@ console.log(person, captain);
 ```JS
 var obj={
    name:'sun',
-   height:180cm
+   height:'180cm'
  }
  var copyobj=Object.assign({},obj);
  copyobj.name='zhao';
@@ -129,63 +129,25 @@ var obj={
 ```
 - 方法二 ES6的扩展运算符
 用于取出参数对象的所有可遍历属性，拷贝到当前属性中。  
-### 深拷贝 与 浅拷贝对比
-
-```js
-//创建object对象
-const person = {
- name: '黎跃春',
- age: 29
-};
-
-// 浅拷贝
-console.log(`person:${JSON.stringify(person)}`);
-const captain = person;
-captain.number = 99;
-console.log(`person:${JSON.stringify(person)}`);
-console.log(`captain:${JSON.stringify(captain)}`);
-
-// 深拷贝
-const cap2 = Object.assign({}, person, {
- number: 99,
- age: 12
-});
-console.log(`cap2:${JSON.stringify(cap2)}`);
-console.log(`person:${JSON.stringify(person)}`);
-```
-
-![](http://om1c35wrq.bkt.clouddn.com/day14--04.png)
-
-- `JSON.stringify`将对象转换成字符串，打印时效果清晰。
-- `captain = person`属于浅拷贝
-- `Object.assign`的三个参数中，第一个参数属于初始值，它最终的值是第二个和第三个参数的并集，如果第二个、第三个参数有相同的属性，那个第三个参数会覆盖第二个参数里面的值。
-
-### 采用JSON字符串
-
-```js
-// 对象的嵌套
-const liyc = {
- name: '黎跃春',
- age: 100,
- social: {
-   sina: '黎跃春-追时间的人',
-   facebook: '黎跃春'
+```JS
+var obj={
+   name:'sun',
+   height:180cm
  }
-};
-
-console.log(`liyc:${liyc}`);
-
-const dev = Object.assign({}, liyc);
-console.log(`dev:${dev}`);
-
-const dev2 = JSON.stringify(liyc);
-console.log(`dev2:${dev2}`);
-
-const dev3 = JSON.parse(JSON.stringify(liyc));
-console.log(`dev3:${dev3}`);
+ var copyobj={...obj};
+ copyobj.name='zhao';
+ console.log(obj); //{name: "sun", height: "180cm"}
+ console.log(copyobj); //{name: "zhao", height: "180cm"}
 ```
-![](http://om1c35wrq.bkt.clouddn.com/day14--05.png)
-
-
-首先调用`JSON.stringify()`方法将对象解析为字符串，再调用`JSON.parse()`方法，将字符串解析为对象，这是一个小技巧，在处理对象的复制时很有用。
-
+#### 注意：上述对数组深拷贝的方法仅仅适用第一层级的值是基本数据类型的情况。若第一层级的值为对象或者数组等引用类型时，则上述方法失效。对象中若仍嵌套有对象，同样失效。
+## 拷贝所有层级
+##### 1.不仅拷贝第一层级，还能拷贝数组或对象所有层级的各项值。  
+##### 2.不是单独针对数组或对象，而是能够通用与数组、对象和其他复杂的JSON形式的对象。
+- 方法一 `JSON.parse(JSON.stringify(xxx))`
+```JS
+var array=[{number:1},{number:2},{number:3}];
+var copyArray=JSON.parse(JSON.stringify(array));
+copyArray[0].number=100;
+console.log(array);//[{number:1},{number:2},{number:3}];
+console.log(copyArray); //[{number:100},{number:2},{number:3}];
+```
