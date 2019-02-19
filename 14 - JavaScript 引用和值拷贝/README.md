@@ -151,3 +151,5 @@ copyArray[0].number=100;
 console.log(array);//[{number:1},{number:2},{number:3}];
 console.log(copyArray); //[{number:100},{number:2},{number:3}];
 ```
+> 序列化：将一个JavaScript值（数组或对象）转换为一个JSON字符串；JSON.stringify()   
+反序列化：将一个JSON字符串转换为对象；JSON.parse()
