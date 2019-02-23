@@ -68,7 +68,7 @@
 
 ## Day15 - LocalStorage
 
-![](http://oslwafb71.bkt.clouddn.com/small14.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/15%20-%20LocalStorage/GIF.gif)
 
 ## Day16 - Mouse Move Shadow
 ![](http://oslwafb71.bkt.clouddn.com/small15.jpg)
