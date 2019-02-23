@@ -4,12 +4,9 @@
 ![](http://om1c35wrq.bkt.clouddn.com/day16-00.gif)
 
 鼠标移动时，元素的字体阴影随着鼠标移动的方向发生改变，达到字体阴影随着鼠标一起走的效果。
-
 ## 基础知识
-
 #### text-shadow
   `text-shadow: h-shadow v-shadow blur color; `
-
 `none`：无阴影
 `<length>`①：第1个长度值用来设置对象的阴影水平偏移值。可以为负值
 `<length>`②：第2个长度值用来设置对象的阴影垂直偏移值。可以为负值
