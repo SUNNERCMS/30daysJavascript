@@ -34,22 +34,21 @@
     <h2>LOCAL TAPAS</h2>
     <p></p>
     <ul class="plates">
-      <li>Loading Tapas...</li>
+      <li>Loading Tapasss...</li>
     </ul>
     <form class="add-items">
-      <input type="text" name="item" placeholder="Item Name" required>
+      <input type="text" name="item" placeholder="Item Name" autocomplete="off" required>
       <input type="submit" value="+ Add Item">
     </form>
   </div>
 
   <script>
-    //在关闭浏览器之后清除缓存
-    // window.onbeforeunload = function (e) {
-    //   localStorage.removeItem('items');
-    //   // let confirmationMessage = "\o/";
-    //   e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
-    //   // return confirmationMessage; // 如果有返回值的话，就会弹出确认框。
-    // };
+
+    // 在关闭浏览器之后清除缓存
+    window.onbeforeunload = function (e) {
+      localStorage.removeItem('items');
+      e.returnValue=false;
+    };
     // window.onbeforeunload = function (event) {
     //   var message = 'Important: Please click on \'Save\' button to leave this page.';
     //   if (typeof event == 'undefined') {
@@ -60,14 +59,14 @@
     //   }
     //   return message;
     // };
-    const addItems = document.querySelector('.add-items');
-    const itemsList = document.querySelector('.plates');
-    const items = JSON.parse(localStorage.getItem('items')) || [];
-
+    const addItems = document.querySelector('.add-items'); //获取的是form表单
+    const itemsList = document.querySelector('.plates');  //获取ul无序列表
+    const items = JSON.parse(localStorage.getItem('items')) || []; //从localStorage中获取键名为items的值，并转换为json格式，若果取到则进行赋值，若果没有则赋值[]；
+    //增加列表项，然后添加到ul列表中，并更新到localStorage 
     function addItem(e) {
-      e.preventDefault();
-      const text = this.querySelector('[name=item]').value;
-      const item = {
+      e.preventDefault();  //阻止submit默认的页面刷新行为。
+      const text = this.querySelector('[name=item]').value;   //获取输入框中的内容
+      const item = {                                         //对象容器存储输入框内容
         text, // ES6的简写形式 => text = text;
         done: false
       };
@@ -76,7 +75,7 @@
       populateList(items, itemsList);
       this.reset(); // 添加完数据后，重置输入框      
     }
-
+// 将获取到的输入框内容添加到ul列表中
     function populateList(populates = [], place) { // 设置默认值，防止传参数出错的时候crash
       place.innerHTML = populates.map((populate, index) => {
         return `
@@ -87,29 +86,22 @@
         `; //之所以用‘’空字符是因为如果用null的话，会出现在html中
       }).join(''); // join()之后一定要加''，表示空字符，否则会加入逗号，造成错误  
     }
-
+// 更改列表项选中状态，更新到localStorage和界面显示
     function toggleDone(e) {
       // if(!e.target.nodeName.match('INPUT')) return;
-      if (!e.target.matches('input')) return; // 跳过所有的input，只处理label
+      if (e.target.matches('input')) return; // 跳过所有的input，只处理label
       const node = e.target;
-      const index = node.dataset.index;
+      const index = node.dataset.index; //访问自定义属性
       items[index].done = !items[index].done;
       localStorage.setItem('items', JSON.stringify(items));
-      populateList(items, itemsList);
+      populateList(items, itemsList);   
     }
+    // 主函数
+    addItems.addEventListener('submit', addItem); //form表单监听是否有submit提交发生
+    itemsList.addEventListener('click', toggleDone); //点击列表项触发toggleDone函数
+    populateList(items, itemsList);  //每次加载页面时，先将localStorage中保存的items内容加载到列表中显示出来。
 
-    addItems.addEventListener('submit', addItem);
-    itemsList.addEventListener('click', toggleDone);
-
-    populateList(items, itemsList);
-
-    // 3 addtion function
-    // Check all
-    // Uncheck all
-    // Clear all
   </script>
-
-
 </body>
 
 </html>

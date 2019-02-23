@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+      <h2>LOCAL TAPAS</h2>
+      <p></p>
+      <ul class="plates">
+        <li>Loading Tapasss...</li>
+      </ul>
+      <form class="add-items">
+        <input type="text" name="item" placeholder="Item Name" required>
+        <input type="submit" value="+ Add Item">
+      </form>
+    </div>
+  <script>
+    let Form=document.querySelector(".add-items");
+    let List=document.querySelector(".plates");
+    let itemsLocalStorage = JSON.parse(localStorage.getItem("items")) || [];
+    Form.addEventListener("submit",addItems);
+    function addItems(e){
+      e.preventDefault();
+      let item=this.querySelector("[name=item]").value;
+      let contain={
+        text:item,
+        done:false
+      }
+      itemsLocalStorage.push(contain);
+      localStorage.setItem("items",JSON.stringify(itemsLocalStorage));
+      addList(itemsLocalStorage,List);
+      this.reset();
+    // 将localStorage中保存条目渲染到展示列表中。
+    function addList(arr,place){
+      place.innerHTML = arr.map((item,index)=>{
+        return `
+          <li>
+            <input type="checkbox" id=${index} ${item.done ? checked : false}></input>
+            <label for=${index}>${item.text}</label>
+          </li>
+          `
+      }).join("");
+    
+    }
+    }
+
+  </script>
+</body>
+</html>
