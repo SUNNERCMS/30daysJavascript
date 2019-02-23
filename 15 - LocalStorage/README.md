@@ -99,14 +99,15 @@ function populateList(populates = [], place {
 ## 清除缓存
 
 ```Javascript
-    // 在关闭浏览器之后清除缓存
+    // 在关闭浏览器时或者刷新页面时清除缓存
     window.onbeforeunload = function (e) {
       localStorage.removeItem('items');
-      // let confirmationMessage = "\o/";
-      e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
-      // return confirmationMessage; // 如果有返回值的话，就会弹出确认框。
+      e.returnValue=true;  //弹出提示框阻止onunload事件的运行
     };
 ```
+> onbeforeunload 事件在即将离开当前页面（刷新或关闭）时触发。该事件可用于弹出对话框，提示用户是继续浏览页面还是离开当前页面。
+注意：当该事件返回的字符串（事前设置好的event.returnValue的值）不为null或者undefined时，弹出确认窗口让用户自行选择是否关闭当前页面。（换句话说就是使用event.returnValue可以阻止onunload卸载页面，因为它会出现一个提示窗口，让用户自己判断是否离开当前页）一些浏览器将该事件返回的字符串显示在弹出窗上。从Firefox 4、 Chrome 51、Opera 38 和Safari 9.1开始，通用确认信息代替事件返回的字符串。
+
 * 有些时候，我们仅仅是为了练习`localStorage`的使用，并不想在浏览器中留下过多的缓存，那么这个方法就派上了用场。
 * 当页面重新刷新或者关闭之前，执行`localStorage.removeItem('items’);`清除页面的缓存。
 * **慎用**，尤其在生产环境中。
