@@ -60,19 +60,16 @@ rest;
 [x](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/x) 设置或获取鼠标指针位置相对于父文档的 x 像素坐标(亦即相对于当前窗口)。  
 [y](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/y) 设置或获取鼠标指针位置相对于父文档的 y 像素坐标(亦即相对于当前窗口)。  
 [pageX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX) 设置或获取指针位置相对于整个文档的x坐标  
-[https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) 设置或获取指针位置相对于整个文档的y坐标  
+[pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) 设置或获取指针位置相对于整个文档的y坐标  
 
 #### 页面元素offset的几个属性示例
-![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_6.png)
 
-> 该图是对本例子的例子的更改，为外层元素加上了`relative`定位属性，并更改了其高度和宽度的值，为了显示以下所示效果。
-
-* HTMLElement.offsetParent：是一个只读属性，指向最近的包含该元素的__定位__元素.如果没有定位的元素，则 offsetParent 为最近的 table 元素对象或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。
-offsetParent 很有用，因为 _offsetTop_ 和 _offsetLeft_ 都是相对于其内边距边界的。
-* HTMLElement.offsetTop：指的是当前元素到其offsetParent指向元素的__上边距__的距离。（如图所示）
-* HTMLElement.offsetLeft：指的是当前元素到其offsetParent指向元素的__左边距__的距离。（如图所示）
-* HTMLElement.offsetHeight：指的是当前元素的__高度__，包含__content，padding，border__的高度值，但不包括__margin__的值。（如图所示）
-* HTMLElement.offsetWidth：指的是当前元素的__宽度__，包含__content，padding，border__的高度值，但不包括__margin__的值。（如图所示）
+* HTMLElement.offsetParent：是一个只读属性，指向最近的包含该元素的定位元素.如果没有定位的元素，则 offsetParent 为最近的 table 元素对象或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。
+offsetParent 很有用，因为 _offsetTop_ 和 _offsetLeft_ 都是相对于其内边距边界的。  
+* HTMLElement.offsetTop：指的是当前元素到其offsetParent指向元素的__上边距__的距离。    
+* HTMLElement.offsetLeft：指的是当前元素到其offsetParent指向元素的__左边距__的距离。  
+* HTMLElement.offsetHeight：指的是当前元素的__高度__，包含__content，padding，border__的高度值，但不包括__margin__的值。  
+* HTMLElement.offsetWidth：指的是当前元素的__宽度__，包含__content，padding，border__的高度值，但不包括__margin__的值。  
 
 ## js代码
 
