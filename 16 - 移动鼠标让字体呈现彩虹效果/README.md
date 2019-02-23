@@ -8,16 +8,13 @@
 ## 基础知识
 
 #### text-shadow
-
-![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_4.png)
-![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_5.png)
+  `text-shadow: h-shadow v-shadow blur color; `
 
 `none`：无阴影
 `<length>`①：第1个长度值用来设置对象的阴影水平偏移值。可以为负值
 `<length>`②：第2个长度值用来设置对象的阴影垂直偏移值。可以为负值
 `<length>`③：如果提供了第3个长度值则用来设置对象的阴影模糊值。不允许负值
 `<color>`：设置对象的阴影的颜色。
-
 
 #### 解构赋值
 > [参考文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
@@ -37,24 +34,19 @@ console.log(a); // 1
 console.log(b); // 2
 console.log(rest); // [3, 4, 5]
 
-/* object 解构赋值 */
+/* object 解构赋值:这里的小括号不能掉 */
 ({a, b} = {a:1, b:2});
 console.log(a); // 1
 console.log(b); // 2
 
-// Stage 3 proposal
 /* object & ...rest 解构赋值 */
-
 ({a, b, ...rest} = {a:1, b:2, c:3, d:4});
 // {a: 1, b: 2, c: 3, d: 4}
 
 rest;
 // {c: 3, d: 4}
 ```
-
-
 #### MouseEvent
-
 
 ![](http://om1c35wrq.bkt.clouddn.com/D6300A0F-CD68-4CE2-AEB7-22DF2CA6FF3F.png)
 [https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
