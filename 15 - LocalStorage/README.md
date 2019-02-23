@@ -1,14 +1,12 @@
 
 ## 效果图
-![](http://om1c35wrq.bkt.clouddn.com/day15-0.gif)****
-
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/15%20-%20LocalStorage/GIF.gif)
 
 第十五天主要是练习`LocalStorage`（本地存储）以及事件委托的使用，使用场景是一个简单的`todo list`的应用，实现基本的添加`item`，切换完成状态，将所有`todo`项存储在`localstorage`中，保证刷新浏览器后数据不丢失。
 
 ## 主要思路
 
 * 提前预定义好所有用到的变量；
-
 
 ```Javascript
 // 添加item的按钮
