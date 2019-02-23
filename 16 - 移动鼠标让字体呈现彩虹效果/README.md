@@ -51,16 +51,16 @@ rest;
 ![](http://om1c35wrq.bkt.clouddn.com/D6300A0F-CD68-4CE2-AEB7-22DF2CA6FF3F.png)
 [https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
 
-[clientX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX) 设置或获取鼠标指针位置相对于当前窗口的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。
-[clientY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY) 设置或获取鼠标指针位置相对于当前窗口的 y 坐标，其中客户区域不包括窗口自身的控件和滚动条。
-[offsetX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX) 设置或获取鼠标指针位置相对于触发事件的对象的 x 坐标。
-[offsetY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetY) 设置或获取鼠标指针位置相对于触发事件的对象的 y 坐标。
-[screenX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX) 设置或获取获取鼠标指针位置相对于用户屏幕的 x 坐标。
-[screenY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY) 设置或获取鼠标指针位置相对于用户屏幕的 y 坐标。
-[x](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/x) 设置或获取鼠标指针位置相对于父文档的 x 像素坐标(亦即相对于当前窗口)。
-[y](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/y) 设置或获取鼠标指针位置相对于父文档的 y 像素坐标(亦即相对于当前窗口)。
-[pageX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX) 设置或获取指针位置相对于整个文档的x坐标
-[https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) 设置或获取指针位置相对于整个文档的y坐标
+[clientX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX) 设置或获取鼠标指针位置相对于当前窗口的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。  
+[clientY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY) 设置或获取鼠标指针位置相对于当前窗口的 y 坐标，其中客户区域不包括窗口自身的控件和滚动条。  
+[offsetX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX) 设置或获取鼠标指针位置相对于触发事件的对象的 x 坐标。  
+[offsetY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetY) 设置或获取鼠标指针位置相对于触发事件的对象的 y 坐标。 
+[screenX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX) 设置或获取获取鼠标指针位置相对于用户屏幕的 x 坐标。  
+[screenY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY) 设置或获取鼠标指针位置相对于用户屏幕的 y 坐标。  
+[x](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/x) 设置或获取鼠标指针位置相对于父文档的 x 像素坐标(亦即相对于当前窗口)。  
+[y](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/y) 设置或获取鼠标指针位置相对于父文档的 y 像素坐标(亦即相对于当前窗口)。  
+[pageX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX) 设置或获取指针位置相对于整个文档的x坐标  
+[https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) 设置或获取指针位置相对于整个文档的y坐标  
 
 #### 页面元素offset的几个属性示例
 ![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_6.png)
