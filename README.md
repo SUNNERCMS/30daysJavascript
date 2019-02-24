@@ -63,8 +63,7 @@
 
 ## Day14 - JavaScript References VS Copying
 
-![](http://oslwafb71.bkt.clouddn.com/small13.jpg)
-
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/14%20-%20JavaScript%20%E5%BC%95%E7%94%A8%E5%92%8C%E5%80%BC%E6%8B%B7%E8%B4%9D/showpicture.PNG)
 
 ## Day15 - LocalStorage
 

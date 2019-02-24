@@ -4,20 +4,14 @@
 ![](http://om1c35wrq.bkt.clouddn.com/day16-00.gif)
 
 鼠标移动时，元素的字体阴影随着鼠标移动的方向发生改变，达到字体阴影随着鼠标一起走的效果。
-
 ## 基础知识
-
 #### text-shadow
-
-![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_4.png)
-![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_5.png)
-
+  `text-shadow: h-shadow v-shadow blur color; `
 `none`：无阴影
 `<length>`①：第1个长度值用来设置对象的阴影水平偏移值。可以为负值
 `<length>`②：第2个长度值用来设置对象的阴影垂直偏移值。可以为负值
 `<length>`③：如果提供了第3个长度值则用来设置对象的阴影模糊值。不允许负值
 `<color>`：设置对象的阴影的颜色。
-
 
 #### 解构赋值
 > [参考文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
@@ -37,50 +31,42 @@ console.log(a); // 1
 console.log(b); // 2
 console.log(rest); // [3, 4, 5]
 
-/* object 解构赋值 */
+/* object 解构赋值:这里的小括号不能掉 */
 ({a, b} = {a:1, b:2});
 console.log(a); // 1
 console.log(b); // 2
 
-// Stage 3 proposal
 /* object & ...rest 解构赋值 */
-
 ({a, b, ...rest} = {a:1, b:2, c:3, d:4});
 // {a: 1, b: 2, c: 3, d: 4}
 
 rest;
 // {c: 3, d: 4}
 ```
-
-
 #### MouseEvent
-
 
 ![](http://om1c35wrq.bkt.clouddn.com/D6300A0F-CD68-4CE2-AEB7-22DF2CA6FF3F.png)
 [https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
 
-[clientX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX) 设置或获取鼠标指针位置相对于当前窗口的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。
-[clientY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY) 设置或获取鼠标指针位置相对于当前窗口的 y 坐标，其中客户区域不包括窗口自身的控件和滚动条。
-[offsetX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX) 设置或获取鼠标指针位置相对于触发事件的对象的 x 坐标。
-[offsetY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetY) 设置或获取鼠标指针位置相对于触发事件的对象的 y 坐标。
-[screenX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX) 设置或获取获取鼠标指针位置相对于用户屏幕的 x 坐标。
-[screenY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY) 设置或获取鼠标指针位置相对于用户屏幕的 y 坐标。
-[x](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/x) 设置或获取鼠标指针位置相对于父文档的 x 像素坐标(亦即相对于当前窗口)。
-[y](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/y) 设置或获取鼠标指针位置相对于父文档的 y 像素坐标(亦即相对于当前窗口)。
-[pageX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX) 设置或获取指针位置相对于整个文档的x坐标
-[https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) 设置或获取指针位置相对于整个文档的y坐标
+[clientX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientX) 设置或获取鼠标指针位置相对于当前窗口的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。  
+[clientY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/clientY) 设置或获取鼠标指针位置相对于当前窗口的 y 坐标，其中客户区域不包括窗口自身的控件和滚动条。  
+[offsetX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX) 设置或获取鼠标指针位置相对于触发事件的对象的 x 坐标。  
+[offsetY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetY) 设置或获取鼠标指针位置相对于触发事件的对象的 y 坐标。 
+[screenX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenX) 设置或获取获取鼠标指针位置相对于用户屏幕的 x 坐标。  
+[screenY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/screenY) 设置或获取鼠标指针位置相对于用户屏幕的 y 坐标。  
+[x](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/x) 设置或获取鼠标指针位置相对于父文档的 x 像素坐标(亦即相对于当前窗口)。  
+[y](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/y) 设置或获取鼠标指针位置相对于父文档的 y 像素坐标(亦即相对于当前窗口)。  
+[pageX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageX) 设置或获取指针位置相对于整个文档的x坐标  
+[pageY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY) 设置或获取指针位置相对于整个文档的y坐标  
 
 #### 页面元素offset的几个属性示例
-![](http://om1c35wrq.bkt.clouddn.com/Snip20170807_6.png)
 
-> 该图是对本例子的例子的更改，为外层元素加上了`relative`定位属性，并更改了其高度和宽度的值，为了显示以下所示效果。
-
-* HTMLElement.offsetParent：是一个只读属性，指向最近的包含该元素的__定位__元素.如果没有定位的元素，则 offsetParent 为最近的 table 元素对象或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。
-offsetParent 很有用，因为 _offsetTop_ 和 _offsetLeft_ 都是相对于其内边距边界的。
-* HTMLElement.offsetTop：指的是当前元素到其offsetParent指向元素的__上边距__的距离。（如图所示）
-* HTMLElement.offsetLeft：指的是当前元素到其offsetParent指向元素的__左边距__的距离。（如图所示）
-* HTMLElement.offsetHeight：指的是当前元素的__高度__，包含__content，padding，border__的高度值，但不包括__margin__的值。（如图所示）
-* HTMLElement.offsetWidth：指的是当前元素的__宽度__，包含__content，padding，border__的高度值，但不包括__margin__的值。（如图所示）
+* HTMLElement.offsetParent：是一个只读属性，指向最近的包含该元素的定位元素.如果没有定位的元素，则 offsetParent 为最近的 table 元素对象或根元素（标准模式下为 html；quirks 模式下为 body）。当元素的 style.display 设置为 "none" 时，offsetParent 返回 null。
+offsetParent 很有用，因为 _offsetTop_ 和 _offsetLeft_ 都是相对于其内边距边界的。  
+* HTMLElement.offsetTop：指的是当前元素到其offsetParent指向元素的__上边距__的距离。    
+* HTMLElement.offsetLeft：指的是当前元素到其offsetParent指向元素的__左边距__的距离。  
+* HTMLElement.offsetHeight：指的是当前元素的__高度__，包含__content，padding，border__的高度值，但不包括__margin__的值。  
+* HTMLElement.offsetWidth：指的是当前元素的__宽度__，包含__content，padding，border__的高度值，但不包括__margin__的值。  
 
 ## js代码
 
