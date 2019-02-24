@@ -1,7 +1,7 @@
 # Day16 - 鼠标移动让文字出现🌈效果中文指南
 
 ## 效果图
-![](http://om1c35wrq.bkt.clouddn.com/day16-00.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/16%20-%20%E7%A7%BB%E5%8A%A8%E9%BC%A0%E6%A0%87%E8%AE%A9%E5%AD%97%E4%BD%93%E5%91%88%E7%8E%B0%E5%BD%A9%E8%99%B9%E6%95%88%E6%9E%9C/show.PNG)
 
 鼠标移动时，元素的字体阴影随着鼠标移动的方向发生改变，达到字体阴影随着鼠标一起走的效果。
 ## 基础知识
