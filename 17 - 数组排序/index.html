@@ -1,70 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Sort Without Articles</title>
+    <meta charset="UTF-8">
+    <title>无冠词排序</title>
+    <style>
+        body{
+            background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+            background-size:cover;
+            padding:50px;
+            display:flex;
+            flex-direction: column; /*这里是将ul,和div进行垂直居中排列，二者相对位置是上下，不加的话相对位置水平*/
+            /* justify-content: center; */
+            align-items:center;
+            min-height:100vh;
+        }
+        #bands{
+            list-style: inside square;
+            font-size:20px;
+            background: white;
+            width:500px;
+            margin:auto;
+            padding:0px;
+            box-shadow: 0 0 0 20px rgba(0,0,0,0.25);
+        }
+        #bands li{
+            border-bottom:1px solid #efefef;
+            padding:20px;
+        }
+        #bands li:last-chid{
+            border-bottom:none;
+        }
+        .button{
+            margin-top:25px;
+            margin-bottom: 50px;
+        }
+        button{
+            font-size: 25px;
+            width:100px;
+            padding:3px;
+            border-radius: 5px;
+            margin-left: 10px;
+            box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);       
+        }
+    </style>
 </head>
-
 <body>
+    <ul id="bands"></ul>
+    <div class="button">
+        <button name="ascending">升序</button>
+        <button name="descengding">降序</button>
+    </div>
+    <script>
+        const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled',
+                                'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive',
+                                'Anywhere But Here', 'An Old Dog'
+                            ];
+        const bandsele=document.querySelector("#bands");
+        show(bands,bandsele);
+        const button=[...document.querySelectorAll("button")];//使用扩展运算符，这里是打散，将伪数组转化为真正的数组
+        button.forEach(item=>item.addEventListener("click",paixu));
 
-  <style>
-    body {
-      font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      min-height: 100vh;
-    }
 
-    #bands {
-      list-style: inside square;
-      font-size: 20px;
-      background: white;
-      width: 500px;
-      margin: auto;
-      padding: 0;
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
-    }
+        // 取出冠词a,an,the的函数，返回一个新的字符串
+        function del(item){
+            return item.replace(/^(a|an|the)\s{1}/ig,'');
+        }
+        //用sort比较函数以及del函数将每一项去除完冠词后进行比较，然后根据比较条件的正负，对原来项进行排序,sort会改变原数组
+        function paixu(e){
+            let flag=this.getAttribute("name");//使用name值对相同元素进行区别
+            if(flag=="ascending"){
+                bands.sort((a,b)=>del(a)>del(b)?1:-1);
+            }else{
+                bands.sort((a,b)=>del(a)>del(b)?-1:1);
+            }
+            show(bands,bandsele);
+        }
+        //将数组中的元素进行显示在指定列表中的函数,遍历整个数组元素，然后将返回的元素进行拼接整体显示在innerHTML
+        function show(arr,place){
+            place.innerHTML=arr.map(item=>{return `<li>${item}</li>`}).join('');
+        }
 
-    #bands li {
-      border-bottom: 1px solid #efefef;
-      padding: 20px;
-    }
-
-    #bands li:last-child {
-      border-bottom: 0;
-    }
-
-    a {
-      color: #ffc600;
-      text-decoration: none;
-    }
-  </style>
-
-  <ul id="bands"></ul>
-
-  <script>
-    const bandsele = document.querySelector('#bands');
-    // 取消每一个字符串的开头的a|an|the
-    function strip(str) {
-      return str.replace(/^(a |an |the )/ig, '').trim();
-    }
-
-    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled',
-      'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive',
-      'Anywhere But Here', 'An Old Dog'
-    ];
-
-    // 获取到已经排过序的数组
-    const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
-    bandsele.innerHTML =
-      sortedBands
-      .map(band => `<li>${band}</li>`)
-      .join('');
-  </script>
-
+    </script>
 </body>
-
 </html>
