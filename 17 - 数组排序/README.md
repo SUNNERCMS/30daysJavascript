@@ -41,7 +41,7 @@ function paixu(e){
     show(bands,bandsele);
 }
 ```
->  
+>  这里的思路：刚开始使用的是两个函数，点击不同的按钮跳转到各自的事件处理函数上去。
 
 ```JS
 ```
