@@ -285,5 +285,3 @@ secondsLeft = secondsLeft % 60;
 //打印输出
 console.log(hours, mins, secondsLeft);
 ```
-
-完结：所有代码解释在代码注释中。
