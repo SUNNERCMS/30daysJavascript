@@ -5,3 +5,27 @@
 挑战升级：点击显示时长按钮将每个video的时间显示出来，将选中的videos进行总时长的计算。
 
 ### 代码解析
+css页面布局和示例17：无冠词排序基本一致
+主要分析JavaScript代码：
+```JS
+  <script>
+      let list=[...document.querySelectorAll("li")];
+      let input = document.querySelector("input");
+      let button = document.querySelector("button");
+      button.addEventListener("click",totalTime);
+      list.forEach(item=>{
+        let datatime=item.dataset.time;
+        item.innerHTML=item.innerHTML+"------------时长："+datatime;
+      });
+      //总时间计算函数
+      function totalTime(){
+        let sum = list.reduce((cal,item)=>{
+                let datatime=item.getAttribute("data-time");
+                let [mins,seconds] = datatime.split(":").map(item=>parseFloat(item));//解构赋值
+                return cal+(mins*60+seconds); //reduce求和注意要让cal带入计算
+              },0);
+        let hours=sum/3600;
+        input.value=Math.floor(sum/3600)+"个小时"+Math.floor((sum%3600)/60)+"分"+sum%60+"秒";
+      }
+  </script>
+```
