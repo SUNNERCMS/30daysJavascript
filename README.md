@@ -77,7 +77,7 @@
 
 ## Day18 - Adding Up Times with Reduce
 
-![](http://oslwafb71.bkt.clouddn.com/small17.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/18%20-%20Day18%20-%20Reduce%E3%80%81Map%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8%E8%AE%A1%E7%AE%97%E6%97%B6%E5%88%86%E7%A7%92/show.PNG)
 
 ## Day19 - Webcam Fun
 ![](http://oslwafb71.bkt.clouddn.com/small18.jpg)
