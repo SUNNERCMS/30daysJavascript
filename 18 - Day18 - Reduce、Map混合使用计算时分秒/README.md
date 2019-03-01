@@ -1,6 +1,8 @@
 ## Day18 - Reduce、Map混合使用计算时分秒
 ### 效果图
-![](http://om1c35wrq.bkt.clouddn.com/day18%E6%95%88%E6%9E%9C%E5%9B%BE.png)
+
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/18%20-%20Day18%20-%20Reduce%E3%80%81Map%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8%E8%AE%A1%E7%AE%97%E6%97%B6%E5%88%86%E7%A7%92/show.PNG)
+
 第18天挑战的内容主要是如何将一系列的`data-time`加起来，最终计算总时间，总时间用时分秒显示。  
 挑战升级：点击显示时长按钮将每个video的时间显示出来，将选中的videos进行总时长的计算。
 
