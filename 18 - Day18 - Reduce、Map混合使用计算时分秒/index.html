@@ -4,6 +4,56 @@
 <head>
   <meta charset="UTF-8">
   <title>Adding Up Times with Reduce</title>
+  <style>
+      body{
+          background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+          background-size:cover;
+          padding:50px;
+          display:flex;
+          flex-direction: column; /*这里是将ul,和div进行垂直居中排列，二者相对位置是上下，不加的话相对位置水平*/
+          /* justify-content: center; */
+          align-items:center;
+          min-height:100vh;
+      }
+      .videos{
+            list-style: inside square;
+            font-size:20px;
+            background: white;
+            width:500px;
+            margin:auto;
+            padding:0px;
+            box-shadow: 0 0 0 20px rgba(0,0,0,0.25);
+        }
+      .videos li{
+            border-bottom:1px solid #efefef;
+            padding:20px;
+            /* white-space: pre; */
+        }
+      .videos li:last-chid{
+            border-bottom:none;
+        }
+      .result{
+          margin-top:30px;
+          margin-bottom: 50px;
+          /* display: flex;
+          justify-content: center;
+          align-items: center; */
+      }
+      button{
+          font-size: 25px;
+          width:100px;
+          padding:3px;
+          border-radius: 5px;
+          margin-right: 10px;
+          box-shadow: 0 0 5px 0 rgba(0,0,0,0.25);       
+      }
+      input{
+        height:30px;
+        font-size: 25px;
+        text-align: center;
+        padding:3px;
+      }
+  </style>
 </head>
 
 <body>
@@ -183,85 +233,29 @@
       Video 58
     </li>
   </ul>
+  <div class="result">
+      <button>总时长</button>
+      <input type="text" placeholder="这里显示video的总时长" readonly></input>
+  </div>
   <script>
-    //获取整个 li NodeList
-    let items = document.querySelectorAll('ul li');
-    //创建一个空数组，存储所有data-time字符串
-    let itemtimearray = [];
-    //通过for循环将每个li中的data.time添加到 itemtimearray 数组中
-    for (let item of items) {
-      itemtimearray.push(item.dataset.time);
-    }
-
-    //遍历itemtimearray数组，返回一个新的数组
-    let spiltitmes = itemtimearray.map(item => {
-      //通过 : 将字符串拆分成数组 
-      let temp = item.split(':');
-      //返回对象包涵分和秒的对象
-      return {
-        min: temp[0],
-        sencond: temp[1]
+      let list=[...document.querySelectorAll("li")];
+      let input = document.querySelector("input");
+      let button = document.querySelector("button");
+      button.addEventListener("click",totalTime);
+      list.forEach(item=>{
+        let datatime=item.dataset.time;
+        item.innerHTML=item.innerHTML+"------------时长："+datatime;
+      });
+      //总时间计算函数
+      function totalTime(){
+        let sum = list.reduce((cal,item)=>{
+                let datatime=item.getAttribute("data-time");
+                let [mins,seconds] = datatime.split(":").map(item=>parseFloat(item));//解构赋值
+                return cal+(mins*60+seconds); //reduce求和注意要让cal带入计算
+              },0);
+        let hours=sum/3600;
+        input.value=Math.floor(sum/3600)+"个小时"+Math.floor((sum%3600)/60)+"分"+sum%60+"秒";
       }
-    });
-
-    //初始化分和秒
-    let totalMin = 0;
-    let totalSec = 0;
-    //通过reduce函数将spiltitmes数组中所有的min叠加并存储到totalMin中
-    totalMin = spiltitmes.reduce((total, time) => {
-      return total += parseInt(time.min);
-    }, 0);
-    //通过reduce函数将spiltitmes数组中所有的sencond叠加并存储到totalSec中
-    totalSec = spiltitmes.reduce((total, time) => {
-      return total += parseInt(time.sencond);
-    }, 0);
-    //求余计算秒
-    let finalSecond = parseInt(totalSec % 60);
-    //计算一共多少分钟
-    let finalMin = parseInt(totalMin + (totalSec / 60)) % 60;
-    //计算一共多少小时
-    let finalHour = parseInt((totalMin + (totalSec / 60)) / 60);
-    //输出时分秒
-    console.log(`共${finalHour}小时,${finalMin}分钟,${finalSecond}秒。`);
-
-    // 方法二：
-
-    // 1. [...items] => 将其展开为数组
-    // 2. Array.from(items) => 使用Array.from()将items转换为数组 
-    // 获取所有节点
-    // 3. const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
-    // 4. parseFloat:
-    // [].map(parseFloat) => [].map(function(x) {retunr parseFloat(x)});
-
-
-    // 获取所有的带有data-time属性的节点
-    const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
-
-
-    const seconds = timeNodes
-    //返回一个包涵所有data-time值的数组
-      .map(node => node.dataset.time)
-      //返回一个将data-time解析成秒的数组
-      .map(timeCode => {
-        //timeCode为 1:43 这样格式的字符串
-        //timeCode.split(':') 返回一个新数组，数组里面装的是分和秒的时间
-        //[].map(parseFloat) => [].map(function(x) {retunr parseFloat(x)});
-        const [mins, secs] = timeCode.split(':').map(parseFloat);
-        //将分乘以60+秒，计算所有的秒，并返回
-        return (mins * 60) + secs;
-      })
-      //将数组中的所有的秒叠加并返回
-      .reduce((total, vidSeconds) => total + vidSeconds);
-
-    //通过求余取整计算时分秒
-    let secondsLeft = seconds;
-    const hours = Math.floor(secondsLeft / 3600);
-    secondsLeft = secondsLeft % 3600;
-
-    const mins = Math.floor(secondsLeft / 60);
-    secondsLeft = secondsLeft % 60;
-    //打印输出
-    console.log(hours, mins, secondsLeft);
   </script>
 </body>
 
