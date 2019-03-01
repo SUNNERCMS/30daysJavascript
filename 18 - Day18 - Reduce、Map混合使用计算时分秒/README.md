@@ -13,6 +13,7 @@ css页面布局和示例17：无冠词排序基本一致
       let input = document.querySelector("input");
       let button = document.querySelector("button");
       button.addEventListener("click",totalTime);
+      //将每项的时间长度也显示出来
       list.forEach(item=>{
         let datatime=item.dataset.time;
         item.innerHTML=item.innerHTML+"------------时长："+datatime;
@@ -29,3 +30,12 @@ css页面布局和示例17：无冠词排序基本一致
       }
   </script>
 ```
+> 主要内容就是两部分:  
+1、获得各项的data-time值，然后进行累加
+2、根据总秒数进行时分秒的计算  
+
+  `let [mins,seconds] = datatime.split(":").map(item=>parseFloat(item));`  
+ 解构赋值:这里是将时和秒数进行切割形成新的数组，然后对数组中的每一项用parseFloat()进行字符串转换为数值，然后进行解构赋值，例如：[mins,seconds]=[03,58];这里将03赋值给mins,将58赋值给seconds.  
+  
+  `input.value=Math.floor(sum/3600)+"个小时"+Math.floor((sum%3600)/60)+"分"+sum%60+"秒";`  
+  
