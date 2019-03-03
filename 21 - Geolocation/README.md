@@ -159,7 +159,7 @@ liyuechun:21 - Geolocation yuechunli$ npm start
   </script>
 ```
 
-### 涉及知识点主要是geolocation，[详细文档请戳我！]()
+### 涉及知识点主要是geolocation,这里不做详细介绍，[具体内容见我总结的博客，请戳我！](https://blog.csdn.net/qq_39207948/article/details/88081604)
 
 
 
