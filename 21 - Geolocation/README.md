@@ -122,74 +122,45 @@ liyuechun:21 - Geolocation yuechunli$ npm start
 
 ```js
   <script>
-    const arrow = document.querySelector('.arrow');
-    const speed = document.querySelector('.speed-value');
+ let arrow=document.querySelector(".arrow");
+      let speed=document.querySelector(".speed-value");
+    //geolocation 配置项
+      let options={
+        enableHeightAccuracy : false,//是否开启高精度定位，开启后刷新速度慢，耗电耗流量
+        timeout : 5000, //等待响应的最大时间，超时响应，默认是0毫秒，表示无穷时间，即无限制的等待响应。
+        maximumAge: 0  //表示应用程序的缓存时间。单位毫秒，默认是0，意味着每次请求都是立即去获取一个全新的对象内容。
+      }
+    //成功回调函数
+      function sucess(pos){
+        console.log(pos);
+        let crd = pos.coords;// 获取位置对象的热区，包括各种位置信息。
+        console.log("你当前的位置是：");
+        console.log('Latitude:' + crd.latitude);//获取纬度
+        console.log('Longitude:' + crd.longitude);//获取经度
+        console.log('More or less' + crd.accuracy + 'meters');//获取测量经度误差
+        // 根据geolocation地理对象的位置信息来更新显示
+        arrow.style.transform=`rotate(${crd.heading}deg)`;//更新指南针的方向
+        speend.innerHTML=crd.speed;//速度值
 
-    navigator.geolocation.watchPosition((data) => {
-      console.log(data);
-      speed.textContent = data.coords.speed;
-      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
-    }, (err) => {
-      console.error(err);
-    });
+        arrow.style.transform=`rotate(30deg)`;//由于PC浏览器没有方向和速度感应器，所以赋值进行试验，更新指南针的方向
+        speed.innerHTML='30';
+      }
+    // 失败回调函数
+      function error(error){
+        console.log(error.code);
+      }
+
+    // 判断浏览器是否支持geolocation对象
+      if(navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(sucess, error, options);
+      }else{
+          console.log("你的浏览器暂时不支持geolocation API");
+      }
   </script>
 ```
 
-![](http://om1c35wrq.bkt.clouddn.com/WX20170813-115005@2x.png)
-
-可以看到只要通过调用`navigator.geolocation`的`watchPosition`方法就可以获取到位置的信息。
-
-在此获取到的信息为`data`，以回调函数的形式返回，当获取到位置信息之后，在动态的修改页面中`speed`显示的内容和指南针旋转的角度。
+### 涉及知识点主要是geolocation，[详细文档请戳我！]()
 
 
-#### `Geolocation.watchPosition()`
 
-[参考文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Geolocation/watchPosition)
 
-`Geolocation.watchPosition()` 用于注册监听器，在设备的地理位置发生改变的时候自动被调用。也可以选择特定的错误处理函数。
-
-该方法会返回一个 ID，如要取消监听可以通过  `Geolocation.clearWatch()` 传入该 ID 实现取消的目的。
-
-- 语法
-
-```js
-id = navigator.geolocation.watchPosition(success[, error[, options]])
-```
-
-- 参数
-
-    - success：成功时候的回调函数， 同时传入一个 Position 对象当作参数。
-    - error(可选)：失败时候的回调函数，可选， 会传入一个 PositionError 对象当作参数。
-    - options(可选)：一个可选的 PositionOptions 对象。
-
-- 案例
-
-```js
-var id, target, options;
-
-function success(pos) {
-  var crd = pos.coords;
-
-  if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
-    console.log('Congratulations, you reached the target');
-    navigator.geolocation.clearWatch(id);
-  }
-}
-
-function error(err) {
-  console.warn('ERROR(' + err.code + '): ' + err.message);
-}
-
-target = {
-  latitude : 0,
-  longitude: 0
-};
-
-options = {
-  enableHighAccuracy: false,
-  timeout: 5000,
-  maximumAge: 0
-};
-
-id = navigator.geolocation.watchPosition(success, error, options);
-```
