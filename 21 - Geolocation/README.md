@@ -24,7 +24,7 @@ liyuechun:21 - Geolocation yuechunli$ npm start
 
 ## 效果图
 
-![](http://om1c35wrq.bkt.clouddn.com/day21-xiaoguotu.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/21%20-%20Geolocation/show.PNG)
 
 第21天的目的是练习`NavigatorGeolocation.geolocation`这一webAPI的使用，通过使用此API可以访问到设备的位置信息。这允许网站或应用根据用户的位置提供个性化结果。
 
