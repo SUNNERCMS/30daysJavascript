@@ -222,4 +222,6 @@ function highlightLink() {
 
 }
 ```
+- <nav> 标签定义导航链接的部分。  
 
+并不是所有的 HTML 文档都要使用到 <nav> 元素。<nav> 元素只是作为标注一个导航链接的区域。
