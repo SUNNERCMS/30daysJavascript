@@ -1,9 +1,7 @@
 # Day22 - 鼠标锚点动画生成指南
 
 ## 效果图
-
-
-![](http://om1c35wrq.bkt.clouddn.com/day22-xiaoguotu.gif)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/22%20-%20Follow%20Along%20Link%20Highlighter/SHOWGIF.gif)
 
 第22天的练习是一个动画练习，当鼠标移动到锚点处，会有一个白色的色块移动到当前锚点所在的位置。演示图如下所示：
 
