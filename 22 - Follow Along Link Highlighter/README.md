@@ -64,10 +64,9 @@
         SPAN.style.display="none"; 
 ```
 
-
 - `getBoundingClientRect()`
 
-[getBoundingClientRect](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
+[getBoundingClientRect](https://blog.csdn.net/qq_39207948/article/details/88147479)
 
 `Element.getBoundingClientRect()`方法返回元素的大小及其相对于视口的位置。
 
@@ -105,24 +104,30 @@ rectObject = object.getBoundingClientRect();
 - `highlightLink`方法
 
 ```js
-function highlightLink() {
-  const linkCoords = this.getBoundingClientRect();
-  // console.log(linkCoords);
-  <!--`coords`计算坐标，宽和高。-->
-  const coords = {
-      width: linkCoords.width,
-      height: linkCoords.height,
-      top: linkCoords.top + window.scrollY,
-      left: linkCoords.left + window.scrollX
-  };
+    function addHightLight(){
+        let RECT=this.getBoundingClientRect();  
+        let rects={
+            width:RECT.width,
+            height:RECT.height,
+            left:RECT.left+window.scrollX,
+            top:RECT.top+window.scrollY
+        }
+        // SPAN.style=`width:${rects.width},height:${rects.height},left:${rects.left},top:${rects.top}`;
+        // SPAN.style.top=
+        // SPAN.style.width = `${rects.width}px`;
+        // SPAN.style.height = `${rects.height}px`;
+        // // SPAN.style.transform = `translate(${rects.left}px, ${rects.top}px)`;用了位置移动，等价于下面的这两条语句
+        // SPAN.style.left = `${rects.left}px`;
+        // SPAN.style.top = `${rects.top}px`;
+        // SPAN.style.display="block";
+// 采用cssText写法片段式样式改变，可以减少回流和重绘，上述的语句没改变一个样式都会触发回流和重绘。
+        SPAN.style.cssText=`width:${rects.width}px;height:${rects.height}px;left:${rects.left}px;top:${rects.top}px;display:block;`;
 
-<!--高亮状态的span标签的样式设置-->
-  highlight.style.width = `${coords.width}px`;
-  highlight.style.height = `${coords.height}px`;
-  highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
-
-}
+    }
 ```
+> 给a元素添加高亮背景的函数。获取到当前进入的a元素，然后将该元素的top\left\width\height用一个对象进行保存。然后将span的白色小块的样式位置进行改变，移动到鼠标进入的这个元素。  
+
+
 - <nav> 标签定义导航链接的部分。  
 
 并不是所有的 HTML 文档都要使用到 <nav> 元素。<nav> 元素只是作为标注一个导航链接的区域。
