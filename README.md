@@ -91,7 +91,7 @@
 
 ## Day22 - Follow Along Link Highlighter
 
-![](http://oslwafb71.bkt.clouddn.com/small21.jpg)
+![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/22%20-%20Follow%20Along%20Link%20Highlighter/SHOWGIF.gif)
 
 ## Day23 - Speech Synthesis
 ![](http://oslwafb71.bkt.clouddn.com/small22.jpg)
