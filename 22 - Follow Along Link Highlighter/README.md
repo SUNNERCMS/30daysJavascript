@@ -7,162 +7,63 @@
 
 第22天的练习是一个动画练习，当鼠标移动到锚点处，会有一个白色的色块移动到当前锚点所在的位置。演示图如下所示：
 
+### 解决思路：  
+实际上是通过一个背景颜色Wie白色的小块进行覆盖导航元素这个白色小块的宽高及位置有getBoundingClientRect来获取，鼠标进入不同的元素就获取该元素的宽高和位置数据，然后赋值给这个白色小块，则白色小块定位到该元素位置处，作为背景来使用。
 
-## HTML源码
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>👀👀👀Follow Along Nav</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <nav>
-        <ul class="menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Order Status</a></li>
-            <li><a href="">Tweets</a></li>
-            <li><a href="">Read Our History</a></li>
-            <li><a href="">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <div class="wrapper">
-        <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus
-            necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
-        <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a>            cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
-        <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a>            ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
-        <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur
-            eveniet sunt quam provident sapiente dicta neque quod.</p>
-        <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>,
-            distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
-    </div>
-
-</body>
-
-</html>
-```
-
-## CSS源码
-
-```css
-html {
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-  min-height: 100vh;
-  margin: 0;
-  /* Important! */
-  font-family: sans-serif;
-  background: linear-gradient(45deg, hsla(340, 100%, 55%, 1) 0%, hsla(340, 100%, 55%, 0) 70%), linear-gradient(135deg, hsla(225, 95%, 50%, 1) 10%, hsla(225, 95%, 50%, 0) 80%), linear-gradient(225deg, hsla(140, 90%, 50%, 1) 10%, hsla(140, 90%, 50%, 0) 80%), linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
-}
-
-.wrapper {
-  margin: 0 auto;
-  max-width: 500px;
-  font-size: 20px;
-  line-height: 2;
-  position: relative;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 20px
-}
-
-.highlight {
-  transition: all 0.2s;
-  border-bottom: 2px solid white;
-  position: absolute;
-  top: 0;
-  background: white;
-  left: 0;
-  z-index: -1;
-  border-radius: 20px;
-  display: block;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2)
-}
-
-.menu {
-  padding: 0;
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  margin: 100px 0;
-}
-
-.menu a {
-  display: inline-block;
-  padding: 5px;
-  margin: 0 20px;
-  color: black;
-}
-```
 
 ## JS源码
 
 ```js
-<script>
-   const triggers = document.querySelectorAll('a');
-   const highlight = document.createElement('span');
-   highlight.classList.add('highlight');
-   document.body.appendChild(highlight);
+    <script>
+        let A=[...document.querySelectorAll("a")];
+        A.forEach(item=>item.addEventListener("mouseenter",addHightLight));
+        //创建类名为hightLight的白色小块 -->
+        let SPAN=document.createElement("span");
+        SPAN.setAttribute("class","hightlight");
+        document.body.appendChild(SPAN);
+        SPAN.style.display="none";
 
-   function highlightLink() {
-       const linkCoords = this.getBoundingClientRect();
-       // console.log(linkCoords);
-       const coords = {
-           width: linkCoords.width,
-           height: linkCoords.height,
-           top: linkCoords.top + window.scrollY,
-           left: linkCoords.left + window.scrollX
-       };
+        function addHightLight(){
+            let RECT=this.getBoundingClientRect();
+            let rects={
+                width:RECT.width,
+                height:RECT.height,
+                left:RECT.left+window.scrollX,
+                top:RECT.top+window.scrollY
+            }
+            // SPAN.style=`width:${rects.width},height:${rects.height},left:${rects.left},top:${rects.top}`;
+            // SPAN.style.top=
+            // SPAN.style.width = `${rects.width}px`;
+            // SPAN.style.height = `${rects.height}px`;
+            // // SPAN.style.transform = `translate(${rects.left}px, ${rects.top}px)`;用了位置移动，等价于下面的这两条语句
+            // SPAN.style.left = `${rects.left}px`;
+            // SPAN.style.top = `${rects.top}px`;
+            // SPAN.style.display="block";
+// 采用cssText写法片段式样式改变，可以减少回流和重绘，上述的语句没改变一个样式都会触发回流和重绘。
+            SPAN.style.cssText=`width:${rects.width}px;height:${rects.height}px;left:${rects.left}px;top:${rects.top}px;display:block;`;
 
-       highlight.style.width = `${coords.width}px`;
-       highlight.style.height = `${coords.height}px`;
-       highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
-
-   }
-
-   triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
-</script>
+        }
+    </script>
 ```
 
-## 代码解释
+## 代码解析
 
-- 通过HTML源码我们不难发现，所有锚点都是由`a`标签组成，所以在`js`代码中我们首先先获取所有的`a`标签对象，将其存储到`triggers`变量中。
+- 通过HTML源码我们不难发现，所有锚点都是由`a`标签组成，所以在`js`代码中我们首先先获取所有的`a`标签对象，返回一个伪数组，用扩展运算符将其真正数组化，将其存储到`triggers`变量中，然后给每个a标签添加鼠标进入监听事件。
 
 ```js
-const triggers = document.querySelectorAll('a');
+        let A=[...document.querySelectorAll("a")];
+        A.forEach(item=>item.addEventListener("mouseenter",addHightLight));
 ```
-
-- 在效果图中高亮状态的小块其实就是一个`span`标签，在JS代码中创建了一个`span`标签，并且为其添加了一个`highlight`的`class`。
+- 在效果图中高亮状态的小块其实就是一个`span`标签，在JS代码中创建了一个`span`标签，并且为其添加了一个`highlight`的`class`，由于hightlight的样式中
 
 ```js
-const highlight = document.createElement('span');
-highlight.classList.add('highlight');
-document.body.appendChild(highlight);
+       //创建类名为hightLight的白色小块 -->
+        let SPAN=document.createElement("span");
+        SPAN.setAttribute("class","hightlight");//或者使用SPAN.classList.add("hightlight");
+        document.body.appendChild(SPAN);
+        SPAN.style.display="none"; 
 ```
 
-- 对所有的`a`标签进行事件监听，当鼠标移动到锚点时，会自动触发`highlightLink`方法。
-
-```js
-triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
-```
 
 - `getBoundingClientRect()`
 
