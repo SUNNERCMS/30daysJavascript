@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>👀👀👀Follow Along Nav</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随鼠标滑动小块</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
     <nav>
         <ul class="menu">
             <li><a href="">Home</a></li>
@@ -18,42 +17,54 @@
             <li><a href="">Contact Us</a></li>
         </ul>
     </nav>
-
     <div class="wrapper">
-        <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus
-            necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
-        <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a>            cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
-        <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a>            ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
-        <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur
-            eveniet sunt quam provident sapiente dicta neque quod.</p>
-        <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>,
-            distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
+        <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. Est <a href="">explicabo</a> unde natus necessitatibus esse obcaecati distinctio, aut itaque, qui vitae!</p>
+        <p>Aspernatur sapiente quae sint <a href="">soluta</a> modi, atque praesentium laborum pariatur earum <a href="">quaerat</a> cupiditate consequuntur facilis ullam dignissimos, aperiam quam veniam.</p>
+        <p>Cum ipsam quod, incidunt sit ex <a href="">tempore</a> placeat maxime <a href="">corrupti</a> possimus <a href="">veritatis</a> ipsum fugit recusandae est doloremque? Hic, <a href="">quibusdam</a>, nulla.</p>
+        <p>Esse quibusdam, ad, ducimus cupiditate <a href="">nulla</a>, quae magni odit <a href="">totam</a> ut consequatur eveniet sunt quam provident sapiente dicta neque quod.</p>
+        <p>Aliquam <a href="">dicta</a> sequi culpa fugiat <a href="">consequuntur</a> pariatur optio ad minima, maxime <a href="">odio</a>, distinctio magni impedit tempore enim repellendus <a href="">repudiandae</a> quas!</p>
     </div>
-
     <script>
-        const triggers = document.querySelectorAll('a');
-        const highlight = document.createElement('span');
-        highlight.classList.add('highlight');
-        document.body.appendChild(highlight);
+        window.onresize=function(){
+            // location.reload();//页面进行刷新
+            SPAN.style.display="none";//将span进行隐藏，触发一次回流和重排
+        }
+        let A=[...document.querySelectorAll("a")];
+        A.forEach(item=>item.addEventListener("mouseenter",addHightLight));
+        //创建类名为hightLight的白色小块 -->
+        let SPAN=document.createElement("span");
+        SPAN.setAttribute("class","hightlight");//或者使用SPAN.classList.add("hightlight");
+        document.body.appendChild(SPAN);
 
-        function highlightLink() {
-            const linkCoords = this.getBoundingClientRect();
-            // console.log(linkCoords);
-            const coords = {
-                width: linkCoords.width,
-                height: linkCoords.height,
-                top: linkCoords.top + window.scrollY,
-                left: linkCoords.left + window.scrollX
-            };
 
-            highlight.style.width = `${coords.width}px`;
-            highlight.style.height = `${coords.height}px`;
-            highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+        SPAN.style.display="none";
+
+        function addHightLight(){
+            let RECT=this.getBoundingClientRect();
+            let rects={
+                width:RECT.width,
+                height:RECT.height,
+                left:RECT.left+window.scrollX,
+                top:RECT.top+window.scrollY
+            }
+            // SPAN.style=`width:${rects.width},height:${rects.height},left:${rects.left},top:${rects.top}`;
+            // SPAN.style.top=
+            // SPAN.style.width = `${rects.width}px`;
+            // SPAN.style.height = `${rects.height}px`;
+            // // SPAN.style.transform = `translate(${rects.left}px, ${rects.top}px)`;用了位置移动，等价于下面的这两条语句
+            // SPAN.style.left = `${rects.left}px`;
+            // SPAN.style.top = `${rects.top}px`;
+            // SPAN.style.display="block";
+// 采用cssText写法片段式样式改变，可以减少回流和重绘，上述的语句没改变一个样式都会触发回流和重绘。
+            SPAN.style.cssText=`width:${rects.width}px;height:${rects.height}px;left:${rects.left}px;top:${rects.top}px;display:block;`;
 
         }
-
-        triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
     </script>
+    
 </body>
-
 </html>
+<!-- 实际上是通过一个背景颜色Wie白色的小块进行覆盖导航元素
+这个白色小块的宽高及位置有getBoundingClientRect来获取，
+鼠标进入不同的元素就获取该元素的宽高和位置数据，然后赋值给这个白色小块，
+则白色小块定位到该元素位置处，作为背景来使用。
+-->
