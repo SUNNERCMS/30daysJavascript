@@ -55,7 +55,7 @@
         A.forEach(item=>item.addEventListener("mouseenter",addHightLight));
 ```
 - 在效果图中高亮状态的小块其实就是一个`span`标签，在JS代码中创建了一个`span`标签，并且为其添加了一个`highlight`的`class`，由于hightlight的样式中
-
+是绝对定位，并且top和left的值均为0；那么在初始化时是位于左上角的，通过display进行隐藏，然后在改变之后在进行显示，中间加上过渡效果。
 ```js
        //创建类名为hightLight的白色小块 -->
         let SPAN=document.createElement("span");
