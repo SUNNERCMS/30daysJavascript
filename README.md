@@ -71,12 +71,10 @@
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/21%20-%20Geolocation/show.PNG)
 
 ## Day22 - Follow Along Link Highlighter
-
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/22%20-%20Follow%20Along%20Link%20Highlighter/SHOWGIF.gif)
 
 ## Day23 - Speech Synthesis
 ![](http://oslwafb71.bkt.clouddn.com/small22.jpg)
-
 
 ## Day24 - Sticky Nav
 ![](http://oslwafb71.bkt.clouddn.com/small23.jpg)
