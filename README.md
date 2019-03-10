@@ -84,20 +84,16 @@
 ## Day25 - Event Capture, Propagation, Bubbling and Once
 ![](http://oslwafb71.bkt.clouddn.com/small24.jpg)
 
-
 ## Day26 - Stripe Follow Along Nav
 ![](http://oslwafb71.bkt.clouddn.com/small25.jpg)
 
 ## Day27 - Click and Drag
 ![](http://oslwafb71.bkt.clouddn.com/small26.jpg)
 
-
 ## Day28 - Video Speed Controller
-
 ![](http://oslwafb71.bkt.clouddn.com/small27.jpg)
 
 ## Day29 - Countdown Timer
-
 ![](http://oslwafb71.bkt.clouddn.com/small28.jpg)
 
 ## Day30 - Whack A Mole
