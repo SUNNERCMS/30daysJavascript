@@ -7,20 +7,15 @@
 结合自己的实际情况学习效果更好。。。
 
 ## Day01 - JavaScript Drum Kit
-
 ![](http://oslwafb71.bkt.clouddn.com/small0.jpg)
 
 ## Day02 - JS and CSS Clock
-
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/02%20-%20JS%20and%20CSS%20Clock/image/GIF.gif)  
 
-
 ## Day03 - CSS Variables
-
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/03%20-%20CSS%20Variables/GIF.gif)
 
 ## Day04 - Array Cardio Day 1
-
 ![](http://oslwafb71.bkt.clouddn.com/small3.jpg)
 
 ## Day05 - Flex Panel Gallery
