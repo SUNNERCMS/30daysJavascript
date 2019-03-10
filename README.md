@@ -19,29 +19,21 @@
 ![](http://oslwafb71.bkt.clouddn.com/small3.jpg)
 
 ## Day05 - Flex Panel Gallery
-
 ![](http://oslwafb71.bkt.clouddn.com/small4.jpg)
 
-
 ## Day06 - Quick match
-
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/06%20-%20Fetch%E3%80%81filter%E3%80%81%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BF%AB%E9%80%9F%E5%8F%A4%E8%AF%97%E5%8C%B9%E9%85%8D/DemoGIF.gif)
 
 ## Day07 - Array Cardio Day 2
-
 ![](http://oslwafb71.bkt.clouddn.com/small6.jpg)
 
 ## Day08 - Fun with HTML5 Canvas
-
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/08%20-%20HTML5%20Canvas%20%E5%AE%9E%E7%8E%B0%E5%BD%A9%E8%99%B9%E7%94%BB%E7%AC%94%E7%BB%98%E7%94%BB%E6%9D%BF/GIF.gif)
 
-
 ## Day09 - Dev Tools Domination
-
 ![](http://oslwafb71.bkt.clouddn.com/small8.jpg)
 
 ## Day10 - Hold Shift and Check Checkboxes
-
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/10%20-%20JS%20%E5%AE%9E%E7%8E%B0%20Checkbox%20%E4%B8%AD%E6%8C%89%E4%BD%8F%20Shift%20%E7%9A%84%E5%A4%9A%E9%80%89%E5%8A%9F%E8%83%BD/GIF.gif)
 
 ## Day11 - Custom Video Player
