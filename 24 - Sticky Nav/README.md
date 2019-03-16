@@ -1,4 +1,4 @@
-# Day24 - Sticky Nav
+# Day24 - Sticky Nav 粘性导航栏
 ## 效果图
 ![](http://om1c35wrq.bkt.clouddn.com/day24-xiaoguotu.gif)
 ## HTML源码
