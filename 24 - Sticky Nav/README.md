@@ -14,79 +14,12 @@
 
 <body>
 
-  <header>
-pora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui
-      libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas
-      laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
-
-body {
-  margin: 0;
-}
-
 *,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
 
-.site-wrap {
-  max-width: 700px;
-  margin: 70px auto;
-  background: white;
-  padding: 40px;
-  text-align: justify;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
-  transform: scale(0.98);
-  transition: transform 0.5s;
-}
+  
 
-.fixed-nav .site-wrap {
-  transform: scale(1);
-}
 
-header {
-  text-align: center;
-  height: 50vh;
-  background: url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-h1 {
-  color: white;
-  font-size: 7vw;
-  text-shadow: 3px 4px 0 rgba(0, 0, 0, 0.2)
-}
-
-nav {
-  background: black;
-  top: 0;
-  width: 100%;
-  transition: all 0.5s;
-  position: relative;
-  z-index: 1;
-}
-
-.fixed-nav nav {
-  position: fixed;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-}
-
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-}
-
-nav li {
-  flex: 1;
-  text-align: center;
-  display: flex;
-  justify-content: center;
+ter;
   align-items: center;
 }
 
