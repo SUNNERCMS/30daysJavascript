@@ -2,7 +2,6 @@
 
 ## 项目效果
 [控制台打印结果，请猛戳我！！！](https://blog.csdn.net/qq_39207948/article/details/85261675)
-    
 ## 各种调试正确姿势
 ### `.log` 的更多用法
 这个是最常用的，但它还有一些更多功能：比如参数支持类似 C 语言的字符串替换模式。
@@ -48,7 +47,6 @@ console.debug("用于输出调试信息");
 ![](http://om1c35wrq.bkt.clouddn.com/day9-warn-info.png)
 
 ### 打印DOM节点
-
 获取 DOM 元素之后，可以直接打印输出。
 
 ```js
