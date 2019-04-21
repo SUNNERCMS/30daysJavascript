@@ -125,10 +125,6 @@ fetch("https://api.github.com/users/soyaine")
   console.log(data);
 });
 ````
-
 ![](http://om1c35wrq.bkt.clouddn.com/day9-time.png)
-
 如果 timeEnd 中的名称如果和上面不一样，得到的数据是系统当前时间换算后的毫秒值。
-
-
 
