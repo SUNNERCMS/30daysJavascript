@@ -99,5 +99,5 @@
 ## Day31 - Canvas CountdownClock  
 ![](https://github.com/SUNNERCMS/30daysJavascript/blob/master/31%20-%20Canvas%20CountClock/image/GIF.gif)
 
-本人CSDN博客：https://blog.csdn.net/qq_39207948    
-欢迎关注微信公众号：web前端碎片  
+本人博客：https://sunzhaoxiang.com   
+欢迎关注微信公众号：一线开发
